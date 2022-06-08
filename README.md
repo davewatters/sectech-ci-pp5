@@ -22,51 +22,78 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 ## - Purpose -
 [This app was created as the fifth Portfolio Project (PP5) for the Code Institute's Full Stack Web Development course. The app is to showcase skills to design an eCommerce web application using an MVC framework and related contemporary technologies.  As a requirement the app is deployed to Heroku and payments are processed by Stripe.]    
 
-A mock site for an IT Services company plannning to rebrand and streamline their recurring revenue from Software-as-a-Service (SaaS) products using an online eCommerce site. The company plans to take payment up front for certain services - particularly SaaS cyber security products which are sold as a recurring anuual licence. Monthly Managed IT Service contracts, daily Consultancy Services and even Remote Technical Support can be purchased by the hour, and all can be bought in advance.  This should streamline the business, reduce time spent each month on the invoice/payment collection cylce and bolster the company's cash flow.
+A mock site for an IT Services company plannning to streamline their recurring revenue from Software-as-a-Service (SaaS) products using an online eCommerce site. The company plans to take payment up front for certain services - particularly SaaS cyber security products which are sold as a recurring anuual licence. Monthly Managed IT Service contracts, daily Consultancy Services and even Remote Technical Support by the hour, and all can be bought in advance.  This should streamline the business, reduce time spent each month on the invoice/payment collection cylce and bolster the company's cash flow.
 The company's customers receive the benefit of easy access to a suite of industlry leading cyber security products which are essential to the smooth running of their business systems. The products are bundled as a managed service at a fixed monthly cost. They can buy addtional support or consultancy on an as needed basis - only paying for what they use.
 
 ## - User Experience Design -
 
-- ### User stories
+### Design Strategy Goals
+  - Create an online shop to sell IT service & software products to registered customers
+  - Shop must be abe to process payments at point of sale
+  - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile First design
+  - Site must allow company admins and customers to authenticate and interact with the content, e.g. view accounts, purchase services and software licences, etc.
 
-    - ### Design Strategy Goals
-        - Create an 
-        - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile First design
-        - Site must allow admins (aka organisers) and users (aka customers) to authenticate and interact with the content, e.g. purchase services and software licences, view their account.
+  ### Design Scope to Deliver MVP
+  - #### Site Owner Goals
+      As a site admin...
+      - I want to to be able to setup and manage a products list
+      - I want to be able to setup and manage customer accounts
+      - I want to be able to view sales information
 
-    -   ### Design Scope to Deliver MVP
-        - #### Site Owner Goals
-            As a site admin...
-            - I want to to be able to setup and manage the products list
-            - I want to be able to setup and manage taking card payments via Stripe
-            - I want to be able to setup and manage the sales information
+  - #### First Time Visitor Goals
+      As a first time user...
+      - I want to be able to intuitively navigate the site
+      - I want to easily find information about relevant products
+      - I want to be able to buy software service products
+      - I want to be able to buy technical support hours
+      - I want to be able to buy consultancy hours
 
-        - #### First Time Visitor Goals
-            As a first time user...
-            - I want to be able to intuitively navigate the site
-            - I want to easily find information about the relevant products
-            - I want to be able to buy software service products
-            - I want to be able to buy technical support hours
-            - I want to be able to buy consultancy hours
+  - #### Returning Visitor Goals
+      As a returning visitor...
+      - I want to be able to log into my registered account
+      - I want to be able to easily see details of active software licences
+      - I want to be able to easily see details of the previous purchases
+      - I want to be able to quickly purchase additional support or consultancy hours
 
-        - #### Returning Visitor Goals
-            As a returning visitor...
-            -   I want to be able to easily see details of active software licences
-            -   I want to be able to easily see details of the previous purchases
-            -   I want to be able to quickl purchase additional support or consultancy hours
+### Agile Development Process: Epics & User stories
+- To deliver MVP the following features were implemented in work sprints.  Prioritization of each item changed as certain milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features, and the Projects board as a Kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
 
-<!------------------------------------------------------- -->
-<!-- Need to put the Epics & User Stories here in a detailed table format -->
-<!------------------------------------------------------- -->
-- ### Need to put the Epics & User Stories here in a detailed table format
-- ### Need to put the Epics & User Stories here in a detailed table format
-- ### Need to put the Epics & User Stories here in a detailed table format
-- ### Need to put the Epics & User Stories here in a detailed table format
+- ### **Epic: Viewing & Navigation of Site**
+| As A/An       | I want to be able to        |  So that I can   |
+|---|---|---|
+| Site visitor  | Easily navigate the site    | Learn about about the business
+| Site visitor  | View detailed product info  | Learn about the products
+| Site visitor  | Register as a customer      | Buy products and services 
+- ### **Epic: User Registration & User Accounts**
+| As A/An       | I want to be able to        |  So that I can   |
+|---|---|---|
+| Customer      | Easily register for an account  | Have a customer account
+| Customer      | Receive a registration email    | Verify that my acccount regisration was successful
+| Customer      | Easily login/logout             | Access my account information
+| Customer      | Easily recover my password      | Recover access to my account
+| Customer      | Have an account profile         | Manage my details & view purchased products
+| Customer      | Access full account history     | View all transaction history
+- ### **Epic: Purchasing & Checkout**
+| As A/An       | I want to be able to        |  So that I can   |
+|---|---|---|
+| Customer      | Purchase a product online       | Acctivate & use the product immediately
+| Customer      | View shopping cart with total   | View selected products before confirming purchase 
+| Customer      | Receive a confirmation email    | Instantly have a recepit for my purchase
+- ### **Epic: Site Administration**
+| As A/An       | I want to be able to        |  So that I can   |
+|---|---|---|
+| Site Admin    | Easily login/logout             | Access my site control panel
+| Site Admin    | Create, Amend or Delete products| Manage my product offering
+| Site Admin    | Create, Amend or Delete customers| Manage my customer profiles
+| Site Admin    | View sales information          | Analyse sales data for site
+| Site Admin    | Integrate transactions to accounting system | Have realtime financial records
 
+Initial Kanban board setup:
+<!-- <h2 align="center"><img src="readme-docs/initial-kanban-view.png"></h2> -->
 
 - ### Design
     -   #### Layout
-        A simple blog site style layout is used. Logo and site navigation is visible along the top bar and a simple footer on the bottom of the viewport.  Content is displayed in Boostrap 'card' styled sections on the main page. 
+        Logo and site navigation is visible along the top bar and a simple footer on the bottom of the viewport.  Content is displayed in Boostrap 'card' styled sections on the main page. 
          
     -   #### Content
         Content is generated based on the available products for sale in the database. The products are rendered as floating cards with brief description and a CTA button.  Once clicked, the vistor is shown detailed product information. 
@@ -77,9 +104,9 @@ The company's customers receive the benefit of easy access to a suite of industl
     -   #### Typography
         The Google font UPDATE ME.
 
-
+    -   #### Colour Scheme ?? Do I really  need this ??????????????????
     -   #### Imagery
-        Backgound or hero image on main landing page.  Product logo images.  
+         Backgound or hero image on main landing page.  Product logo images.  
            
     
     -   #### Wireframes

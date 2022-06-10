@@ -22,7 +22,7 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 ## - Purpose -
 [This app was created as the fifth Portfolio Project (PP5) for the Code Institute's Full Stack Web Development course. The app is to showcase skills to design an eCommerce web application using an MVC framework and related contemporary technologies.  As a requirement the app is deployed to Heroku and payments are processed by Stripe.]    
 
-A mock site for an IT Services company plannning to streamline their recurring revenue from Software-as-a-Service (SaaS) products using an online eCommerce site. The company plans to take payment up front for certain services - particularly SaaS cyber security products which are sold as a recurring anuual licence. Monthly Managed IT Service contracts, daily Consultancy Services and even Remote Technical Support by the hour, and all can be bought in advance.  This should streamline the business, reduce time spent each month on the invoice/payment collection cylce and bolster the company's cash flow.
+A mock site for an IT Services company plannning to streamline their recurring revenue from Software-as-a-Service (SaaS) products using an online eCommerce site. The company plans to take payment up front for certain services - particularly SaaS cyber security products which are sold as a recurring annual licence. Monthly Managed IT Service contracts, daily Consultancy Services and even Remote Technical Support by the hour, and all can be bought in advance.  This should streamline the business, reduce time spent each month on the invoice/payment collection cylce and bolster the company's cash flow.
 The company's customers receive the benefit of easy access to a suite of industlry leading cyber security products which are essential to the smooth running of their business systems. The products are bundled as a managed service at a fixed monthly cost. They can buy addtional support or consultancy on an as needed basis - only paying for what they use.
 
 ## - User Experience Design -
@@ -30,15 +30,18 @@ The company's customers receive the benefit of easy access to a suite of industl
 ### Design Strategy Goals
   - Create an online shop to sell IT service & software products to registered customers
   - Shop must be abe to process payments at point of sale
-  - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile First design
+  - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile-First design
   - Site must allow company admins and customers to authenticate and interact with the content, e.g. view accounts, purchase services and software licences, etc.
 
-  ### Design Scope to Deliver MVP
+### Design Scope to Deliver MVP
   - #### Site Owner Goals
       As a site admin...
       - I want to to be able to setup and manage a products list
       - I want to be able to setup and manage customer accounts
+      - I want customers to be able to buy products
+      - I want to be able to take payments
       - I want to be able to view sales information
+
 
   - #### First Time Visitor Goals
       As a first time user...
@@ -56,7 +59,7 @@ The company's customers receive the benefit of easy access to a suite of industl
       - I want to be able to quickly purchase additional support or consultancy hours
 
 ### Agile Development Process: Epics & User stories
-- To deliver MVP the following features were implemented in work sprints.  Prioritization of each item changed as certain milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features, and the Projects board as a Kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
+- To deliver MVP the following features were implemented in work sprint iterations.  Prioritization of each item changed as certain iteration milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features,  the Projects board as a Kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
 
 - ### **Epic: Viewing & Navigation of Site**
 | As A/An       | I want to be able to        |  So that I can   |
@@ -64,21 +67,22 @@ The company's customers receive the benefit of easy access to a suite of industl
 | Site visitor  | Easily navigate the site    | Learn about about the business
 | Site visitor  | View detailed product info  | Learn about the products
 | Site visitor  | Register as a customer      | Buy products and services 
-- ### **Epic: User Registration & User Accounts**
+| Site visitor  | See clear messages about my actions | So that I get confrimation for my actions
+- ### **Epic: User Account Management**
 | As A/An       | I want to be able to        |  So that I can   |
 |---|---|---|
 | Customer      | Easily register for an account  | Have a customer account
-| Customer      | Receive a registration email    | Verify that my acccount regisration was successful
+| Customer      | Receive a registration email    | Verify that my acccount registration was successful
 | Customer      | Easily login/logout             | Access my account information
-| Customer      | Easily recover my password      | Recover access to my account
+| Customer      | Easily reset my password | Recover access to my account
 | Customer      | Have an account profile         | Manage my details & view purchased products
 | Customer      | Access full account history     | View all transaction history
-- ### **Epic: Purchasing & Checkout**
+- ### **Epic: Shopping Cart & Payment Processing**
 | As A/An       | I want to be able to        |  So that I can   |
 |---|---|---|
-| Customer      | Purchase a product online       | Acctivate & use the product immediately
+| Customer      | Purchase a product online       | Activate & use the product immediately
 | Customer      | View shopping cart with total   | View selected products before confirming purchase 
-| Customer      | Receive a confirmation email    | Instantly have a recepit for my purchase
+| Customer      | Receive an order confirmation email    | Instantly have a recepit for my purchase
 - ### **Epic: Site Administration**
 | As A/An       | I want to be able to        |  So that I can   |
 |---|---|---|
@@ -87,6 +91,12 @@ The company's customers receive the benefit of easy access to a suite of industl
 | Site Admin    | Create, Amend or Delete customers| Manage my customer profiles
 | Site Admin    | View sales information          | Analyse sales data for site
 | Site Admin    | Integrate transactions to accounting system | Have realtime financial records
+- ### **Epic: SEO**
+| As A/An       | I want to be able to        |  So that I can   |
+|---|---|---|
+| Site Admin    | Apply SEO settings             | Ensure my site is ranaked optimally
+| Site Admin    | Apply SEO settings             | Ensure my site is ranaked optimally
+| Site Admin    | Apply SEO settings             | Ensure my site is ranaked optimally
 
 Initial Kanban board setup:
 <!-- <h2 align="center"><img src="readme-docs/initial-kanban-view.png"></h2> -->

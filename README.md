@@ -91,12 +91,10 @@ The company's customers receive the benefit of easy access to a suite of industl
 | Site Admin    | Create, Amend or Delete customers| Manage my customer profiles
 | Site Admin    | View sales information          | Analyse sales data for site
 | Site Admin    | Integrate transactions to accounting system | Have realtime financial records
-- ### **Epic: SEO**
+- ### **Epic: SEO & Marketing**
 | As A/An       | I want to be able to        |  So that I can   |
 |---|---|---|
-| Site Admin    | Apply SEO settings             | Ensure my site is ranaked optimally
-| Site Admin    | Apply SEO settings             | Ensure my site is ranaked optimally
-| Site Admin    | Apply SEO settings             | Ensure my site is ranaked optimally
+| Site Admin    | Apply SEO settings             | Ensure my site is ranked optimally
 
 Initial Kanban board setup:
 <!-- <h2 align="center"><img src="readme-docs/initial-kanban-view.png"></h2> -->

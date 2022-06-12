@@ -88,7 +88,7 @@ ROOT_URLCONF = 'sectech.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATES_DIR],
+        'DIRS': [ TEMPLATES_DIR ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -160,6 +160,7 @@ STATICFILES_DIRS = [ BASE_DIR.joinpath('static'), ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Added these for the allauth package
+# https://django-allauth.readthedocs.io/en/latest/installation.html
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -167,6 +168,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 # Log emails to the console during development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# ^^^^^^^^^^^^^^^^^^^^^^^^^
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

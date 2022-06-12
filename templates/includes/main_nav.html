@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container-fluid">
     <!-- Logo -->
     <a class="navbar-brand" href="{% url 'home' %}"><span class="logo">SecTech</span></a>
@@ -12,27 +12,25 @@
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <!-- using nav_<item> block placeholders to set relevnt nav-link "active" class in sub template -->
         <li class="nav-item">
-          <a class="nav-link {% block nav_home %}{% endblock%}" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link {% block nav_home %}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% block nav_list %}{% endblock%}" href="#">Services</a>
+          <a class="nav-link {% block nav_list %}{% endblock %}" href="#">Services</a>
         </li>
-        <!-- menu item club bio/info -->
         <li class="nav-item">
-          <a class="nav-link {% block nav_about %}{% endblock%}" href="{% url 'about' %}">About Us</a>
+          <a class="nav-link {% block nav_about %}{% endblock %}" href="{% url 'about' %}">About Us</a>
         </li>
         
-        <!-- make the auth menu items right-aligned if poss? -->
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link {% block nav_logout %}{% endblock%}" href="{% url 'account_logout' %}">Logout {{ user.username }}</a>
+          <a class="nav-link {% block nav_logout %}{% endblock %}" href="{% url 'account_logout' %}">Logout {{ user.username }}</a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link {% block nav_signup %}{% endblock%}" href="#">Register</a>
+          <a class="nav-link {% block nav_signup %}{% endblock %}" href="{% url 'account_signup' %}">Register</a>
         </li>
         <li class="nav-item">
-          {#<a class="nav-link {% block nav_login %}{% endblock%}" href="{% url 'account_login' %}">Login</a>#}
+          <a class="nav-link {% block nav_login %}{% endblock %}" href="{% url 'account_login' %}">Login</a>
         </li>
         {% endif %}
       </ul>

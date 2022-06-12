@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}
-<title>Home</title>
-{% endblock %}
+{% block title %}Home{% endblock %}
 
-{% block core %}
+<!-- nav-bar: add 'active' class to the nav-link -->
+{% block nav_home %}active{% endblock %}
+
+{% block content %}
 <div class="row">
 	<div class="col">
-		<h1 class="display-1">Home</h1>
+    <div class="test-layout">
+
+      <h1 class="display-1">Home</h1>
+    </div>
 	</div>
 </div>
-{% endblock %}
+{% endblock content %}

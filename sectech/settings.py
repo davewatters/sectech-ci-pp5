@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 if DEVELOPMENT:
     ALLOWED_HOSTS = [ 'localhost' ]
 else:
-    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS') ]
+    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS'), ]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -161,9 +161,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR.joinpath('static'), ]
-STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

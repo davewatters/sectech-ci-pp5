@@ -28,10 +28,12 @@ The company's customers receive the benefit of easy access to a suite of industl
 ## - User Experience Design -
 
 ### Design Strategy Goals
+This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as either single payment or recurring billing subscription. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. Additionally, customers can buy support and consultancy services. The software products are delivered as electronic licence via email or download.   
   - Create an online shop to sell IT service & software products to registered customers
   - Shop must be abe to process payments at point of sale
   - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile-First design
   - Site must allow company admins and customers to authenticate and interact with the content, e.g. view accounts, purchase services and software licences, etc.
+  - Site must inform the customer about latest compliance standards (e.g. PCI-DSS) and business cyber insurance requirements   
 
 ### Design Scope to Deliver MVP
   - #### Site Owner Goals
@@ -41,7 +43,6 @@ The company's customers receive the benefit of easy access to a suite of industl
       - I want customers to be able to buy products
       - I want to be able to take payments
       - I want to be able to view sales information
-
 
   - #### First Time Visitor Goals
       As a first time user...
@@ -96,8 +97,9 @@ The company's customers receive the benefit of easy access to a suite of industl
 |---|---|---|
 | Site Admin    | Apply SEO settings             | Ensure my site is ranked optimally
 
-Initial Kanban board setup:
-<!-- <h2 align="center"><img src="readme-docs/initial-kanban-view.png"></h2> -->
+Agile methodology was used to provide an iterative approach to the project's development. Image below shows an example of the Kanban board setup as created using GitHub:
+<!-- <h2 align="center"><img src="readme-docs/initial-kanban-view1.png"></h2> -->
+<h2 align="center"><img src="readme-docs/kanban-view2.png"></h2>
 
 - ### Design
     -   #### Layout
@@ -124,7 +126,7 @@ Initial Kanban board setup:
         <h2 align="center"><img src="readme-docs/wf-booklist-wide.jpg"></h2>
 
     -   #### Database Entity Relationship Diagram
-        <h2 align="center"><img src="readme-docs/db-erd-1.png"></h2>
+        <h2 align="center"><img src="readme-docs/db-erd-2.png"></h2>
 
 
 
@@ -162,7 +164,7 @@ To fulfil the needs of the site's users, the following features were implemented
 1.  [GitHub](https://github.com/) was used to store the project's code after being pushed from Git
 1.  [Flake8](https://flake8.pycqa.org/en/latest/) linter extension for VScode 
 1.  [Heroku](https://www.heroku.com) was used to deploy the app
-1.  [LucidChart](https://lucidchart.com) was used to create the logic flowchart
+1.  [LucidChart](https://lucidchart.com) was used to create the ERD
 1.  [Bootstrap 4]() front-end CSS toolkit
 1.  [Font Awesome 6]() font and icon toolkit
 1.  [pgAdmin]() Postgres database GUI Tool used to generate the ERD 
@@ -198,16 +200,32 @@ psycopg2
 django-allauth
 django-crispy-forms
 ```
-...However, the `requirements.txt` file contains the full list of required dependencies, with version numbers, and they can all be installed using the following command: `pip install -r requirements.txt`
+However, the `requirements.txt` file contains the full list of required dependencies, with version numbers, which should all be installed using the following command: `pip install -r requirements.txt`
 ```
 asgiref==3.5.2
+certifi==2022.5.18.1
+cffi==1.15.0
+charset-normalizer==2.0.12
+cryptography==37.0.2
+defusedxml==0.7.1
 dj-database-url==0.5.0
 Django==3.2.13
+django-allauth==0.51.0
+django-crispy-forms==1.14.0
 gunicorn==20.1.0
+idna==3.3
+oauthlib==3.2.0
 psycopg2==2.9.3
+pycparser==2.21
+PyJWT==2.4.0
 python-dotenv==0.20.0
+python3-openid==3.2.0
 pytz==2022.1
+requests==2.28.0
+requests-oauthlib==1.3.1
 sqlparse==0.4.2
+urllib3==1.26.9
+whitenoise==6.2.0
 ```
 
 - Initial deployment on any platform requires the creation of an admin 'superuser' to allow the site owner access to the backend admin control panel. At the Zsh/Bash shell (aka terminal/cli/console/command prompt) run the following command:  

@@ -189,18 +189,8 @@ All testing and code validation is documented [in this linked TESTING.md documen
 ## Deployment
 
 ### Requirements
-- Python >=3.7, Django 3.2
-- The following third party packages were installed using `pip install <package_name>` (listed below in order of installation)..   
-```
-python-dotenv
-Django==3.2.13  (to include latest security patches)
-gunicorn
-dj_database_url
-psycopg2
-django-allauth
-django-crispy-forms
-```
-However, the `requirements.txt` file contains the full list of required dependencies, with version numbers, which should all be installed using the following command: `pip install -r requirements.txt`
+- Python >=3.7, Django 3.2 (install the latest security patch version, 3.2.13 in this case)
+-   The `requirements.txt` file contains the full list of required dependencies, with version numbers, which should be installed using the following command: `pip install -r requirements.txt`
 ```
 asgiref==3.5.2
 certifi==2022.5.18.1
@@ -227,7 +217,14 @@ sqlparse==0.4.2
 urllib3==1.26.9
 whitenoise==6.2.0
 ```
-
+- Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_template` for commonly used vars.  In production, see below for how to set the config vars in the Heroku deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
+```
+openssl rand -base64 32
+```
+- Database migations must be applied to create the tables
+```
+python3 -m manage.py migrate
+```  
 - Initial deployment on any platform requires the creation of an admin 'superuser' to allow the site owner access to the backend admin control panel. At the Zsh/Bash shell (aka terminal/cli/console/command prompt) run the following command:  
 ```
 python3 manage.py createsuperuser

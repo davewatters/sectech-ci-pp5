@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
 
@@ -6,20 +7,33 @@
   /* Initialise gloabl vars */
   /* Sans-Serif font family fallbacks: Arial, Helvetica, sans-serif */
   /* Serif font family fallbacks: Georgia, Times, serif */
-
+  
   --bg-colour: #eef4f4; /* sitewide background colour */
   --text-colour: #000; /* sitewide text colour */
-  --logo-colour: #cc5500;
-  --text-font-family: 'Lato', Arial, Helvetica, sans-serif;
-  --logo-font-family: "Trocchi", serif;
+  --logo-colour: #235594;
+  --text-font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  /* --text-font-family: 'Lato', Arial, Helvetica, sans-serif; */
+  --logo-font-family: "Lato", serif;
   --text-font-size: 1rem;
   --footer-height: 50px;
-
+  
   /**********************************************  DON'T FORGET TO REMOVE ME! ******* */
   --tester1: palegreen;
   --tester2: lightblue;
   --tester3: lightpink;
 }
+
+.showme1 {
+  background-color: var(--tester1) ;
+}
+
+.showme2 {
+  background-color: var(--tester2);
+}
+.showme3 {
+  background-color: var(--tester3);
+}
+/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DON'T FORGET TO REMOVE ME! ******* */
 
 html {
   position: relative;
@@ -58,16 +72,31 @@ footer {
   color: black;
 }
 
-/*** About ********************************************/
-.test-layout {
-  background-color: var(--tester1) !important;
-}
-
-.test-layout2 {
-  background-color: var(--tester2) !important;
-}
-
 /*** Overrides for Bootstrap classes ********************
  * 
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  */
+
+.card-header {
+  border-bottom: none;
+}
+
+.card {
+  border-radius:  10px; !important;
+}
+
+.card-header:first-child {
+  border-radius:  10px;
+}
+
+.card-footer:last-child {
+  border-radius:  10px;
+}
+
+.card-footer {
+  border-top: none;
+}
+
+.card-header, .card-footer {
+  background-color: white;
+}

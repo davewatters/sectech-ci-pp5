@@ -1,21 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Products{% endblock %}
+{% block title %}Services{% endblock %}
 
 <!-- nav-bar: add 'active' class to the nav-link -->
-{% block nav_about %}active{% endblock %}
+{% block nav_list %}active{% endblock %}
 
 {% block content %}
 <div class="row">
-	<div class="col">
-		<div class="test-layout">
-			<h1 class="display-1">Products</h1>
-		</div>
-		<div class="test-layout2">
-			{% for product in product_list %}
-			{{ product.code }} {{ product.desc }} {{ product.category }}
-			{% endfor %}
-		</div>
+
+	{% for product in product_list %}
+	<div class="col-sm-6 col-lg-4 mt-4">
+		<div class="card text-center h-100 shadow">
+			<div class="card-header">
+				<strong>{{ product.desc }}</strong>
+			</div>
+			<div class="card-body">
+				{{ product.long_desc }}
+			</div>
+			<div class="card-footer">
+				<a href="#" class="btn btn-buynow btn-success"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+			</div>
+		</div>  <!-- /card -->
 	</div>
+	{% empty %}
+	<p>Sorry, no products are available at this time.</p>
+	{% endfor %}
+
 </div>
 {% endblock %}

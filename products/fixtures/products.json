@@ -9,7 +9,7 @@
       "category":4,
       "sell_price":50,
       "sku":"",
-      "image":"img/webroot_logo.png",
+      "image":"webroot_logo.png",
       "recurring_bill":"A",
       "display_rank":0
     }
@@ -24,7 +24,7 @@
       "category":1,
       "sell_price":50,
       "sku":"",
-      "image":"img/hornet_logo.png",
+      "image":"hornet_logo.png",
       "recurring_bill":"A",
       "display_rank":0
     }

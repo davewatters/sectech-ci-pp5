@@ -1,5 +1,5 @@
 ---
-name: 'User Story'
+name: User Story
 about: User Story Template
 title: 'User Story: '
 labels: ''
@@ -13,4 +13,4 @@ As **user** I can **capability** so that I **received-benefit**
 - User should be able to 
 
 ### Tasks
-- [ ] Create a 
+- [ ] Create a

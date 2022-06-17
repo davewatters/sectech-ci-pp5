@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+<!-- nav-bar: add 'active' class to the nav-link -->
+{% block nav_about %}active{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col">
+		<div class="test-layout">
+			<h1 class="display-1">Products</h1>
+		</div>
+		<div class="test-layout2">
+			{% for product in product_list %}
+			{{ product.code }} {{ product.desc }} {{ product.category }}
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

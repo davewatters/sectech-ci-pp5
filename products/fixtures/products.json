@@ -1,0 +1,62 @@
+[
+  {
+    "pk":1,
+    "model":"products.product",
+    "fields":{
+      "code":"av",
+      "desc":"Webroot Endpoint Protection",
+      "long_desc":"Anti-Virus/Malware agent for Windows PCs & servers\nOne-click Install\nFully managed service\nAnnual billing",
+      "category":4,
+      "sell_price":50,
+      "sku":"",
+      "image":"img/webroot_logo.png",
+      "recurring_bill":"A",
+      "display_rank":0
+    }
+  },
+  {
+    "pk":2,
+    "model":"products.product",
+    "fields":{
+      "code":"filt",
+      "desc":"Hornet Cloud Email Security",
+      "long_desc":"Cloud email spam filtering\nFully managed service\n365 Total Protection\nAnnual billing",
+      "category":1,
+      "sell_price":50,
+      "sku":"",
+      "image":"img/hornet_logo.png",
+      "recurring_bill":"A",
+      "display_rank":0
+    }
+  },
+  {
+    "pk":3,
+    "model":"products.product",
+    "fields":{
+      "code":"tech",
+      "desc":"Technical Support",
+      "long_desc":"On-Demand Remote Technical Support\nMinimum one hour billing",
+      "category":1,
+      "sell_price":60,
+      "sku":"",
+      "image":"",
+      "recurring_bill":"Z",
+      "display_rank":0
+    }
+  },
+  {
+    "pk":4,
+    "model":"products.product",
+    "fields":{
+      "code":"day",
+      "desc":"On-Site IT Consultancy, per day",
+      "long_desc":"On-site IT Consultancy\nMinimum one day billing\nSystems Audits\nCompliance Consulting\nSecurity Assessments",
+      "category":2,
+      "sell_price":650,
+      "sku":"",
+      "image":"",
+      "recurring_bill":"Z",
+      "display_rank":0
+    }
+  }
+]

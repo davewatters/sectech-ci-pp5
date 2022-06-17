@@ -1,0 +1,66 @@
+[
+  {
+    "pk":1,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"soft_serv",
+      "disp_name":"Software Service (Subscription)"
+    }
+  },
+  {
+    "pk":2,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"consult",
+      "disp_name":"Consultancy Services"
+    }
+  },
+  {
+    "pk":3,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"support",
+      "disp_name":"Technical Support Services"
+    }
+  },
+  {
+    "pk":4,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"endpoint",
+      "disp_name":"Endpoint Protection"
+    }
+  },
+  {
+    "pk":5,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"backup",
+      "disp_name":"Cloud Backup Services"
+    }
+  },
+  {
+    "pk":6,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"compliance",
+      "disp_name":"Regulatory Compliance"
+    }
+  },
+  {
+    "pk":7,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"training",
+      "disp_name":"End-User Training"
+    }
+  },
+  {
+    "pk":8,
+    "model":"products.prod_category",
+    "fields":{
+      "desc":"firewall",
+      "disp_name":"Router & Firewall Devices"
+    }
+  }
+]

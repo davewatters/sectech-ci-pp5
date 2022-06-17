@@ -15,9 +15,9 @@
   --text-font-size: 1rem;
   --footer-height: 50px;
 
-  /****  DON'T FORGET TO REMOVE ME! ************************************************* */
+  /**********************************************  DON'T FORGET TO REMOVE ME! ******* */
   --tester1: palegreen;
-  --tester2: lightgrey;
+  --tester2: lightblue;
   --tester3: lightpink;
 }
 
@@ -61,6 +61,10 @@ footer {
 /*** About ********************************************/
 .test-layout {
   background-color: var(--tester1) !important;
+}
+
+.test-layout2 {
+  background-color: var(--tester2) !important;
 }
 
 /*** Overrides for Bootstrap classes ********************

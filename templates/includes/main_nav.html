@@ -15,7 +15,7 @@
           <a class="nav-link {% block nav_home %}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% block nav_list %}{% endblock %}" href="#">Services</a>
+          <a class="nav-link {% block nav_list %}{% endblock %}" href="{% url 'product-list' %}">Services</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {% block nav_about %}{% endblock %}" href="{% url 'about' %}">About Us</a>

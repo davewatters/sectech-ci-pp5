@@ -5,7 +5,7 @@
     "fields":{
       "code":"av",
       "desc":"Webroot Endpoint Protection",
-      "long_desc":"Anti-Virus/Malware agent for Windows PCs & servers\nOne-click Install\nFully managed service\nAnnual billing",
+      "long_desc":"Anti-Virus/Anti-Malware\nMalwareWindows PCs & servers\nOne-click Install\nFully managed service\nAnnual billing",
       "category":4,
       "sell_price":50,
       "sku":"",

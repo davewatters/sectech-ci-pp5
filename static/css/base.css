@@ -8,7 +8,7 @@
   /* Sans-Serif font family fallbacks: Arial, Helvetica, sans-serif */
   /* Serif font family fallbacks: Georgia, Times, serif */
   
-  --bg-colour: #eef4f4; /* sitewide background colour */
+  --bg-colour: white; /* sitewide background colour */
   --text-colour: #000; /* sitewide text colour */
   --logo-colour: #235594;
   --text-font-family: 'Montserrat', Arial, Helvetica, sans-serif;
@@ -22,6 +22,7 @@
   --tester1: palegreen;
   --tester2: lightblue;
   --tester3: lightpink;
+  --tester9: darkgrey;
 }
 
 .showme1 {
@@ -34,7 +35,9 @@
 .showme3 {
   background-color: var(--tester3);
 }
-/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DON'T FORGET TO REMOVE ME! ******* */
+.showme9 {
+  background-color: var(--tester9);
+}/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DON'T FORGET TO REMOVE ME! ******* */
 
 html {
   position: relative;
@@ -71,6 +74,24 @@ footer {
 /* Footer */
 .social-link {
   color: black;
+}
+
+/*** Product display ********************************************/
+
+.btn-qty {
+  border: 1px solid;
+  border-radius: 25%;
+}
+
+.image-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.split-lines {
+  white-space: pre-line;
 }
 
 /*** Overrides for Bootstrap classes ********************

@@ -16,6 +16,7 @@
   --logo-font-family: "Lato", serif;
   --text-font-size: 1rem;
   --footer-height: 50px;
+  --card-border-radius: 15px;
   
   /**********************************************  DON'T FORGET TO REMOVE ME! ******* */
   --tester1: palegreen;
@@ -77,24 +78,25 @@ footer {
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  */
 
- .card {
-   border-radius:  10px !important;
- }
+.card {
+  border-radius: var(--card-border-radius);
+  transition: transform 0.5s ease;
+}
 
 .card-body {
   white-space: pre-line;
 }
 
 .card-header, .card-footer {
-   background-color: white;
- }
+  background-color: white;
+}
 
 .card-header {
   border-bottom: none;
 }
 
 .card-header:first-child {
-  border-radius:  10px;
+  border-radius: var(--card-border-radius);
 }
 
 .card-footer {
@@ -102,5 +104,9 @@ footer {
 }
 
 .card-footer:last-child {
-  border-radius:  10px;
+  border-radius: var(--card-border-radius);
+}
+
+.card:hover {
+  transform: scale(1.05);
 }

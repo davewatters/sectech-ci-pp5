@@ -19,7 +19,13 @@
 <div class="row">
 	<div class="col">
     <div class="">
-   
+			{% if cart_items %}
+				{% for item in cart_items %}
+				item.product
+				{% endfor %}
+			{% else %}
+			<p class="lead mb-5">Shopping cart is empty.</p>
+			{% endif %}
     </div>
 	</div>
 </div>

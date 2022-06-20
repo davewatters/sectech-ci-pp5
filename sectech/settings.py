@@ -105,6 +105,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'shopping_cart.contexts.cart_contents',
             ],
             # allow global use of template tags without need for {% load %} 
             'builtins': [

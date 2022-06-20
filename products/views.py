@@ -4,11 +4,22 @@ from django.views import generic, View
 from .models import Prod_category, Product
 
 
-class ProductList(generic.ListView):
+# class ProductList(generic.ListView):
+#     '''
+#     Displays a list of all products
+#     '''
+#     model = Product
+
+def product_list(request):
     '''
-    Displays a list of all products
+    Display list of all products
     '''
-    model = Product
+    product_list = Product.objects.all()
+
+    context = { 'product_list': product_list, }
+    template = 'products/product_list.html'
+
+    return render(request, template, context)
 
 
 def product_detail(request, product_id):

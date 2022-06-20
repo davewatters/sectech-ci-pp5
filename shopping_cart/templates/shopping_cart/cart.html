@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+<!-- nav-bar: add 'active' class to the nav-link -->
+{% block nav_cart %}active{% endblock %}
+
+{% block banner %}
+<div class="row">
+	<div class="col">
+    <div class="">
+      <h1 class="showme2">Shopping Cart</h1>
+    </div>
+	</div>
+</div>
+{% endblock banner %}
+
+{% block content %}
+<div class="row">
+	<div class="col">
+    <div class="">
+   
+    </div>
+	</div>
+</div>
+
+<!-- back btn -->
+<div class="row pt-4 text-center">
+	<div class="col">
+		<a href="{% url 'product-list' %}" class="btn btn-lg">
+			<span class="icon"><i class="fas fa-chevron-left"></i></span>
+			<span class="text-uppercase">Back to Products</span>
+		</a>
+	</div>
+</div>
+
+{% endblock content %}

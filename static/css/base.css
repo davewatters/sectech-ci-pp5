@@ -69,18 +69,21 @@ footer {
 }
 
 
-/*** Main home screen ********************************************/
-
-/* Footer */
+/*** Footer ********************************************************/
 .social-link {
   color: black;
 }
 
-/*** Product display ********************************************/
+/*** Main home screen ********************************************/
 
+
+/*** Product display ********************************************/
 .btn-qty {
-  border: 1px solid;
-  border-radius: 25%;
+  background-color: var(--tester2);
+}
+
+.qty-input {
+  background-color: var(--tester3);
 }
 
 .image-container {
@@ -94,11 +97,18 @@ footer {
   white-space: pre-line;
 }
 
+
+/*** Shopping Cart ********************************************/
+.btn-cart {
+  color: var(--text-colour);
+  font-size: x-large;
+}
+
+
 /*** Overrides for Bootstrap classes ********************
  * 
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  */
-
 .card {
   border-radius: var(--card-border-radius);
   transition: transform 0.5s ease;

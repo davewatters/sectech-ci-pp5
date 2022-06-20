@@ -254,6 +254,8 @@ Deployment of the site to Heroku was done as follows:
 1.  For the Deplyoment Method select GitHub
 1.  Connect to GitHub repo by entering YOUR-REPO-NAME, then Connect
 1.  A message will confirm that your app was successfuly deployed
+1.  (Important!) The first time the app is deployed you must drop into the Heroku shell and apply the database migrations with the command `./manage.py migrate`. This must also be done any time a new deployment contains database changes.
+1.  (Optional) If the database is being prepopulated with seed or demo data supplied in json fixture files, then while still in the shell run `./manage.py loaddata <your_fixture_file.json>`
 1.  Test that the site has successfully gone live by clicking on the 'View' button
 1.  Your app can now be accessed via any browser at: `https://YOUR-APP-NAME.herokuapp.com`
 

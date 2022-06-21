@@ -10,16 +10,15 @@ def cart_contents(request):
     product_count = 0
     cart = request.session.get('cart', {})
 
-    for item_id, item_data in cart.items():
-        if isinstance(item_data, int):
-            product = get_object_or_404(Product, pk=item_id)
-            total += item_data * product.sell_price
-            product_count += item_data
-            cart_items.append({
-                'item_id': item_id,
-                'quantity': item_data,
-                'product': product,
-            })
+    for item_id, qty in cart.items():
+        product = get_object_or_404(Product, pk=item_id)
+        total += qty * product.sell_price
+        product_count += qty
+        cart_items.append({
+            'item_id': item_id,
+            'qty': qty,
+            'product': product,
+        })
 
     # will be adding vat to this 
     grand_total = total

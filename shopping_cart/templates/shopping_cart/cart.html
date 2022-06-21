@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load cart_extras %}
 
 {% block title %}Home{% endblock %}
 
@@ -20,9 +21,37 @@
 	<div class="col">
     <div class="">
 			{% if cart_items %}
-				{% for item in cart_items %}
-				item.product
-				{% endfor %}
+			<table>
+				<thead>
+					<tr>
+						<th>Code</th>
+						<th>Description</th>
+						<th>Qty</th>
+						<th>Price</th>
+						<th>Total Cost</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in cart_items %}
+					<tr>
+						<td>{{ item.product.code }}</td>
+						<td>{{ item.product.desc }}</td>
+						<td>{{ item.qty }}</td>
+						<td>{{ item.product.sell_price }}</td>
+						<td>{{ item.product.sell_price | calc_linetotal:item.qty }}</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{{ grand_total |floatformat:"2g" }}</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>{{ grand_total |floatformat:"2g" }}</p>
+
 			{% else %}
 			<p class="lead mb-5">Shopping cart is empty.</p>
 			{% endif %}

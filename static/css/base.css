@@ -82,6 +82,10 @@ footer {
   background-color: var(--tester2);
 }
 
+.currency-symbol {
+  font-size: smaller;
+}
+
 .qty-input {
   background-color: var(--tester3);
 }
@@ -94,6 +98,7 @@ footer {
 }
 
 .split-lines {
+  line-height: 2;
   white-space: pre-line;
 }
 
@@ -101,7 +106,6 @@ footer {
 /*** Shopping Cart ********************************************/
 .btn-cart {
   color: var(--text-colour);
-  /* font-size: x-large; */
 }
 
 
@@ -115,6 +119,7 @@ footer {
 }
 
 .card-body {
+  line-height: 2;
   white-space: pre-line;
 }
 

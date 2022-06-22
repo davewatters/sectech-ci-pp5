@@ -23,7 +23,7 @@
 	<div class="col text-center">
 		<h2><strong>{{ product.desc }}</strong></h2>
 		<p class="split-lines">{{ product.long_desc }}</p>
-		<p class="display-3">&euro;{{ product.sell_price |floatformat:"0g" }}</p>
+		<p class="display-3"><span class="currency-symbol">&euro;</span>{{ product.sell_price |floatformat:"0g" }}</p>
 		<p>{{ product.recurring_bill }}</p>
 		<p>{{ product.RECURRING_BILL }}</p>
 	</div>
@@ -35,7 +35,7 @@
 	{% csrf_token %}
 	<div class="form-row">
 		<div class="col-12">
-			
+
 			<div class="form-group">
 				<div class="input-group w-50">
 					<span class="btn btn-lg text-uppercase">Qty</span>

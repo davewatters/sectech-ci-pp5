@@ -10,7 +10,7 @@
 <div class="row">
 	<div class="col">
     <div class="">
-      <h1 class="showme2">Shopping Cart</h1>
+      <h1 class="text-center">Shopping Cart</h1>
     </div>
 	</div>
 </div>
@@ -19,39 +19,39 @@
 {% block content %}
 <div class="row">
 	<div class="col">
-    <div class="table">
+    <div class="table d-flex justify-content-center">
 			{% if cart_items %}
 			<table>
 				<thead>
 					<tr>
-						<th>Service</th>
-						<th>Qty</th>
-						<th>Price</th>
-						<th>Total Cost</th>
+						<th>Product</th>
+						<th class="text-right">Qty</th>
+						<th class="text-right">Price</th>
+						<th class="text-right">Cost</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for item in cart_items %}
 					<tr>
-						<td>{{ item.product.desc }}</td>
-						<td>{{ item.qty }}</td>
-						<td>{{ item.product.sell_price }}</td>
-						<td>{{ item.product.sell_price | calc_linetotal:item.qty }}</td>
+						<td>
+							{{ item.product.desc }}
+							
+						</td>
+						<td class="text-right">{{ item.qty }}</td>
+						<td class="text-right">{{ item.product.sell_price }}</td>
+						<td class="text-right">{{ item.product.sell_price | calc_linetotal:item.qty |floatformat:"2g" }}</td>
 					</tr>
 					{% endfor %}
 					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td>{{ grand_total |floatformat:"2g" }}</td>
+						<td class="text-right">Cart total</td>
+						<td colspan="2" class="text-right">&euro;</td>
+						<td class="text-right">{{ grand_total |floatformat:"2g" }}</td>
 					</tr>
 				</tbody>
 			</table>
-			<p>{{ grand_total |floatformat:"2g" }}</p>
 
 			{% else %}
-			<p class="lead mb-5">Shopping cart is empty.</p>
+			<p class="lead mb-5">Your shopping cart is empty.</p>
 			{% endif %}
     </div>
 	</div>

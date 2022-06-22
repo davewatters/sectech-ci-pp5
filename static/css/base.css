@@ -15,6 +15,7 @@
   /* --text-font-family: 'Lato', Arial, Helvetica, sans-serif; */
   --logo-font-family: "Lato", serif;
   --text-font-size: 1rem;
+  --header-height: 64px;
   --footer-height: 50px;
   --card-border-radius: 15px;
   
@@ -77,36 +78,35 @@ footer {
 /*** Main home screen ********************************************/
 
 
-/*** Product display ********************************************/
-.btn-qty {
-  background-color: var(--tester2);
+/*** Products & Shopping Cart ********************************************/
+.cart-nav-link {
+  color: var(--text-colour);
 }
 
 .currency-symbol {
   font-size: smaller;
-}
+}  
 
-.qty-input {
-  background-color: var(--tester3);
-}
+.desc-lines {
+  line-height: 2;
+  white-space: pre-line;
+}  
 
 .image-container {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 1rem;
-}
+}  
 
-.split-lines {
-  line-height: 2;
-  white-space: pre-line;
-}
+.qty-btn-adj {
+  /* background-color: var(--tester2); */
+  font-size: larger;
+}  
 
-
-/*** Shopping Cart ********************************************/
-.btn-cart {
-  color: var(--text-colour);
-}
+.qty-widget {
+  align-items: center;
+  width: auto !important;
+}  
 
 
 /*** Overrides for Bootstrap classes ********************
@@ -125,6 +125,7 @@ footer {
 
 .card-header, .card-footer {
   background-color: white;
+  padding-top: 1.2rem;
 }
 
 .card-header {
@@ -137,6 +138,7 @@ footer {
 
 .card-footer {
   border-top: none;
+  padding-bottom: 1.2rem;
 }
 
 .card-footer:last-child {

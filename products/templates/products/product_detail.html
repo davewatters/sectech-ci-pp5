@@ -22,10 +22,10 @@
 
 	<div class="col text-center">
 		<h2><strong>{{ product.desc }}</strong></h2>
-		<p class="split-lines">{{ product.long_desc }}</p>
-		<p class="display-3"><span class="currency-symbol">&euro;</span>{{ product.sell_price |floatformat:"0g" }}</p>
-		<p>{{ product.recurring_bill }}</p>
-		<p>{{ product.RECURRING_BILL }}</p>
+		<p class="desc-lines">{{ product.long_desc }}</p>
+		<p class="display-3"><span class="currency-symbol">
+				&euro;</span>{{ product.sell_price |floatformat:"0g" }}
+		</p>
 	</div>
 
 </div> <!-- /product detail, row 2 -->
@@ -33,46 +33,56 @@
 <!-- Add to cart -->
 <form class="form" action="{% url 'add-to-cart' product.id %}" method="POST">
 	{% csrf_token %}
-	<div class="form-row">
-		<div class="col-12">
+	<div class="form-row justify-content-center">
+		<div class="col-6">
 
 			<div class="form-group">
-				<div class="input-group w-50">
-					<span class="btn btn-lg text-uppercase">Qty</span>
-					<div class="input-group-prepend">
-						<button class="dec-qty btn btn-black rounded-0"
-								data-item_id="{{ product.id }}" id="dec-qty_{{ product.id }}">
-								<span class="icon">
-										<i class="fas fa-minus"></i>
-								</span>
-						</button>
-					</div>
-					<input type="number" class="form-control qty-input"
-							name="quantity" value="1" min="1" max="99"
-							data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-					<div class="input-group-append">
-						<button class="inc-qty btn btn-black rounded-0"
-								data-item_id="{{ product.id }}" id="inc-qty_{{ product.id }}">
-								<span class="icon"><i class="fas fa-plus"></i>
-								</span>
-						</button>
-					</div>
-				</div>  <!-- /input-group-->
+				<div class="row justify-content-center">
+					<!-- might not need this row -->
+					<span>Qty</span>
+				</div>
+
+				<div class="row justify-content-center">
+
+					<div class="input-group qty-widget">
+	
+						<div class="input-group-prepend">
+							<button type="button" class="qty-btn-adj"
+									data-item_id="{{ product.id }}" id="dec-qty_{{ product.id }}">
+									<span class="icon">
+											<i class="fas fa-minus"></i>
+									</span>
+							</button>
+						</div>
+	
+						<input type="number" class="form-control qty-input"
+								name="quantity" value="1" min="1" max="99"
+								data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+	
+						<div class="input-group-append">
+							<button type="button" class="qty-btn-adj"
+									data-item_id="{{ product.id }}" id="inc-qty_{{ product.id }}">
+									<span class="icon"><i class="fas fa-plus"></i>
+									</span>
+							</button>
+						</div>
+	
+					</div>  <!-- /input-group-->
+				</div>
 
 				<!-- Add to cart btn -->
-				<div class="row">
+				<div class="row pt-3">
 					<div class="col d-flex justify-content-center">
-						<button class="btn-success">Add to Cart
+						<button class="btn btn-success">Add to Cart
 							<span class="icon pl-2"><i class="fa-solid fa-cart-plus"></i></span>
 						</button>
 					</div>
 				</div> <!-- /add to cart row-->
 
 			</div> <!-- /form-group -->
+
 		</div>
 
-		
-		
 		<input type="hidden" name="redirect_url" value="{{ request.path }}">
 	</div>
 </form>
@@ -85,45 +95,5 @@
 		</a>
 	</div>
 </div>
-
-
-
-{% comment %}
-<div class="row">
-	<div class="col d-flex justify-content-center">
-		<!-- Qty +/- widget -->
-		<div class="px-4">
-			<span class="btn btn-lg text-uppercase">Qty</span>
-			<button class="btn btn-qty dec-qty-btn"
-					data-item_id="{{ product.id }}" id="inc_qty_{{ product.id }}">
-					<span><i class="fa-solid fa-minus"></i></span>
-			</button>
-			<input type="number" class="qty-input"
-					name="quantity" value="1" min="1" max="99"
-					data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
-			<button class="btn btn-qty inc-qty-btn"
-					data-item_id="{{ product.id }}" id="dec_qty_{{ product.id }}">
-					<span><i class="fa-solid fa-plus"></i></span>
-			</button>
-		</div>
-
-		<!-- Add to cart btn -->
-		<a href="{% url 'view-cart' %}" class="btn btn-lg px-4">
-			<span class="text-uppercase">Add to Cart</span>
-			<span class="icon"><i class="fa-solid fa-cart-plus"></i></span>
-		</a>
-	</div>
-</div> <!-- /add to cart row-->
-
-<!-- back btn -->
-<div class="row pt-4 text-center">
-	<div class="col">
-		<a href="{% url 'product-list' %}" class="btn btn-lg">
-			<span class="icon"><i class="fas fa-chevron-left"></i></span>
-			<span class="text-uppercase">Back to Products</span>
-		</a>
-	</div>
-</div>
-{% endcomment %}
 
 {% endblock %}

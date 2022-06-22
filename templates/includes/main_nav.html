@@ -36,14 +36,14 @@
       </ul>
     </div> <!-- /navToggle-->
     <div class="text-center">
-      <a class="nav-link p-0 btn-cart" href="{%  url 'view-cart' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i>
+      <a class="nav-link p-0 cart-nav-link" href="{%  url 'view-cart' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i>
         <p class="my-0">
           <span class="currency-symbol">&euro;</span>
-            {% if grand_total %}
-            {{ grand_total|floatformat:"2g" }}
-            {% else %}
-            0.00
-            {% endif %}
+          {% if grand_total %}
+          {{ grand_total|floatformat:"2g" }}
+          {% else %}
+          0.00
+          {% endif %}
         </p>
       </a>
     </div>

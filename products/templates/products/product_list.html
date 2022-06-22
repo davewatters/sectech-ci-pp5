@@ -18,10 +18,13 @@
 				{{ product.long_desc }}
 			</div>
 			<div class="display-4">
-				&euro;{{ product.sell_price |floatformat:"0g" }}
+				<span class="currency-symbol">
+					&euro;</span>{{ product.sell_price |floatformat:"0g" }}
 			</div>
 			<div class="card-footer">
-				<a href="{% url 'product-detail' product.id %}" class="btn btn-buynow btn-success stretched-link"><i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+				<a href="{% url 'product-detail' product.id %}" 
+						class="btn btn-success btn-buynow">
+						<i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Buy Now</a>
 			</div>
 		</div>  <!-- /card -->
 	</div>

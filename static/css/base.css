@@ -15,6 +15,7 @@
   /* --text-font-family: 'Lato', Arial, Helvetica, sans-serif; */
   --logo-font-family: "Lato", serif;
   --text-font-size: 1rem;
+  --header-height: 64px;
   --footer-height: 50px;
   --card-border-radius: 15px;
   
@@ -69,47 +70,62 @@ footer {
 }
 
 
-/*** Main home screen ********************************************/
-
-/* Footer */
+/*** Footer ********************************************************/
 .social-link {
   color: black;
 }
 
-/*** Product display ********************************************/
+/*** Main home screen ********************************************/
 
-.btn-qty {
-  border: 1px solid;
-  border-radius: 25%;
+
+/*** Products & Shopping Cart ********************************************/
+.cart-nav-link {
+  color: var(--text-colour);
 }
+
+.currency-symbol {
+  font-size: smaller;
+}  
+
+.desc-lines {
+  line-height: 2;
+  white-space: pre-line;
+}  
 
 .image-container {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: 1rem;
-}
+}  
 
-.split-lines {
-  white-space: pre-line;
-}
+.qty-btn-adj {
+  /* background-color: var(--tester2); */
+  font-size: larger;
+}  
+
+.qty-widget {
+  align-items: center;
+  width: auto !important;
+}  
+
 
 /*** Overrides for Bootstrap classes ********************
  * 
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  */
-
 .card {
   border-radius: var(--card-border-radius);
   transition: transform 0.5s ease;
 }
 
 .card-body {
+  line-height: 2;
   white-space: pre-line;
 }
 
 .card-header, .card-footer {
   background-color: white;
+  padding-top: 1.2rem;
 }
 
 .card-header {
@@ -122,6 +138,7 @@ footer {
 
 .card-footer {
   border-top: none;
+  padding-bottom: 1.2rem;
 }
 
 .card-footer:last-child {

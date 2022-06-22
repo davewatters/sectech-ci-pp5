@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load cart_extras %}
+
+{% block title %}Home{% endblock %}
+
+<!-- nav-bar: add 'active' class to the nav-link -->
+{% block nav_cart %}active{% endblock %}
+
+{% block banner %}
+<div class="row">
+	<div class="col">
+    <div class="">
+      <h1 class="text-center">Shopping Cart</h1>
+    </div>
+	</div>
+</div>
+{% endblock banner %}
+
+{% block content %}
+<div class="row">
+	<div class="col">
+    <div class="table d-flex justify-content-center">
+			{% if cart_items %}
+			<table>
+				<thead>
+					<tr>
+						<th>Product</th>
+						<th class="text-right">Qty</th>
+						<th class="text-right">Price</th>
+						<th class="text-right">Cost</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in cart_items %}
+					<tr>
+						<td>
+							{{ item.product.desc }}
+							
+						</td>
+						<td class="text-right">{{ item.qty }}</td>
+						<td class="text-right">{{ item.product.sell_price }}</td>
+						<td class="text-right">{{ item.product.sell_price | calc_linetotal:item.qty |floatformat:"2g" }}</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td class="text-right">Cart total</td>
+						<td colspan="2" class="text-right">&euro;</td>
+						<td class="text-right">{{ grand_total |floatformat:"2g" }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			{% else %}
+			<p class="lead mb-5">Your shopping cart is empty.</p>
+			{% endif %}
+    </div>
+	</div>
+</div>
+
+<!-- checkout btn -->
+<div class="row pt-3">
+	<div class="col d-flex justify-content-center">
+		<button class="btn btn-success">
+			<span class="icon pr-2"><i class="fa-solid fa-lock"></i></span>
+			Secure Checkout
+			<span class="icon pl-2"><i class="fa-regular fa-credit-card"></i></span>
+			<span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
+		</button>
+	</div>
+</div>
+
+<!-- back btn -->
+<div class="row pt-4 text-center">
+	<div class="col">
+		<a href="{% url 'product-list' %}" class="btn btn-lg">
+			<span class="icon"><i class="fas fa-chevron-left"></i></span>
+			<span class="text-uppercase">Back to Products</span>
+		</a>
+	</div>
+</div>
+
+{% endblock content %}

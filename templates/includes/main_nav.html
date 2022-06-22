@@ -5,12 +5,12 @@
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navToggle" 
         aria-controls="navToggle" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navToggle">
+    <div id="navToggle" class="collapse navbar-collapse d-flex justify-content-between">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <!-- using nav_<item> block placeholders to set relevnt nav-link "active" class in sub template -->
+        <!-- using nav_<item> block placeholders to set relevant nav-link "active" class in sub template -->
         <li class="nav-item">
           <a class="nav-link {% block nav_home %}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
@@ -34,6 +34,18 @@
         </li>
         {% endif %}
       </ul>
+    </div> <!-- /navToggle-->
+    <div class="text-center">
+      <a class="nav-link p-0 cart-nav-link" href="{%  url 'view-cart' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i>
+        <p class="my-0">
+          <span class="currency-symbol">&euro;</span>
+          {% if grand_total %}
+          {{ grand_total|floatformat:"2g" }}
+          {% else %}
+          0.00
+          {% endif %}
+        </p>
+      </a>
     </div>
-  </div>
+  </div> <!-- /container -->
 </nav>

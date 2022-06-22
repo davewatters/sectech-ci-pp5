@@ -28,12 +28,14 @@ The company's customers receive the benefit of easy access to a suite of industl
 ## - User Experience Design -
 
 ### Design Strategy Goals
-This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as either single payment or recurring billing subscription. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. Additionally, customers can buy support and consultancy services. The software products are delivered as electronic licence via email or download.   
+This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as recurring billing subscriptions with some single payment products. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. Additionally, customers can buy support and consultancy services. The software products are delivered as electronic licence via email or download.   
   - Create an online shop to sell IT service & software products to registered customers
   - Shop must be abe to process payments at point of sale
   - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile-First design
   - Site must allow company admins and customers to authenticate and interact with the content, e.g. view accounts, purchase services and software licences, etc.
-  - Site must inform the customer about latest compliance standards (e.g. PCI-DSS) and business cyber insurance requirements   
+  - Site must inform the customer about latest compliance standards (e.g. PCI-DSS) and business cyber insurance requirements
+  - Site must allow users to sign up for the mailing list   
+  - Site will ideally have a blog as a means to inform customers and to help raise the business' online presence.
 
 ### Design Scope to Deliver MVP
   - #### Site Owner Goals
@@ -60,7 +62,7 @@ This eCommerce application is for a business-to-business (B2B) sales model, sell
       - I want to be able to quickly purchase additional support or consultancy hours
 
 ### Agile Development Process: Epics & User stories
-- To deliver MVP the following features were implemented in work sprint iterations.  Prioritization of each item changed as certain iteration milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features,  the Projects board as a Kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
+- To deliver MVP the following features were implemented in work sprint iterations.  Prioritization of each item changed as certain iteration milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features,  the Projects board as a kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
 
 - ### **Epic: Viewing & Navigation of Site**
 | As A/An       | I want to be able to        |  So that I can   |
@@ -77,6 +79,7 @@ This eCommerce application is for a business-to-business (B2B) sales model, sell
 | Customer      | Easily login/logout             | Access my account information
 | Customer      | Easily reset my password | Recover access to my account
 | Customer      | Have an account profile         | Manage my details & view purchased products
+| Customer      | Signup for a newsletter         | Keep informed of the latest IT security info
 | Customer      | Access full account history     | View all transaction history
 - ### **Epic: Shopping Cart & Payment Processing**
 | As A/An       | I want to be able to        |  So that I can   |
@@ -96,8 +99,10 @@ This eCommerce application is for a business-to-business (B2B) sales model, sell
 | As A/An       | I want to be able to        |  So that I can   |
 |---|---|---|
 | Site Admin    | Apply SEO settings             | Ensure my site is ranked optimally
+| Site Admin    | Creat email subscription newsletter| Market my business better
+| Site Admin    | Create a site blog             | Encourage more traffic to my site
 
-Agile methodology was used to provide an iterative approach to the project's development. Image below shows an example of the Kanban board setup as created using GitHub:
+Agile methodology was used to provide an iterative approach to the project's development. Image below shows an example of the kanban board setup as created using GitHub:
 <!-- <h2 align="center"><img src="readme-docs/initial-kanban-view1.png"></h2> -->
 <h2 align="center"><img src="readme-docs/kanban-view2.png"></h2>
 
@@ -106,7 +111,7 @@ Agile methodology was used to provide an iterative approach to the project's dev
         Logo and site navigation is visible along the top bar and a simple footer on the bottom of the viewport.  Content is displayed in Boostrap 'card' styled sections on the main page. 
          
     -   #### Content
-        Content is generated based on the available products for sale in the database. The products are rendered as floating cards with brief description and a CTA button.  Once clicked, the vistor is shown detailed product information. 
+        Content is generated based on the available products for sale in the database. The products are rendered as floating cards with brief description and a CTA button.  Once clicked, the vistor is shown detailed product information and given the option to add a qty of the product to the shopping cart. 
 
     -   #### User Input
         Data is input or updated using Bootstrap forms. All user interaction controls are either standard Bootstrap buttons or intuitive Fontawesome icons. 
@@ -116,7 +121,7 @@ Agile methodology was used to provide an iterative approach to the project's dev
 
     -   #### Colour Scheme ?? Do I really  need this ??????????????????
     -   #### Imagery
-         Backgound or hero image on main landing page.  Product logo images.  
+        Minimal. Backgound or hero image on main landing page. Product logo images.  
            
     
     -   #### Wireframes

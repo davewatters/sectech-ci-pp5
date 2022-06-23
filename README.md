@@ -131,7 +131,7 @@ Agile methodology was used to provide an iterative approach to the project's dev
         <h2 align="center"><img src="readme-docs/wf-booklist-wide.jpg"></h2>
 
     -   #### Database Entity Relationship Diagram
-        <h2 align="center"><img src="readme-docs/db-erd-2.png"></h2>
+        <h2 align="center"><img src="readme-docs/db-erd-3.png"></h2>
 
 
 

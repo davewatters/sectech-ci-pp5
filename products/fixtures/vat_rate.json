@@ -1,0 +1,35 @@
+[
+  {
+    "pk":1,
+    "model":"products.vat_rate",
+    "fields":{
+      "code":"S1",
+      "rate":23,
+      "is_default":true,
+      "is_active":true,
+      "last_modified":"2022-06-01"
+    }
+  },
+  {
+    "pk":2,
+    "model":"products.vat_rate",
+    "fields":{
+      "code":"S2",
+      "rate":13.5,
+      "is_default":false,
+      "is_active":true,
+      "last_modified":"2022-06-01"
+    }
+  },
+  {
+    "pk":3,
+    "model":"products.vat_rate",
+    "fields":{
+      "code":"S3",
+      "rate":0,
+      "is_default":false,
+      "is_active":true,
+      "last_modified":"2022-06-01"
+    }
+  }
+]

@@ -14,6 +14,30 @@ class Prod_category(models.Model):
         return self.desc
 
 
+class Vat_rate(models.Model):
+    '''Defines the VAT (sales tax) rates'''
+
+    # Default VAT Codes
+    VAT_CODE = (
+        ('S1', 'Sales1'),
+        ('S2', 'Sales2'),
+        ('S3', 'Sales3'),
+        ('S4', 'Sales4'),
+    )
+
+    class Meta:
+        verbose_name_plural = 'VAT Rates'
+
+    code = models.CharField(max_length=2, choices=VAT_CODE, unique=True)
+    rate = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
+    is_default = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    last_modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.code +" - " +str(self.rate)
+
+
 class Product(models.Model):
 
     # Billing frequency for recurring licence/subscription services
@@ -42,6 +66,8 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     recurring_bill = models.CharField(max_length=1, choices=RECURRING_BILL, default='Z')
     display_rank = models.IntegerField(choices=DISPLAY_RANK, default=0)
+    unit = models.CharField(max_length=20, null=True, blank=True)
+    def_vat_rate = models.ForeignKey('Vat_rate', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.desc

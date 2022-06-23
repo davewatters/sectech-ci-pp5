@@ -5,13 +5,15 @@
     "fields":{
       "code":"av",
       "desc":"Webroot Endpoint Protection",
-      "long_desc":"Anti-Virus/Anti-Malware\nMalwareWindows PCs & servers\nOne-click Install\nFully managed service\nAnnual billing",
+      "long_desc":"Anti-Virus/Anti-Malware\nWindows PCs & servers\nOne-click Install\nFully managed service\nAnnual billing",
       "category":4,
       "sell_price":50,
       "sku":"",
       "image":"webroot_logo.png",
       "recurring_bill":"A",
-      "display_rank":0
+      "display_rank":0,
+      "unit":"device/year",
+      "def_vat_rate":1
     }
   },
   {
@@ -19,14 +21,16 @@
     "model":"products.product",
     "fields":{
       "code":"filt",
-      "desc":"Hornet Cloud Email Security",
+      "desc":"Hornet Email Security",
       "long_desc":"Cloud email spam filtering\nFully managed service\n365 Total Protection\nAnnual billing",
       "category":1,
       "sell_price":50,
       "sku":"",
       "image":"hornet_logo.png",
       "recurring_bill":"A",
-      "display_rank":0
+      "display_rank":0,
+      "unit":"Mailbox/Year",
+      "def_vat_rate":1
     }
   },
   {
@@ -35,13 +39,15 @@
     "fields":{
       "code":"tech",
       "desc":"Technical Support",
-      "long_desc":"On-Demand Remote Technical Support\nMinimum one hour billing",
+      "long_desc":"On-Demand\nRemote Technical Support\nMinimum one hour billing",
       "category":1,
       "sell_price":60,
       "sku":"",
       "image":"",
       "recurring_bill":"Z",
-      "display_rank":0
+      "display_rank":0,
+      "unit":"Hour",
+      "def_vat_rate":1
     }
   },
   {
@@ -49,14 +55,33 @@
     "model":"products.product",
     "fields":{
       "code":"day",
-      "desc":"On-Site IT Consultancy, per day",
-      "long_desc":"On-site IT Consultancy\nMinimum one day billing\nSystems Audits\nCompliance Consulting\nSecurity Assessments",
+      "desc":"IT Consultancy",
+      "long_desc":"On-site IT Consultancy\nSystems Audits\nSecurity Assessments\nPCI Compliance",
       "category":2,
       "sell_price":650,
       "sku":"",
       "image":"",
       "recurring_bill":"Z",
-      "display_rank":0
+      "display_rank":0,
+      "unit":"Day",
+      "def_vat_rate":1
+    }
+  },
+  {
+    "pk":5,
+    "model":"products.product",
+    "fields":{
+      "code":"pciq",
+      "desc":"ServerScan PCI",
+      "long_desc":"PCI Scanning\nSingle IP Address\nUnlimited Scans\nASV Scan Report",
+      "category":1,
+      "sell_price":59,
+      "sku":"",
+      "image":"",
+      "recurring_bill":"Q",
+      "display_rank":0,
+      "unit":"Qtr",
+      "def_vat_rate":1
     }
   }
 ]

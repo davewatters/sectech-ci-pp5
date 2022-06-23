@@ -30,7 +30,4 @@ def cart_contents(request):
         'grand_total': grand_total,
     }
 
-    print('+-'*40)
-    print(context)
-    
     return context

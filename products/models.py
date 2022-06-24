@@ -2,7 +2,9 @@ from django.db import models
 
 
 class Prod_category(models.Model):
-    '''Defines the Product Categories model'''
+    '''
+    Defines the Product Categories model
+    '''
 
     class Meta:
         verbose_name_plural = 'Product Categories'
@@ -15,7 +17,11 @@ class Prod_category(models.Model):
 
 
 class Vat_rate(models.Model):
-    '''Defines the VAT (sales tax) rates'''
+    '''
+    Defines the VAT (sales tax) rates. 
+    Products must have a default VAT rate. VAT code & rate must 
+    be saved against each invoice line item.
+    '''
 
     # Default VAT Codes
     VAT_CODE = (
@@ -39,6 +45,15 @@ class Vat_rate(models.Model):
 
 
 class Product(models.Model):
+    '''
+    Define the Product model.
+    Products are largely digital services with a recurring 
+    licence revenue model.
+    Products can be assigned a ranking to assist the site admin
+    with displaying promoted products in a prominent position,
+    e.g. an overlay on the home screen or top of the products list. 
+    Products must have a default VAT code.
+    '''
 
     # Billing frequency for recurring licence/subscription services
     RECURRING_BILL = (
@@ -60,11 +75,17 @@ class Product(models.Model):
     code = models.CharField(max_length=6, unique=True)
     desc = models.CharField(max_length=255, unique=True)
     long_desc = models.TextField(null=True, blank=True)
-    category = models.ForeignKey('Prod_category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Prod_category',
+                                 null=True, blank=True,
+                                 on_delete=models.SET_NULL)
     sku = models.CharField(max_length=255, null=True, blank=True)
-    sell_price = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
+    sell_price = models.DecimalField(max_digits=6,
+                                     decimal_places=2,
+                                     default=0.0)
     image = models.ImageField(null=True, blank=True)
-    recurring_bill = models.CharField(max_length=1, choices=RECURRING_BILL, default='Z')
+    recurring_bill = models.CharField(max_length=1,
+                                      choices=RECURRING_BILL,
+                                      default='Z')
     display_rank = models.IntegerField(choices=DISPLAY_RANK, default=0)
     unit = models.CharField(max_length=20, null=True, blank=True)
     def_vat_rate = models.ForeignKey('Vat_rate', on_delete=models.PROTECT)

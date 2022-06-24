@@ -20,7 +20,7 @@ from pathlib import Path
 
 # To use dotenv, ensure .env file is in same dir as this settings.py file
 # env vars defined in .env will be exported to our runtime environment
-# See .env_template file for example vars & structure
+# See .env_example file for example vars & structure
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -186,9 +186,22 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-# Log emails to the console during development
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+if DEVELOPMENT:
+    # Log emails to the console during development
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_HOST_USER = 'sectech.app@example.com'
+else:
+    # send mail using SMTP AUTH client
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.getenv('EMAIL_HOST')
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

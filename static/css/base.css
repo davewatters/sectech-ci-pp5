@@ -18,7 +18,10 @@
   --header-height: 64px;
   --footer-height: 50px;
   --card-border-radius: 15px;
-  
+
+  /*  */
+  --btn-buynow-colour: #15d19b;
+
   /**********************************************  DON'T FORGET TO REMOVE ME! ******* */
   --tester1: palegreen;
   --tester2: lightblue;
@@ -79,6 +82,11 @@ footer {
 
 
 /*** Products & Shopping Cart ********************************************/
+.btn-buynow {
+  background-color: var(--btn-buynow-colour);
+  color: black;
+}
+
 .cart-nav-link {
   color: var(--text-colour);
 }

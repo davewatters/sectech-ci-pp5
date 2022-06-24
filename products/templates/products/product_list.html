@@ -17,14 +17,15 @@
 			<div class="card-body">
 				{{ product.long_desc }}
 			</div>
-			<div class="display-4">
+			<div>
 				<span class="currency-symbol">
-					&euro;</span>{{ product.sell_price |floatformat:"0g" }}
+					&euro;</span><span class="display-4">{{ product.sell_price |floatformat:"0g" }}</span>
 			</div>
+			<div>{{ product.unit }}</div>
 			<div class="card-footer">
 				<a href="{% url 'product-detail' product.id %}" 
-						class="btn btn-success btn-buynow">
-						<i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;Buy Now</a>
+						class="btn btn-lg btn-success btn-buynow">
+						<i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Buy Now</a>
 			</div>
 		</div>  <!-- /card -->
 	</div>

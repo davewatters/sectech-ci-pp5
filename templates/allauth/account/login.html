@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "account/base.html" %}
 {% load i18n %}
 {% load account socialaccount %}
 
 {% block title %}{% trans "Sign In" %}{% endblock %}
 
-{% block content %}
+{% block auth_content %}
 <h1>{% trans "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
@@ -34,4 +34,4 @@
   <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
 </form>
-{% endblock content %}
+{% endblock  %}

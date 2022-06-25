@@ -81,7 +81,7 @@ footer {
 /*** Main home screen ********************************************/
 
 
-/*** Products & Shopping Cart ********************************************/
+/*** Products & Shopping Cart ***************************************/
 .btn-buynow {
   background-color: var(--btn-buynow-colour);
   color: black;
@@ -115,6 +115,12 @@ footer {
   align-items: center;
   width: auto !important;
 }  
+
+/*- allauth content styling -------------------------------------------------*/
+.auth-content {
+  /* will use this later to apply styling to  */
+  /* all of the allauth template pages */
+}
 
 
 /*** Overrides for Bootstrap classes ********************

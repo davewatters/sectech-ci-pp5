@@ -9,18 +9,69 @@
 <div class="row">
 	<div class="col">
     <div class="">
-      <h1 class="showme2">Home banner</h1>
     </div>
 	</div>
 </div>
 {% endblock banner %}
 
 {% block content %}
-<div class="row">
-	<div class="col">
-    <div class="">
-      <h2 class="showme2">Home text</h2>
-    </div>
-	</div>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-8">
+      <div class="">
+        <h1>Affordable CyberSecurity for SMBs</h1>
+        <p>
+          <h3>Secure your business today with our industry leading software & fully managed services</h3>
+        </p>
+        <p>  
+          <ul>
+            <li>On Demand Technical Support - Order now and connect with one of our engineers wihtin minutes</li>
+            <li>PCI Compliance Scanning</li>
+            <li>Web Site Security Scanning</li>
+            <li>Fully Autmated Off-Site Backup Solutions - servers, M365 Mailboxes, Sharepoint</li>
+            <li>Eliminate Email Spam & Malware with HornetSecurity Email Scanning</li>
+            <li>Cyber Security Awareness Training</li>
+          </ul>
+        </p>
+      </div>
+    </div> <!-- /lhs col -->
+
+    <!-- show promoted products -->
+    <div class="col-4 d-flex flex-column align-items-center justify-content-center">
+      <div class="row py-4 align-items-center">
+        <div class="pr-4">
+          <span>Promoted Product1</span>
+        </div>
+        <div>
+          <a href="#" 
+          class="btn btn-success btn-buynow">&nbsp;&nbsp;Buy Now</a>
+        </div>
+      </div>
+
+      <div class="row py-4 align-items-center">
+        <div class="pr-4">
+            Promoted Product2
+            
+          </div>
+          <div>
+            <a href="#" 
+            class="btn btn-success btn-buynow">&nbsp;&nbsp;Buy Now</a>
+          </div>
+      </div>
+
+      <div class="row py-4 align-items-center">
+        <div class="pr-4">
+          <p class="align-middle ">Promoted Product3</p>
+
+        </div>
+        <div>
+          <a href="#" 
+          class="btn btn-success btn-buynow">&nbsp;&nbsp;Buy Now</a>
+        </div>
+      </div>
+    
+    </div>  <!-- /rhs col -->
+
+  </div> <!-- /outer row -->
 </div>
 {% endblock content %}

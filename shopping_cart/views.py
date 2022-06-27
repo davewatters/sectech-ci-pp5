@@ -22,6 +22,7 @@ def add_to_cart(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
+    redirect_url = request.POST.get('redirect_url')
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
@@ -32,4 +33,4 @@ def add_to_cart(request, item_id):
 
     request.session['cart'] = cart
 
-    return redirect('product-list')
+    return redirect(redirect_url)

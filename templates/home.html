@@ -17,7 +17,7 @@
 {% block content %}
 <div class="container">
   <div class="row mt-4">
-    <div class="col-8">
+    <div class="col-lg-8">
       <div class="">
         <h1>Affordable CyberSecurity for SMBs</h1>
         <p>
@@ -37,39 +37,19 @@
     </div> <!-- /lhs col -->
 
     <!-- show promoted products -->
-    <div class="col-4 d-flex flex-column align-items-center justify-content-center">
-      <div class="row py-4 align-items-center">
-        <div class="pr-4">
-          <span>Promoted Product1</span>
+    <div class="col-lg-4 d-flex flex-column justify-content-lg-center">
+
+      {% for product in promoted_products %}
+      <div class="row py-2 align-items-center justify-content-center">
+        <div class="col-8">
+          <strong>{{ product }}</strong>
         </div>
-        <div>
-          <a href="#" 
-          class="btn btn-success btn-buynow">&nbsp;&nbsp;Buy Now</a>
+        <div class="">
+          <a href="{% url 'product-detail' product.id %}" 
+              class="btn btn-success btn-buynow">Buy Now</a>
         </div>
       </div>
-
-      <div class="row py-4 align-items-center">
-        <div class="pr-4">
-            Promoted Product2
-            
-          </div>
-          <div>
-            <a href="#" 
-            class="btn btn-success btn-buynow">&nbsp;&nbsp;Buy Now</a>
-          </div>
-      </div>
-
-      <div class="row py-4 align-items-center">
-        <div class="pr-4">
-          <p class="align-middle ">Promoted Product3</p>
-
-        </div>
-        <div>
-          <a href="#" 
-          class="btn btn-success btn-buynow">&nbsp;&nbsp;Buy Now</a>
-        </div>
-      </div>
-    
+      {% endfor %}
     </div>  <!-- /rhs col -->
 
   </div> <!-- /outer row -->

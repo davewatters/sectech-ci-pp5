@@ -6,34 +6,36 @@
 {% block nav_list %}active{% endblock %}
 
 {% block content %}
-<div class="row pb-4">
-
-	{% for product in product_list %}
-	<div class="col-sm-6 col-lg-4 mt-4">
-		<div class="card text-center h-100 shadow">
-			<div class="card-header">
-				<strong>{{ product.desc }}</strong>
-			</div>
-			<div class="card-body">
-				{{ product.long_desc }}
-			</div>
-			<div>
-				<span class="currency-symbol">
-					&euro;</span><span class="display-4">{{ product.sell_price |floatformat:"0g" }}</span>
-			</div>
-			<div>{{ product.unit }}</div>
-			<div class="card-footer">
-				<a href="{% url 'product-detail' product.id %}" 
-						class="btn btn-lg btn-success btn-buynow">
-						<i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Buy Now</a>
-			</div>
-		</div>  <!-- /card -->
+<div class="container">
+	<div class="row pb-4">
+	
+		{% for product in product_list %}
+		<div class="col-sm-6 col-lg-4 mt-4">
+			<div class="card text-center h-100 shadow">
+				<div class="card-header">
+					<strong>{{ product.desc }}</strong>
+				</div>
+				<div class="card-body">
+					{{ product.long_desc }}
+				</div>
+				<div>
+					<span class="currency-symbol">
+						&euro;</span><span class="display-4">{{ product.sell_price |floatformat:"0g" }}</span>
+				</div>
+				<div>{{ product.unit }}</div>
+				<div class="card-footer">
+					<a href="{% url 'product-detail' product.id %}" 
+							class="btn btn-lg btn-success btn-buynow">
+							<i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Buy Now</a>
+				</div>
+			</div>  <!-- /card -->
+		</div>
+		{% empty %}
+		<div>
+			<p>Sorry, can't retrieve any products to display right now.</p>
+		</div>
+		{% endfor %}
+	
 	</div>
-	{% empty %}
-	<div>
-		<p>Sorry, can't retrieve any products to display right now.</p>
-	</div>
-	{% endfor %}
-
 </div>
 {% endblock %}

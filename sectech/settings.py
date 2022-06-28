@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'shopping_cart',
+    'customers',
 ]
 
 MIDDLEWARE = [
@@ -207,6 +208,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 SITE_ID = 1
 
+# Hook into the user login mechanism to override default behaviour
+# https://django-allauth.readthedocs.io/en/latest/advanced.html#custom-redirects
+# ACCOUNT_ADAPTER = 'customers.adapter.CustomAccountAdapter'
 
 # django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -16,6 +16,7 @@ def home(request):
         'promoted_products': promoted_products,
     }
     template = 'home.html'
+    
     return render(request, template, context)
 
 

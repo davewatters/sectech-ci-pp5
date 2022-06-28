@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from django_countries.fields import CountryField
+
 
 class Customer(models.Model):
     '''
@@ -16,7 +18,7 @@ class Customer(models.Model):
     address1 = models.CharField(max_length=255)
     address2 = models.CharField(max_length=255, null=True, blank=True)
     town_or_city = models.CharField(max_length=255)
-    country_code = models.CharField(max_length=255)
+    country_code = CountryField(blank_label='Country')
     postcode = models.CharField(max_length=255, null=True, blank=True)
     vat_no = models.CharField(max_length=16, null=True, blank=True)
 

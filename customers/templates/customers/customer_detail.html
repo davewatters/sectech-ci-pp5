@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Services{% endblock %}
+
+<!-- nav-bar: add 'active' class to the nav-link -->
+{% block nav_list %}active{% endblock %}
+
+{% block content %}
+<!-- customer detail, two rows -->
+<div class="row pt-2">
+
+	<div class="col">
+		<h1>Manage Customer Account</h1>
+		<h2>{{ customer.name }}</h2>
+	
+		<form method="POST" >
+			{% csrf_token %}
+			{{ form|crispy }}
+			<button class="btn-info btn-lg mb-2" type="submit">Save</button>
+		</form>
+	</div>
+
+</div> <!-- /customer detail, row 2 -->
+
+
+{% endblock %}

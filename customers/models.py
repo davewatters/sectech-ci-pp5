@@ -4,9 +4,10 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     '''
-    Customer account model. 
+    Customer account model.
     Users must have a registered account to buy services.
     Country code is required to process Stripe payments.
+    Note: Username & email are linked to in auth_user table.
     '''
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)

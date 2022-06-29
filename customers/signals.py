@@ -1,11 +1,14 @@
-from allauth.account.signals import user_logged_in
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-@receiver(user_logged_in)
-def my_check_on_login(request, user, **kwargs):
+from .models import Customer
+
+@receiver(post_save, sender=User)
+def create_customer_account(sender, instance, created, **kwargs):
     """
-    When the user logs in check to see if customer has details
+    When a new user signs up insert a customer account record.
     """
-    print('*--'*20)
-    print('Signal: User has just logged in')
-    print('*--'*20)
+    if not instance.is_staff:
+        if created:
+            Customer.objects.create(user=instance)

@@ -7,7 +7,7 @@ from .models import Customer
 @receiver(post_save, sender=User)
 def create_customer_account(sender, instance, created, **kwargs):
     """
-    When a new user signs up insert a customer account record.
+    When a new user signs up, insert a customer account record.
     """
     if not instance.is_staff:
         if created:

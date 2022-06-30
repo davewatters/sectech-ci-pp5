@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 from .forms import CustomerForm
@@ -28,7 +29,7 @@ def customer_create(request):
 
     return render(request, template, context)
 
-
+@login_required
 def customer_detail(request, customer_id):
     '''
     View shows detail of logged-in customer. Allows update.

@@ -8,7 +8,6 @@ from allauth.account.adapter import DefaultAccountAdapter
 
 from .models import Customer
 
-
 class CustomAccountAdapter(DefaultAccountAdapter):
     """
     Custom mod to override default allauth redirect behaviour at login.

@@ -6,6 +6,7 @@ from .forms import CustomerForm
 from .models import Customer
 
 
+@login_required
 def customer_create(request):
     '''
     View shows new customer form.
@@ -29,20 +30,25 @@ def customer_create(request):
 
     return render(request, template, context)
 
+
 @login_required
 def customer_detail(request, customer_id):
     '''
-    View shows detail of logged-in customer. Allows update.
+    View shows account detail of logged-in customer.
+    Allows user to update details.
     Includes views of customer's products and past invoices.
     '''
-    account = get_object_or_404(Customer, id=customer_id)
+    customer = get_object_or_404(Customer, id=customer_id)
 
-    form = CustomerForm(instance=account)
 
     if request.method == 'POST':
-        pass
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            customer = form.save()
+            customer.name.upper()
+            messages.success(request, f'Customer {customer.name} updated.')
     else:
-        pass
+        form = CustomerForm(instance=customer)
         
     context = {
         'form': form,

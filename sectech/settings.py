@@ -106,6 +106,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Custom
                 'shopping_cart.contexts.cart_contents',
             ],
             # allow global use of template tags without need for {% load %} 
@@ -173,32 +174,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [ BASE_DIR.joinpath('static'), ]
-
 MEDIA_URL = '/media/'
+STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 MEDIA_ROOT = BASE_DIR.joinpath('media')
+STATICFILES_DIRS = [BASE_DIR.joinpath('static'),]
 
 # AWS S3
 if os.getenv('USE_AWS', False):
     # Bucket Config
-    # allow bucket & region name to also be set in env
+    # allow bucket & region to also be set in env
     AWS_STORAGE_BUCKET_NAME = os.getenv(
-        'AWS_STORAGE_BUCKET_NAME', 'sectech-ci-pp3'
+        'AWS_STORAGE_BUCKET_NAME', 'sectech-ci-pp5'
     )
     AWS_S3_REGION_NAME = os.getenv(
-        'AWS_S3_REGION_NAME', 'EU (Ireland) eu-west-1'
+        'AWS_S3_REGION_NAME', 'eu-west-1'
     )
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
     # Static and media files
-    STATICFILES_STORAGE = 'sectech.custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static'
-    DEFAULT_FILE_STORAGE = 'sectech.custom_storages.MediaStorage'
+    STATICFILES_STORAGE = 'sectech.custom_storages.StaticStorage'
     MEDIAFILES_LOCATION = 'media'
+    DEFAULT_FILE_STORAGE = 'sectech.custom_storages.MediaStorage'
 
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'

@@ -22,6 +22,41 @@ class Customer(models.Model):
     country_code = CountryField(blank_label='Country *')
     postcode = models.CharField(max_length=16, null=True, blank=True)
     vat_no = models.CharField(max_length=16, null=True, blank=True)
+    out_of_use = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
+
+
+class Customer_product(models.Model):
+    '''
+    Defines the customer product model.
+    Stores all of the active service/software licence & renewal dates.
+    '''
+
+    # Billing frequency for recurring licence/subscription services
+    RECURRING_BILL = (
+        ('A', 'Annual'),
+        ('M', 'Monthly'),
+        ('Q', 'Quarterly'),
+        ('B', 'Biennial'),
+        ('Z', 'No'),
+    )
+
+    customer = models.ForeignKey('Customer',
+                                 on_delete=models.PROTECT,
+                                 related_name='customers')
+    product = models.ForeignKey('Product',
+                                 on_delete=models.PROTECT,
+                                 related_name='products')
+    qty = models.IntegerField(default=0)
+    bill_freq = models.CharField(max_length=1,
+                                 choices=RECURRING_BILL,
+                                 default='Z')
+    last_bill_date = models.DateField()
+    next_bill_date = models.DateField()
+
+    def __str__(self):
+        return f'''{self.product.desc}: 
+                   {self.bill_freq.RECURRING_BILL},
+                   {self.next_bill_date}'''

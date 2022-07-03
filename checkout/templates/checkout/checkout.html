@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load cart_extras %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block banner %}
+<div class="row">
+	<div class="col">
+    <div class="">
+      <h1 class="text-center">Checkout</h1>
+    </div>
+	</div>
+</div>
+{% endblock banner %}
+
+{% block content %}
+<!-- top row has two columns -->
+<div class="row">
+
+  <!-- first col customer deets -->
+	<div class="col showme1">
+    <div class="table d-flex justify-content-center">
+    </div>
+  </div>    
+
+  <!-- second col shopping cart -->
+  <div class="col showme2">
+    <div class="table d-flex justify-content-center">
+      {% if cart_items %}
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th class="text-right">Qty</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart_items %}
+          <tr>
+            <td>{{ item.product.desc }}</td>
+            <td class="text-right">{{ item.qty }}</td>
+            <td class="text-right">{{ item.product.sell_price }}</td>
+            <td class="text-right">{{ item.product.sell_price |calc_linetotal:item.qty |floatformat:"2g" }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td class="text-right">Cart total</td>
+            <td colspan="2" class="text-right">&euro;</td>
+            <td class="text-right">{{ grand_total |floatformat:"2g" }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {% else %}
+      <p class="lead mb-5">Your shopping cart is empty.</p>
+      {% endif %}
+    </div>
+  </div>
+
+</div> <!-- /top row -->
+
+<!-- checkout btn -->
+<div class="row pt-3">
+  <div class="col d-flex justify-content-center">
+    <a href="#" class="btn btn-warning">
+      <span class="icon pr-2"><i class="fa-solid fa-lock"></i></span>
+      Confirm Details & Pay Now
+      <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
+    </a>
+  </div>
+</div>
+
+<!-- back btn -->
+<div class="row pt-4 text-center">
+  <div class="col">
+    <a href="{% url 'product-list' %}" class="btn btn-lg">
+      <span class="icon"><i class="fas fa-chevron-left"></i></span>
+      <span class="text-uppercase">View All Services</span>
+    </a>
+  </div>
+</div>
+  
+{% endblock content %}

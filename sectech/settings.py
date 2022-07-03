@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from itertools import product
 import dj_database_url
 import os
 
@@ -183,7 +182,7 @@ STATICFILES_DIRS = [BASE_DIR.joinpath('static'),]
 # AWS S3
 if os.getenv('USE_AWS', False):
     # Bucket Config
-    # allow bucket & region to also be set in env
+    # allow bucket & region option to be set in env
     AWS_STORAGE_BUCKET_NAME = os.getenv(
         'AWS_STORAGE_BUCKET_NAME', 'sectech-ci-pp5'
     )
@@ -212,7 +211,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-
+# user registraion email confirmation
 if DEVELOPMENT:
     # Log emails to the console during development
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -223,6 +222,7 @@ else:
     EMAIL_HOST = os.getenv('EMAIL_HOST')
     EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    # default to SMTP with STARTTLS
     EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
     EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
 

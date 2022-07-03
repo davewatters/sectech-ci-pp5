@@ -65,11 +65,40 @@ footer {
 
 
 /*** Navbar ********************************************************/
+.acc-cart-btns {
+  padding-left: 1rem;
+  padding-right: 16px;
+  min-width: fit-content;
+  width: inherit;
+}
+
+/* .acc-dropdown-menu-align {
+  right: auto;
+  left: 0;
+} */
+
+.cart-nav-link, .acc-nav-link {
+  color: var(--text-colour) !important;
+}
+
+.cart-nav-link:hover, .acc-nav-link:hover {
+  text-decoration: none !important;
+}
+
 .logo {
   font: var(--logo-font-family, Georgia, Times, serif) !important;
   font-size: x-large !important;
   font-weight: bold !important;
   color: var(--logo-colour);
+}
+
+/* push the navbar toggler to rhs on mobile */
+.navbar {
+  width: inherit !important;
+}
+
+#nav-wrapper {
+  flex-wrap: wrap;
 }
 
 
@@ -78,6 +107,7 @@ footer {
   color: black;
 }
 
+
 /*** Main home screen ********************************************/
 
 
@@ -85,10 +115,6 @@ footer {
 .btn-buynow {
   background-color: var(--btn-buynow-colour);
   color: black;
-}
-
-.cart-nav-link {
-  color: var(--text-colour);
 }
 
 .currency-symbol {
@@ -161,4 +187,25 @@ footer {
 
 .card:hover {
   transform: scale(1.05);
+}
+
+
+/*--  Media Queries ---------------------------------------------*/
+/* for small screens and up  */
+@media screen and (min-width: 576px){
+
+  /* right-align the acc menu  */
+  .acc-dropdown-menu-align {
+    right: 0 !important;
+    left: auto !important;
+  }
+
+  #nav-wrapper {
+    flex-wrap: nowrap;
+  }
+
+  .acc-cart-btns {
+    padding: 0.5rem 1rem 0 0;
+    width: auto;
+  }
 }

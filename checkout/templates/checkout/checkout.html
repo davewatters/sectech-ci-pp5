@@ -48,11 +48,21 @@
             <td>{{ item.product.desc }}</td>
             <td class="text-right">{{ item.qty }}</td>
             <td class="text-right">{{ item.product.sell_price }}</td>
-            <td class="text-right">{{ item.product.sell_price |calc_linetotal:item.qty |floatformat:"2g" }}</td>
+            <td class="text-right">{{ item.product.sell_price |calc_line_net_amt:item.qty |floatformat:"2g" }}</td>
           </tr>
           {% endfor %}
           <tr>
-            <td class="text-right">Cart total</td>
+            <td>Cart total (excl. VAT)</td>
+            <td colspan="2" class="text-right">&euro;</td>
+            <td class="text-right">{{ net_total |floatformat:"2g" }}</td>
+          </tr>
+          <tr>
+            <td>Total VAT</td>
+            <td colspan="2" class="text-right">&euro;</td>
+            <td class="text-right">{{ vat_total |floatformat:"2g" }}</td>
+          </tr>
+          <tr>
+            <td>Invoice total (incl. VAT)</td>
             <td colspan="2" class="text-right">&euro;</td>
             <td class="text-right">{{ grand_total |floatformat:"2g" }}</td>
           </tr>
@@ -75,11 +85,15 @@
       Confirm Details & Pay Now
       <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
     </a>
-    <p class="small text-danger align-items-center">
-      <span class="">
+  </div>
+</div>
+<div class="row text-center">
+  <div class="col">
+    <p class="small text-danger pt-3">
+      <span class="pr-1">
         <i class="fas fa-exclamation-circle"></i>
       </span>
-      <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+      <span>Your card will be charged  <strong>&euro;{{ grand_total|floatformat:"2g" }}</strong></span>
     </p>
   </div>
 </div>
@@ -89,7 +103,7 @@
   <div class="col">
     <a href="{% url 'product-list' %}" class="btn btn-lg">
       <span class="icon"><i class="fas fa-chevron-left"></i></span>
-      <span class="text-uppercase">View All Services</span>
+      <span class="text-uppercase">Back to Services</span>
     </a>
   </div>
 </div>

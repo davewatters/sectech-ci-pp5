@@ -36,13 +36,13 @@
 						</td>
 						<td class="text-right">{{ item.qty }}</td>
 						<td class="text-right">{{ item.product.sell_price }}</td>
-						<td class="text-right">{{ item.product.sell_price | calc_linetotal:item.qty |floatformat:"2g" }}</td>
+						<td class="text-right">{{ item.product.sell_price | calc_line_net_amt:item.qty |floatformat:"2g" }}</td>
 					</tr>
 					{% endfor %}
 					<tr>
-						<td class="text-right">Cart total</td>
+						<td class="text-right">Cart total (excl. VAT)</td>
 						<td colspan="2" class="text-right">&euro;</td>
-						<td class="text-right">{{ grand_total |floatformat:"2g" }}</td>
+						<td class="text-right">{{ net_total |floatformat:"2g" }}</td>
 					</tr>
 				</tbody>
 			</table>

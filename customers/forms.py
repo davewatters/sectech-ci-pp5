@@ -5,7 +5,7 @@ from .models import Customer
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
-        exclude = ['user']
+        exclude = ['user', 'out_of_use']
 
     def __init__(self, *args, **kwargs):
         """

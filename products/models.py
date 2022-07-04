@@ -5,7 +5,6 @@ class Prod_category(models.Model):
     '''
     Defines the Product Categories model
     '''
-
     class Meta:
         verbose_name_plural = 'Product Categories'
 

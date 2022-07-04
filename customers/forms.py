@@ -29,6 +29,7 @@ class CustomerForm(forms.ModelForm):
             if field != 'country_code':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
+                    # self.fields[field].widget.attrs['requied'] = True
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder

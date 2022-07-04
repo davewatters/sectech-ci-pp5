@@ -19,7 +19,13 @@
 
   <!-- first col customer deets -->
 	<div class="col showme1">
-    <div class="table d-flex justify-content-center">
+    <span>{{customer.name}}</span>
+    <div class="d-flex justify-content-center">
+      <!-- <form method="POST">
+				{% csrf_token %}
+				<button class="btn btn-info btn-block mb-2" type="submit">Save Details</button>
+			</form> -->
+
     </div>
   </div>    
 
@@ -69,6 +75,12 @@
       Confirm Details & Pay Now
       <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
     </a>
+    <p class="small text-danger align-items-center">
+      <span class="">
+        <i class="fas fa-exclamation-circle"></i>
+      </span>
+      <span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+    </p>
   </div>
 </div>
 

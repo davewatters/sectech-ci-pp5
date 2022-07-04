@@ -75,9 +75,10 @@ class Product(models.Model):
     code = models.CharField(max_length=6, unique=True)
     desc = models.CharField(max_length=255, unique=True)
     long_desc = models.TextField(null=True, blank=True)
-    category = models.ForeignKey('Prod_category',
+    category = models.ForeignKey(Prod_category,
                                  null=True, blank=True,
-                                 on_delete=models.SET_NULL)
+                                 on_delete=models.SET_NULL,
+                                 related_name='products')
     sku = models.CharField(max_length=255, null=True, blank=True)
     sell_price = models.DecimalField(max_digits=6,
                                      decimal_places=2,
@@ -88,7 +89,9 @@ class Product(models.Model):
                                       default='Z')
     display_rank = models.IntegerField(choices=DISPLAY_RANK, default=0)
     unit = models.CharField(max_length=20, null=True, blank=True)
-    def_vat_rate = models.ForeignKey('Vat_rate', on_delete=models.PROTECT)
+    def_vat_rate = models.ForeignKey('Vat_rate',
+                                     on_delete=models.PROTECT,
+                                     related_name='products')
 
     def __str__(self):
         return self.desc

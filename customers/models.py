@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 from django_countries.fields import CountryField
 
+from products.models import Product
 
 class Customer(models.Model):
     '''
@@ -30,8 +31,8 @@ class Customer(models.Model):
 
 class Customer_product(models.Model):
     '''
-    Defines the customer product model.
-    Stores all of the active service/software licence & renewal dates.
+    Defines the customer product model. Stores all of the active
+    service/software licences & renewal dates owned by this customer.
     '''
 
     # Billing frequency for recurring licence/subscription services
@@ -43,12 +44,12 @@ class Customer_product(models.Model):
         ('Z', 'No'),
     )
 
-    customer = models.ForeignKey('Customer',
-                                 on_delete=models.PROTECT,
-                                 related_name='customers')
-    product = models.ForeignKey('Product',
+    customer = models.ForeignKey(Customer,
                                  on_delete=models.PROTECT,
                                  related_name='products')
+    product = models.ForeignKey(Product,
+                                 on_delete=models.PROTECT,
+                                 related_name='customers')
     qty = models.IntegerField(default=0)
     bill_freq = models.CharField(max_length=1,
                                  choices=RECURRING_BILL,

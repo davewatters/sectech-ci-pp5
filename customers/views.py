@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse, get_object_or_404
@@ -18,7 +19,8 @@ def customer_create(request):
         if form.is_valid():
             customer = form.save()
             messages.success(request, 'Successfully added customer')
-            return redirect(reverse('customer-detail', args=[customer.id]))
+            # return redirect(reverse('customer-detail', args=[customer.id]))
+            return redirect(settings.LOGIN_REDIRECT_URL)
  
     else:
         form = CustomerForm(request.GET)
@@ -47,6 +49,7 @@ def customer_detail(request, customer_id):
             customer = form.save()
             customer.name.upper()
             messages.success(request, f'Customer {customer.name} updated.')
+            return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = CustomerForm(instance=customer)
         

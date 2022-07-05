@@ -9,10 +9,11 @@ class CustomerForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto-generated
+        Add placeholders, remove auto-generated
         labels and set autofocus on business name field
         """
         super().__init__(*args, **kwargs)
+
         placeholders = {
             'name': 'Business Name',
             'contact': 'Primary Contact Person',
@@ -29,8 +30,9 @@ class CustomerForm(forms.ModelForm):
             if field != 'country_code':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
-                    # self.fields[field].widget.attrs['requied'] = True
+                    self.fields[field].widget.attrs['required'] = True
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].error_messages = {'required': ''}
             self.fields[field].label = False

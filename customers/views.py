@@ -16,6 +16,7 @@ def customer_create(request):
 
     if request.method == 'POST':
         form = CustomerForm(request.POST, instance=customer)
+
         if form.is_valid():
             customer = form.save()
             messages.success(request, 'Successfully added customer')

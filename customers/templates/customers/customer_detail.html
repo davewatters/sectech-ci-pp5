@@ -8,9 +8,9 @@
 	<div class="row d-flex justify-content-center">
 	
 		<div class="col-sm-6 col-lg-4">
-			<h1>Manage Account</h1>
-			<h2>{{ customer.name }}</h2>
-		
+			<h2>Manage Account</h2>
+			<div class="row small pl-4">User: {{user.username}}</div>
+			<div class="row small pl-4 pb-2">{{user.email}}</div>
 			<form method="POST" >
 				{% csrf_token %}
 				{{ form|crispy }}

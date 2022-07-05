@@ -55,7 +55,7 @@
         <p class="my-0">
           <span class="currency-symbol">&euro;</span>
           {% if grand_total %}
-          {{ grand_total|floatformat:"2g" }}
+          {{ net_total|floatformat:"2g" }}
           {% else %}
           0.00
           {% endif %}

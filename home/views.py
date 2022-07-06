@@ -15,12 +15,12 @@ def home(request):
     context = {
         'promoted_products': promoted_products,
     }
-    template = 'home.html'
+    template = 'home/home.html'
     
     return render(request, template, context)
 
 
 def about(request):
     context = {}
-    template = 'about.html'
+    template = 'home/about.html'
     return render(request, template, context)

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -9,9 +9,7 @@ def view_cart(request):
     '''
     View that renders the contents of the shopping cart.
     '''
-
     return render(request, 'shopping_cart/cart.html' )
-
 
 def add_to_cart(request, item_id):
     '''
@@ -22,15 +20,15 @@ def add_to_cart(request, item_id):
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
-    redirect_url = request.POST.get('redirect_url')
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
-        messages.success(request, f'Updated {product.desc} quantity to {cart[item_id]}')
+        messages.success(request, f'Updated {product.desc} \
+                         quantity to {cart[item_id]}')
     else:
         cart[item_id] = quantity
         messages.success(request, f'Added {product.desc} to your cart')
 
     request.session['cart'] = cart
 
-    return redirect(redirect_url)
+    return redirect('product-list')

@@ -34,5 +34,6 @@ class CustomerForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+                self.fields[field].widget.attrs['aria-label'] = placeholder
             self.fields[field].error_messages = {'required': ''}
             self.fields[field].label = False

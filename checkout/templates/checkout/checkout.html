@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col">
     <div class="">
-      <h1 class="text-center">Checkout</h1>
+      <h2 class="text-center">Checkout</h2>
     </div>
 	</div>
 </div>
@@ -19,30 +19,27 @@
   
   <!-- first col customer & invoice -->
 	<div class="col">
+    <div class="row pl-4 pb-2"><strong>{{customer.name}}</strong></div>
     <div class="row small pl-4">User: {{user.username}}</div>
     <div class="row small pl-4 pb-2">{{user.email}}</div>
-    <div class="row pl-4 pb-2">{{customer.name}}</div>
+    <div class="row pl-4 pb-2">VAT No: {{customer.vat_no}}</div>
     
     <div class="">
       <form id="checkout-form" method="POST">
         {% csrf_token %}
         {{ form.cust_ref | as_crispy_field }}
+
+        <!-- checkout btn -->
+        <div class="row pt-3">
+          <div class="col d-flex justify-content-center">
+            <button class="btn btn-warning" type="submit" form="checkout-form">
+              <span class="icon pr-2"><i class="fa-solid fa-lock"></i></span>
+                Confirm Details & Pay Now
+              <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
+            </a>
+          </div>
+        </div>
 			</form>
-    </div>
-    <!-- checkout btn -->
-    <div class="row pt-3">
-      <div class="col d-flex justify-content-center">
-        <button class="btn btn-warning" type="submit" form="login-form" tabindex="0">
-          <span class="icon pr-2"><i class="fa-solid fa-lock"></i></span>
-          Confirm Details & Pay Now
-          <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
-        </a>
-        <!-- <a href="#" class="btn btn-warning" type="submit" form="login-form" role="button" tabindex="0">
-          <span class="icon pr-2"><i class="fa-solid fa-lock"></i></span>
-          Confirm Details & Pay Now
-          <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
-        </a> -->
-      </div>
     </div>
     <div class="row text-center">
       <div class="col">
@@ -104,13 +101,12 @@
 
 </div> <!-- /top row -->
 
-
 <!-- back btn -->
 <div class="row pt-4 text-center">
   <div class="col">
-    <a href="{% url 'product-list' %}" class="btn btn-lg">
+    <a href="{% url 'view-cart' %}" class="btn btn-lg">
       <span class="icon"><i class="fas fa-chevron-left"></i></span>
-      <span class="text-uppercase">Back to Services</span>
+      <span class="text-uppercase">Back to Shopping Cart</span>
     </a>
   </div>
 </div>

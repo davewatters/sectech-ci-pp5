@@ -5,12 +5,12 @@
 {% block content %}
 <!-- customer detail, two rows -->
 <div class="container">
-	<div class="row d-flex justify-content-center">
+	<div class="row">
 	
 		<div class="col-sm-6 col-lg-4">
 			<h2>Manage Account</h2>
 			<div class="row small pl-4">User: {{user.username}}</div>
-			<div class="row small pl-4 pb-2">{{user.email}}</div>
+			<div class="row small pl-4 pb-2">Email: {{user.email}}</div>
 			<form method="POST" >
 				{% csrf_token %}
 				{{ form|crispy }}
@@ -18,9 +18,37 @@
 			</form>
 		</div>
 
-		<div class="col-sm-6 col-lg-8 text-center">
-			<h3 class="text-upper">My Products</h3>
-		
+		<div class="col-sm-6 col-lg-8 text-center pt-4 pl-4">
+			<h4 class="text-upper">Active Services</h4>
+			{% if customer_products %}
+			<div class="table d-flex justify-content-center">
+				<table>
+					<thead>
+						<tr>
+							<th class="text-left">Product</th>
+							<th class="text-right">Qty</th>
+							<th class="text-right">Bill Freq</th>
+							<th class="text-right">Renewal Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for customer in customer_products %}
+						<tr>
+							<td class="text-left">{{ customer.product }}</td>
+							<td class="text-right">{{ customer.qty }}</td>
+							<td class="text-right">{{ customer.bill_freq }}</td>
+							<td class="text-right">{{ customer.next_bill_date }}</td>
+						</tr>
+						{% endfor %}
+						<tr>
+							<td class="text-right">Count of products here??</td>
+						</tr>
+					</tbody>
+				</table>
+				{% else %}
+				<p class="lead mb-5">Your have no active services.</p>
+				{% endif %}
+			</div>
 		</div>
 
 	</div>

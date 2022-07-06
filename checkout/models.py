@@ -69,8 +69,6 @@ class Inv_lineitem(models.Model):
     qty = models.IntegerField(default=0)
     net_cost = models.DecimalField(max_digits=8, decimal_places=2,
                                    default=0.0)
-    # vat_code = models.ForeignKey(Vat_rate, on_delete=models.PROTECT,
-    #                             related_name='inv_items')
     vat_code = models.CharField(max_length=2, editable=False)
     vat_rate = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
     vat_amt = models.DecimalField(max_digits=8, decimal_places=2,
@@ -84,7 +82,7 @@ class Inv_lineitem(models.Model):
         Calculate the line net total and vat based on the product's default 
         """
         prod_vat = Vat_rate.objects.filter(id=self.product.def_vat_rate.id)
-        self.vat_code = prod_vat[0].id
+        self.vat_code = prod_vat[0].code
         self.vat_rate = prod_vat[0].rate
         self.price = self.product.sell_price
         self.net_cost = self.price * self.qty

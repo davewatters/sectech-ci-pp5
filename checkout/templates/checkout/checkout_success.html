@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block banner %}
+<div class="row">
+  <div class="col">
+    <div class="">
+      <h2 class="text-center">Checkout successful, thank you!</h2>
+    </div>
+	</div>
+</div>
+{% endblock banner %}
+
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  
+	<div class="row">
+    <div class="col">
+      <div class="row pl-4 pb-2"><strong>Invoice No: {{invoice.number}}</strong></div>
+      <div class="row pl-4 pb-2"><strong>{{customer.name}}</strong></div>
+      <div class="row pl-4 pb-2">VAT No: {{customer.vat_no}}</div>
+      <div class="row pl-4 pb-2">Your Ref: {{invoice.cust_ref}}</div>
+      <div class="row small pl-4">User: {{user.username}}</div>
+      <div class="row small pl-4 pb-2">Email: {{user.email}}</div>
+    </div>
+  </div>
+
+  <div class="row pt-2">
+    <div class="table d-flex justify-content-center">
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Qty</th>
+            <th class="text-right">Cost</th>
+            <th class="text-right">Vat Code</th>
+            <th class="text-right">Vat Rate</th>
+            <th class="text-right">Vat Amt</th>
+            <th class="text-right">Line Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in invoice.lineitems.all %}
+          <tr>
+            <td colspan="2">{{ item.product.desc }}</td>
+            <td class="text-right">{{ item.price }}</td>
+            <td class="text-right">{{ item.qty }}</td>
+            <td class="text-right">{{ item.net_cost }}</td>
+            <td class="text-right">{{ item.vat_code }}</td>
+            <td class="text-right">{{ item.vat_rate }}</td>
+            <td class="text-right">{{ item.vat_amt }}</td>
+            <td class="text-right">{{ item.total_cost |floatformat:"2g" }}</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td colspan="2">Invoice total (excl. VAT)</td>
+            <td colspan="2" class="text-right">&euro;</td>
+            <td class="text-right">{{ invoice.total_cost |floatformat:"2g" }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Total VAT</td>
+            <td colspan="2" class="text-right">&euro;</td>
+            <td class="text-right">{{ invoice.vat_amt |floatformat:"2g" }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Invoice total (incl. VAT)</td>
+            <td colspan="2" class="text-right">&euro;</td>
+            <td class="text-right">{{ invoice.grand_total |floatformat:"2g" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /outer -->
+
+
+<!-- back btn -->
+<div class="row pt-4 text-center">
+  <div class="col">
+    <a href="{% url 'product-list' %}" class="btn btn-lg">
+      <span class="icon"><i class="fas fa-chevron-left"></i></span>
+      <span class="text-uppercase">Back to Services</span>
+    </a>
+  </div>
+</div>
+
+{% endblock content %}

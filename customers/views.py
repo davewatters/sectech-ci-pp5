@@ -3,8 +3,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
+from products.models import Product
+
 from .forms import CustomerForm
-from .models import Customer
+from .models import Customer, Customer_product
 
 
 @login_required
@@ -42,20 +44,20 @@ def customer_detail(request, customer_id):
     Includes views of customer's products and past invoices.
     '''
     customer = get_object_or_404(Customer, id=customer_id)
-
+    cust_products = Customer_product.objects.filter(customer=customer_id)
 
     if request.method == 'POST':
         form = CustomerForm(request.POST, instance=customer)
         if form.is_valid():
             customer = form.save()
-            customer.name.upper()
             messages.success(request, f'Customer {customer.name} updated.')
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = CustomerForm(instance=customer)
-        
+
     context = {
         'form': form,
+        'customer_products': cust_products,
     }
 
     return render(request, 'customers/customer_detail.html', context)

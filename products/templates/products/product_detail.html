@@ -23,9 +23,10 @@
 	<div class="col text-center">
 		<h2><strong>{{ product.desc }}</strong></h2>
 		<p class="desc-lines">{{ product.long_desc }}</p>
-		<p class="display-3"><span class="currency-symbol">
+		<div class="display-3"><span class="currency-symbol">
 				&euro;</span>{{ product.sell_price |floatformat:"0g" }}
-		</p>
+		</div>
+		<div>{{ product.unit }}</div>
 	</div>
 
 </div> <!-- /product detail, row 2 -->
@@ -37,8 +38,7 @@
 		<div class="col-6">
 
 			<div class="form-group">
-				<div class="row justify-content-center">
-					<!-- might not need this row -->
+				<div class="row justify-content-center pt-3">
 					<span>Qty</span>
 				</div>
 
@@ -91,7 +91,7 @@
 	<div class="col d-flex justify-content-center">
 		<a href="{% url 'product-list' %}" class="btn btn-lg">
 			<span class="icon"><i class="fas fa-chevron-left"></i></span>
-			<span class="text-uppercase">View All Services</span>
+			<span class="text-uppercase">All Services</span>
 		</a>
 	</div>
 </div>

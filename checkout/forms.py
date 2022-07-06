@@ -13,8 +13,8 @@ class InvoiceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Set the placeholder & emove auto-generated label
+        Set the placeholder & remove auto-generated label
         """
         super().__init__(*args, **kwargs)
         self.fields['cust_ref'].widget.attrs['placeholder'] = 'Your Ref'
-        self.fields['cust_ref'].label = ""
+        self.fields['cust_ref'].label = "Optional reference"

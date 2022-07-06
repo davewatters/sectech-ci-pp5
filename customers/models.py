@@ -1,6 +1,7 @@
+from datetime import datetime, timedelta
+
 from django.db import models
 from django.contrib.auth.models import User
-
 from django_countries.fields import CountryField
 
 from products.models import Product
@@ -22,8 +23,18 @@ class Customer(models.Model):
     town_or_city = models.CharField(max_length=255)
     country_code = CountryField(blank_label='Country *')
     postcode = models.CharField(max_length=16, null=True, blank=True)
-    vat_no = models.CharField(max_length=16, null=True, blank=True)
+    vat_no = models.CharField(max_length=16)
     out_of_use = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        """
+        Override the original save method to uppercase some fields
+        """
+        self.postcode = self.postcode.upper()
+        self.vat_no = self.vat_no.upper()
+        super().save(*args, **kwargs)
+
+
 
     def __str__(self):
         return self.name
@@ -45,7 +56,7 @@ class Customer_product(models.Model):
     )
 
     customer = models.ForeignKey(Customer,
-                                 on_delete=models.PROTECT,
+                                 on_delete=models.CASCADE,
                                  related_name='products')
     product = models.ForeignKey(Product,
                                  on_delete=models.PROTECT,
@@ -54,10 +65,31 @@ class Customer_product(models.Model):
     bill_freq = models.CharField(max_length=1,
                                  choices=RECURRING_BILL,
                                  default='Z')
-    last_bill_date = models.DateField()
+    last_bill_date = models.DateField(auto_now_add=True)
     next_bill_date = models.DateField()
+
+    def _calc_next_bill_date(bill_freq):
+        '''
+        Calculate the next bill due date for this
+        subscription/licence from today's date based on the
+        recurring_bill frequency defined for the product.
+        Returns next bill due date.
+        '''
+        if bill_freq != 'Z':
+            today = datetime.today()
+            if bill_freq == 'B':
+                next_due = today + timedelta(days=730)
+            elif bill_freq == 'A':
+                next_due = today + timedelta(days=365)
+            elif bill_freq == 'Q':
+                next_due = today + timedelta(days=91)
+            else:
+                # self.freq must be == 'M':
+                next_due = today + timedelta(days=30)
+            return next_due
+        return None
 
     def __str__(self):
         return f'''{self.product.desc}: 
-                   {self.bill_freq.RECURRING_BILL},
+                   {self.RECURRING_BILL}, 
                    {self.next_bill_date}'''

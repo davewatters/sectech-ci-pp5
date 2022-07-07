@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block title %}{% translate 'Page not found' %}{% endblock title %}
+{% block title %}{% translate 'Page Not Found' %}{% endblock title %}
 
 {% block content %}
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="card shadow">
+  <div class="row justify-content-center align-items-center">
+    <div class="card shadow text-center">
       <div class="card-body">
 
         <h1>404 Error</h1>
@@ -14,7 +14,7 @@
         <hr>
         <p>We’re sorry, but the requested page could not be found.</p>
         <hr>
-        <p><a class="" href="{% url 'home' %}">Click Here to go back to the Home Page</a></p>
+        <p><a class="btn-lg btn-info" href="{% url 'home' %}">Go to the SecTech Home Page</a></p>
 
       </div>
     </div>

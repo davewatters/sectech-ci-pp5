@@ -1,5 +1,7 @@
 <div id="nav-wrapper" class="container-fluid px-0 d-flex justify-content-between align-items-center">
 
+  <!-- resolving url_name to set relevant nav-link "active" class  -->
+  {% with request.resolver_match.url_name as url_name %}
   <nav class="navbar navbar-expand-sm navbar-light">
     <!-- Logo -->
     <a class="navbar-brand" href="{% url 'home' %}"><span class="logo">SecTech</span></a>
@@ -11,24 +13,25 @@
 
     <div id="navToggle" class="collapse navbar-collapse">
       <ul class="navbar-nav mb-2 mb-lg-0">
-        <!-- using nav_<item> block placeholders to set relevant nav-link "active" class in sub template -->
+        {% if request.user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link {% block nav_home %}{% endblock %}" aria-current="page" href="{% url 'home' %}">Home</a>
+          <a class="nav-link {% if url_name == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% block nav_list %}{% endblock %}" href="{% url 'product-list' %}">Services</a>
+          <a class="nav-link {% if url_name == 'product-list' %}active{% endif %}" href="{% url 'product-list' %}">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {% block nav_about %}{% endblock %}" href="{% url 'about' %}">About Us</a>
+          <a class="nav-link {% if url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">About Us</a>
         </li>
+        {% endif %}
       </ul>
     </div>
   </nav> <!-- /navbar -->
-
+  
   <div class="acc-cart-btns d-flex justify-content-between">
     <!-- My Account btn -->
     <div class="dropdown pr-4">
-      <a id="account-menu" class="acc-nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <a id="account-menu" class="acc-nav-link {% if url_name == 'customer-detail' %}active{% endif %}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
           <div><i class="fas fa-user fa-lg"></i></div>
           <p class="my-0">My Account</p>
@@ -36,11 +39,11 @@
       </a>
       <div class="dropdown-menu acc-dropdown-menu-align" aria-labelledby="account-menu">
         {% if user.is_authenticated %}
-          {% if user.is_superuser %}
-          <a href="#" class="dropdown-item">Manage Products</a>
-          {% else %}
-          <a class="dropdown-item" href="{% url 'customer-detail' user.customer.id %}">Manage Account</a>
-          {% endif %}
+        {% if user.is_superuser %}
+        <a href="#" class="dropdown-item">Manage Products</a>
+        {% else %}
+        <a class="dropdown-item" href="{% url 'customer-detail' user.customer.id %}">Manage Account</a>
+        {% endif %}
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="{% url 'account_logout' %}">Logout {{user.username|upper}}</a>
         {% else %}
@@ -51,10 +54,11 @@
     </div>
     <!-- Shopping Cart link -->
     <div class="text-center">
-      <a class="p-0 cart-nav-link" href="{% url 'view-cart' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i>
+      <a class="p-0 cart-nav-link {% if url_name == 'view-cart' %}active{% endif %}"
+                      href="{% url 'view-cart' %}"><i class="fa-solid fa-cart-shopping fa-lg"></i>
         <p class="my-0">
           <span class="currency-symbol">&euro;</span>
-          {% if grand_total %}
+          {% if net_total %}
           {{ net_total|floatformat:"2g" }}
           {% else %}
           0.00
@@ -63,4 +67,5 @@
       </a>
     </div>
   </div>
+  {% endwith %}
 </div> <!-- /nav-wrapper -->

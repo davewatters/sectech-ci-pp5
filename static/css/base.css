@@ -72,23 +72,29 @@ footer {
   width: inherit;
 }
 
-/* .acc-dropdown-menu-align {
-  right: auto;
-  left: 0;
-} */
-
-.cart-nav-link, .acc-nav-link {
+.acc-nav-link, .cart-nav-link {
   color: var(--text-colour) !important;
 }
 
-.cart-nav-link:hover, .acc-nav-link:hover {
+.acc-nav-link:hover,
+.cart-nav-link:hover,
+.nav-link:hover {
+  color: var(--logo-colour) !important;
+  font-weight: bold;
   text-decoration: none !important;
+}
+
+.acc-nav-link.active,
+.cart-nav-link.active, 
+.nav-link.active {
+  color: var(--logo-colour) !important;
+  font-weight: bold;
 }
 
 .logo {
   font: var(--logo-font-family, Georgia, Times, serif) !important;
   font-size: x-large !important;
-  font-weight: bold !important;
+  font-weight: bolder !important;
   color: var(--logo-colour);
 }
 

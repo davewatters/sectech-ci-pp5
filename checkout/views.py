@@ -1,4 +1,3 @@
-from typing_extensions import Self
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -7,15 +6,21 @@ from django.urls import reverse
 from checkout.models import Invoice, Inv_lineitem
 from customers.models import Customer, Customer_product
 from products.models import Product, Vat_rate
+from sectech import settings 
 from shopping_cart.contexts import cart_contents
 
 from .forms import InvoiceForm
+
+import stripe
 
 @login_required
 def checkout(request):
     '''
     View that renders the checkout page.
     '''
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
     cart = request.session.get('cart', {})
     customer = get_object_or_404(Customer, user=request.user.id)
 
@@ -49,6 +54,7 @@ def checkout(request):
                     vat_rate=vat_rate.rate,
                     vat_amt=line_vat,
                     total_cost=total_line,
+                    # payment_id=stripe_pid,
                 )
                 inv_line_item.save()
                 # lastly, add subscription products to the cust product table
@@ -70,11 +76,29 @@ def checkout(request):
         if not cart:
             messages.error(request, "Your shopping cart is empty.")
             return redirect('product-list')
+
+        this_cart = cart_contents(request)
+        amt_due = this_cart['grand_total']
+        stripe_total = round(amt_due * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
+
         inv_form = InvoiceForm()
+
+    if not stripe_public_key:
+        messages.warning(request, ('Stripe public key is missing. '
+                                   'Did you forget to set it in '
+                                   'your environment?'))
 
     context = {
         'customer': customer,
         'form': inv_form,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        # 'client_secret': 'correct-horse-battery-staple'
+        'client_secret': intent.client_secret,
     }
     return render(request, 'checkout/checkout.html', context)
 
@@ -89,7 +113,7 @@ def checkout_success(request, invoice_id):
     customer = get_object_or_404(Customer, user=request.user.id)
 
     messages.warning(request, f'Order successfully Processed. \
-        Your invoice number is {invoice.number}. A confirmation \
+        Your invoice number is {invoice.number}.\nA confirmation \
         email will be sent to {request.user.email}.')
 
     context = {

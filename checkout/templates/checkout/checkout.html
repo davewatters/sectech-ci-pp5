@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load cart_extras %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock extra_css %}
 
 {% block title %}Checkout{% endblock %}
 
@@ -18,7 +23,7 @@
 <div class="row">
   
   <!-- first col customer & invoice -->
-	<div class="col">
+	<div class="col-10 offset-1 col-md-4 ml-4">
     <div class="row pl-4 pb-2"><strong>{{customer.name}}</strong></div>
     <div class="row small pl-4">User: {{user.username}}</div>
     <div class="row small pl-4 pb-2">{{user.email}}</div>
@@ -27,7 +32,20 @@
     <div class="">
       <form id="checkout-form" method="POST">
         {% csrf_token %}
+        <fieldset class="rounded px-3">
+        <legend class="fieldset-label small text-black px-2 w-auto">Your Reference (optional)</legend>
         {{ form.cust_ref | as_crispy_field }}
+        </fieldset>
+
+        <fieldset class="px-3">
+          <legend class="fieldset-label small px-2 w-auto">Payment</legend>
+          <!-- A Stripe card element will go here -->
+          <div id="card-element" class="mb-3"></div>
+          <!-- Used to display form errors -->
+          <div id="card-errors" class="mb-3 px-2 text-danger" role="alert"></div>
+          <!-- Pass the client secret to the view so we can get the payment intent id -->
+          <input name="client_secret" type="hidden" value="{{ client_secret }}">
+        </fieldset>
 
         <!-- checkout btn -->
         <div class="row pt-3">
@@ -54,7 +72,7 @@
   </div>    
 
   <!-- second col shopping cart -->
-  <div class="col">
+  <div class="col mt-2">
     <div class="table d-flex justify-content-center">
       {% if cart_items %}
       <table>
@@ -112,3 +130,10 @@
 </div>
   
 {% endblock content %}
+
+{% block postload_js %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock postload_js %}

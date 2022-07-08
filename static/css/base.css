@@ -127,6 +127,7 @@ footer {
   font-size: smaller;
 }  
 
+/* style the product.long_desc text */
 .desc-lines {
   line-height: 2;
   white-space: pre-line;

@@ -17,4 +17,5 @@ class InvoiceForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         self.fields['cust_ref'].widget.attrs['placeholder'] = 'Your Ref'
-        self.fields['cust_ref'].label = "Optional reference"
+        self.fields['cust_ref'].widget.attrs['class'] = 'stripe-style-input'
+        self.fields['cust_ref'].label = ""

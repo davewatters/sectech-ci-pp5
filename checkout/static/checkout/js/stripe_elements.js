@@ -52,3 +52,59 @@ elCard.addEventListener('change', function (event) {
       errorDiv.textContent = '';
   }
 });
+
+
+// Handle form submit
+var form = document.getElementById('checkout-form');
+
+form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    elCard.update({ 'disabled': true});
+    $('#submit-btn').attr('disabled', true);
+    $('#checkout-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+
+    // From using {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+    };
+    
+    // var url = '/checkout/cache_checkout_data/';
+
+    cust_name = trim(JSON.parse(document.getElementById('id-cust_name').textContent));
+    cust_country = trim(JSON.parse(document.getElementById('id-cust_country').textContent));
+    $.post(url, postData).done(function () {
+        stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+              card: elCard,
+              billing_details: {
+                  name: cust_name,
+                  country: cust_country,
+              }
+            },
+        }).then(function(result) {
+            if (result.error) {
+                var errorDiv = document.getElementById('card-errors');
+                var html = `
+                    <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                    </span>
+                    <span>${result.error.message}</span>`;
+                $(errorDiv).html(html);
+                $('#checkout-form').fadeToggle(100);
+                $('#loading-overlay').fadeToggle(100);
+                elCard.update({ 'disabled': false});
+                $('#submit-btn').attr('disabled', false);
+            } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();
+                }
+            }
+        });
+    }).fail(function () {
+        // just reload the page, the error will be in django messages
+        location.reload();
+    })
+});

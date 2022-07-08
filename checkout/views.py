@@ -16,7 +16,7 @@ import stripe
 @login_required
 def checkout(request):
     '''
-    View that renders the checkout page.
+    View to render the checkout page. Processes Stripe card payments.
     '''
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -85,19 +85,19 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
+        print(intent)
         inv_form = InvoiceForm()
 
     if not stripe_public_key:
         messages.warning(request, ('Stripe public key is missing. '
                                    'Did you forget to set it in '
                                    'your environment?'))
+        return redirect('view-cart')
 
     context = {
         'customer': customer,
         'form': inv_form,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
-        # 'client_secret': 'correct-horse-battery-staple'
         'client_secret': intent.client_secret,
     }
     return render(request, 'checkout/checkout.html', context)

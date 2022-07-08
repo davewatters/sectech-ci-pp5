@@ -70,12 +70,12 @@ form.addEventListener('submit', function(ev) {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
     };
-    
+
     // var url = '/checkout/cache_checkout_data/';
 
-    cust_name = trim(JSON.parse(document.getElementById('id-cust_name').textContent));
-    cust_country = trim(JSON.parse(document.getElementById('id-cust_country').textContent));
-    $.post(url, postData).done(function () {
+    var cust_name = JSON.parse(document.getElementById('id_cust_name').textContent).slice(1, -1).trim;
+    var cust_country = JSON.parse(document.getElementById('id_cust_country').textContent).slice(1, -1).trim;
+    // $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
               card: elCard,
@@ -103,8 +103,8 @@ form.addEventListener('submit', function(ev) {
                 }
             }
         });
-    }).fail(function () {
-        // just reload the page, the error will be in django messages
-        location.reload();
-    })
+    // }).fail(function () {
+    //     // just reload the page, the error will be in django messages
+    //     location.reload();
+    // })
 });

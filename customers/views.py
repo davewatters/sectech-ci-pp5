@@ -24,7 +24,6 @@ def customer_create(request):
             messages.success(request, 'Successfully added customer')
             # return redirect(reverse('customer-detail', args=[customer.id]))
             return redirect(settings.LOGIN_REDIRECT_URL)
- 
     else:
         form = CustomerForm(request.GET)
         

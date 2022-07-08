@@ -36,39 +36,49 @@ def checkout(request):
             invoice.customer = customer
             # process payment, get stripe pid
             # save to payment_id
+            stripe_pid = request.POST.get('client_secret').split('_secret')[0]
+            invoice.payment_id = stripe_pid
             invoice.save()
             # iterate through the cart items, add to inv_lineitem
             for item_id, qty in cart.items():
-                product = get_object_or_404(Product, pk=item_id)
-                vat_rate = Vat_rate.objects.get(id=product.def_vat_rate.id)
-                line_amt = qty * product.sell_price
-                line_vat = line_amt * (vat_rate.rate/100)
-                total_line = line_amt + line_vat
-                inv_line_item = Inv_lineitem(
-                    invoice=invoice,
-                    product=product,
-                    price=product.sell_price,
-                    qty=qty,
-                    net_cost=line_amt,
-                    vat_code=vat_rate.code,
-                    vat_rate=vat_rate.rate,
-                    vat_amt=line_vat,
-                    total_cost=total_line,
-                    # payment_id=stripe_pid,
-                )
-                inv_line_item.save()
-                # lastly, add subscription products to the cust product table
-                if product.recurring_bill != 'Z':
-                    cust_prod = Customer_product(
-                        customer=customer,
+                try:
+                    product = get_object_or_404(Product, pk=item_id)
+                    vat_rate = Vat_rate.objects.get(id=product.def_vat_rate.id)
+                    line_amt = qty * product.sell_price
+                    line_vat = line_amt * (vat_rate.rate/100)
+                    total_line = line_amt + line_vat
+                    inv_line_item = Inv_lineitem(
+                        invoice=invoice,
                         product=product,
+                        price=product.sell_price,
                         qty=qty,
-                        bill_freq=product.recurring_bill,
-                        next_bill_date=Customer_product._calc_next_bill_date(
-                                                        product.recurring_bill)
+                        net_cost=line_amt,
+                        vat_code=vat_rate.code,
+                        vat_rate=vat_rate.rate,
+                        vat_amt=line_vat,
+                        total_cost=total_line,
                     )
-                    cust_prod.save()
-            
+                    inv_line_item.save()
+                    # lastly, add subscription products to the cust_prod table
+                    if product.recurring_bill != 'Z':
+                        cust_prod = Customer_product(
+                            customer=customer,
+                            product=product,
+                            qty=qty,
+                            bill_freq=product.recurring_bill,
+                            next_bill_date=Customer_product._calc_next_bill_date(   # noqa
+                                                            product.recurring_bill) # noqa
+                        )
+                        cust_prod.save()
+                except Product.DoesNotExist:
+                    messages.error(request, (
+                        "One of the products in your bag wasn't "
+                        "found in our database. "
+                        "Please call us for assistance!")
+                    )
+                    invoice.delete()
+                    return redirect(reverse('view_cart'))
+
             #  Success! Clear the cart
             del request.session['cart']
             return redirect(reverse('checkout-success', args=[invoice.id]))
@@ -113,7 +123,7 @@ def checkout_success(request, invoice_id):
     customer = get_object_or_404(Customer, user=request.user.id)
 
     messages.warning(request, f'Order successfully Processed. \
-        Your invoice number is {invoice.number}.\nA confirmation \
+        Your invoice number is {invoice.number}.<br>A confirmation \
         email will be sent to {request.user.email}.')
 
     context = {

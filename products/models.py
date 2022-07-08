@@ -91,6 +91,7 @@ class Product(models.Model):
     def_vat_rate = models.ForeignKey('Vat_rate',
                                      on_delete=models.PROTECT,
                                      related_name='products')
+    out_of_use = models.BooleanField(default=False)
 
     def __str__(self):
         return self.desc

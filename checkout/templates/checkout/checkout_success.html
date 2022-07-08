@@ -19,10 +19,11 @@
     <div class="col">
       <div class="row pl-4 pb-2"><strong>Invoice No: {{invoice.number}}</strong></div>
       <div class="row pl-4 pb-2"><strong>{{customer.name}}</strong></div>
-      <div class="row pl-4 pb-2">VAT No: {{customer.vat_no}}</div>
-      <div class="row pl-4 pb-2">Your Ref: {{invoice.cust_ref}}</div>
+      <div class="row pl-4 pb-2">VAT No: {{customer.vat_no|default_if_none:""}}</div>
+      <div class="row pl-4 pb-2">Your Ref: {{invoice.cust_ref|default_if_none:""}}</div>
       <div class="row small pl-4">User: {{user.username}}</div>
       <div class="row small pl-4 pb-2">Email: {{user.email}}</div>
+      <div class="row small pl-4 pb-2">Stripe Transaction Ref: {{invoice.payment_id}}</div>
     </div>
   </div>
 

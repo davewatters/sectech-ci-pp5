@@ -22,8 +22,10 @@ class Customer(models.Model):
     address2 = models.CharField(max_length=255, null=True, blank=True)
     town_or_city = models.CharField(max_length=255)
     country_code = CountryField(blank_label='Country *')
-    postcode = models.CharField(max_length=16, null=True, blank=True)
-    vat_no = models.CharField(max_length=16)
+    postcode = models.CharField(max_length=16, null=True,
+                                blank=True, default='')
+    vat_no = models.CharField(max_length=16,null=True,
+                                blank=True, default='')
     out_of_use = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
@@ -33,8 +35,6 @@ class Customer(models.Model):
         self.postcode = self.postcode.upper()
         self.vat_no = self.vat_no.upper()
         super().save(*args, **kwargs)
-
-
 
     def __str__(self):
         return self.name

@@ -55,6 +55,7 @@ elCard.addEventListener('change', function (event) {
 
 
 // Handle form submit
+// credit: from CI Boutique Ado, with mods
 var form = document.getElementById('checkout-form');
 
 form.addEventListener('submit', function(ev) {

@@ -73,7 +73,7 @@
     "fields":{
       "code":"pciq",
       "desc":"ServerScan PCI",
-      "long_desc":"PCI Scanning\nSingle IP Address\nUnlimited Scans\nASV Scan Report",
+      "long_desc":"PCI Compliance Scanning\nSingle IP Address\nUnlimited Scans\nASV Scan Report",
       "category":1,
       "sell_price":59,
       "sku":"",

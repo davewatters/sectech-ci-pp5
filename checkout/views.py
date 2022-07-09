@@ -1,7 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.urls import reverse
+from django.views.decorators.http import require_POST
 
 from checkout.models import Invoice, Inv_lineitem
 from customers.models import Customer, Customer_product
@@ -12,6 +13,27 @@ from shopping_cart.contexts import cart_contents
 from .forms import InvoiceForm
 
 import stripe
+import json
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'username': request.user,
+            # 'cust_ref': request.cust_ref,
+            # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, ('Sorry, your payment cannot be '
+                                 'processed right now. Please try '
+                                 'again later.'))
+        return HttpResponse(content=e, status=400)
+
 
 @login_required
 def checkout(request):
@@ -72,7 +94,7 @@ def checkout(request):
                         cust_prod.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't "
+                        "One of the products in your cart wasn't "
                         "found in our database. "
                         "Please call us for assistance!")
                     )
@@ -95,7 +117,6 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-        print(intent)
         inv_form = InvoiceForm()
 
     if not stripe_public_key:

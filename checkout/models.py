@@ -22,8 +22,7 @@ class Invoice(models.Model):
                                   default=0.0)
     grand_total = models.DecimalField(max_digits=8, decimal_places=2,
                                      default=0.0)
-    payment_id = models.CharField(max_length=255, null=False,
-                                  blank=False, default='')
+    payment_id = models.CharField(max_length=255, default='')
 
     def _generate_invoice_number(self):
         '''

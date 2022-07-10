@@ -213,19 +213,19 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 # user registraion email confirmation
-if DEVELOPMENT:
-    # Log emails to the console during development
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    EMAIL_HOST_USER = 'sectech.app@example.com'
-else:
-    # send mail using SMTP AUTH client
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = os.getenv('EMAIL_HOST')
-    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-    # default to SMTP with STARTTLS
-    EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
-    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+# if DEVELOPMENT:
+#     # Log emails to the console during development
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#     EMAIL_HOST_USER = 'sectech.app@example.com'
+# else:
+# send mail using SMTP AUTH client
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# default to SMTP with STARTTLS
+EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

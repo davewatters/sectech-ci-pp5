@@ -1,0 +1,1 @@
+SecTech Payment Confirmation for Invoice Number: {{ invoice.number }}

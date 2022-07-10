@@ -1,0 +1,25 @@
+
+This is a receipt for your purchase from SecTech.com Your invoice details are below.
+
+Invoice Number: {{ invoice.number }}
+Invoice Date: {{ invoice.date }}
+A/C Code: {{ invoice.customer.cust_ac_ref }}
+Your Order Ref: {{ invoice.cust_ref|default:"" }}
+
+Invoice Total: €{{ invoice.total_cost }}
+VAT Amount: €{{ invoice.vat_amt }}
+Total Amount Charged to your Card: €{{ invoice.grand_total }}
+
+Stripe Payment Confirmation ID: {{ invoice.payment_id }}
+
+Software licences will be active within 24hrs (where elevant).
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your business!
+
+Sincerely,
+
+The Team at SecTech
+Registered in Ireland.
+VAT Registration Number: IE1234567Z

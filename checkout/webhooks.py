@@ -30,6 +30,9 @@ def webhook(request):
         )
     except ValueError as e:
         # Invalid payload
+        print('+-'*30) # ---------------------- _TODO_ DELETE ME --------------------------- #
+        print(type(payload))
+        print(payload)
         return HttpResponse(content=e, status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
@@ -54,6 +57,7 @@ def webhook(request):
     event_handler = event_map.get(event_type, handler.handle_event)
 
     print('+-'*30) # ---------------------- _TODO_ DELETE ME --------------------------- #
+    print(event)
     print(event_type)
     print(event_handler)
     print('+-'*30)

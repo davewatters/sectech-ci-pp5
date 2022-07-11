@@ -56,8 +56,7 @@ def checkout(request):
         if inv_form.is_valid():
             invoice = inv_form.save(commit=False)
             invoice.customer = customer
-            # process payment, get stripe pid
-            # save to payment_id
+            # process payment, get stripe pid, save to payment_id
             stripe_pid = request.POST.get('client_secret').split('_secret')[0]
             invoice.payment_id = stripe_pid
             invoice.save()

@@ -53,6 +53,11 @@ def webhook(request):
     # Use the generic one by default
     event_handler = event_map.get(event_type, handler.handle_event)
 
+    print('+-'*30) # ---------------------- _TODO_ DELETE ME --------------------------- #
+    print(event_type)
+    print(event_handler)
+    print('+-'*30)
+
     # Call the event handler with the event
     response = event_handler(event)
     return response

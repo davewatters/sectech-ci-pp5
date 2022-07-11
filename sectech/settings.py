@@ -32,10 +32,11 @@ DEBUG = DEVELOPMENT
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-if DEVELOPMENT:
-    ALLOWED_HOSTS = [ 'localhost' ]
-else:
-    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS'), ]
+# if DEVELOPMENT:
+#     ALLOWED_HOSTS = [ 'localhost' ]
+# else:
+#     ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS'), ]
+ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS', 'localhost') ]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

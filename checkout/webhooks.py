@@ -16,7 +16,7 @@ def webhook(request):
     Code from Stripe docs, with mods.
     """
     # Setup
-    endpoint_secret = settings.STRIPE_ENPOINT_SECRET
+    endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     # Get the webhook data and verify its signature

@@ -17,6 +17,7 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 * [Technologies](#technologies)
 * [Testing](#testing)
 * [Deployment](#deployment)
+* [Marketing & SEO](#deployment)
 * [Credits](#credits)
 
 ## - Purpose -
@@ -264,6 +265,17 @@ Deployment of the site to Heroku was done as follows:
 1.  Test that the site has successfully gone live by clicking on the 'View' button
 1.  Your app can now be accessed via any browser at: `https://YOUR-APP-NAME.herokuapp.com`
 
+
+## - Marketing & SEO - 
+
+### Facebook Page
+<details>
+  <summary>Click to view a mockup of company's Facebook profile [Please note, this mock company would not use Facebook]</summary>
+
+<h2 align="center"><img src="readme-docs/fb-mockup.png"></h2>
+</details>
+
+<br>
 
 ## - Credits - 
 

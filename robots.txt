@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /admin/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /customers/
+
+Sitemap: https://sectech-ci-pp5.herokuapp.com/sitemap.xml
+

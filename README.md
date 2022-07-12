@@ -17,6 +17,7 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 * [Technologies](#technologies)
 * [Testing](#testing)
 * [Deployment](#deployment)
+* [Marketing & SEO](#deployment)
 * [Credits](#credits)
 
 ## - Purpose -
@@ -28,10 +29,14 @@ The company's customers receive the benefit of easy access to a suite of industl
 ## - User Experience Design -
 
 ### Design Strategy Goals
+This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as recurring billing subscriptions with some single payment products. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. Additionally, customers can buy support and consultancy services. The software products are delivered as electronic licence via email or download.   
   - Create an online shop to sell IT service & software products to registered customers
   - Shop must be abe to process payments at point of sale
   - Site must be intuitive to read & navigate on both desktop & mobile devices - using Mobile-First design
   - Site must allow company admins and customers to authenticate and interact with the content, e.g. view accounts, purchase services and software licences, etc.
+  - Site must inform the customer about latest compliance standards (e.g. PCI-DSS) and business cyber insurance requirements
+  - Site must allow users to sign up for the mailing list   
+  - Site will ideally have a blog as a means to inform customers and to help raise the business' online presence.
 
 ### Design Scope to Deliver MVP
   - #### Site Owner Goals
@@ -41,7 +46,6 @@ The company's customers receive the benefit of easy access to a suite of industl
       - I want customers to be able to buy products
       - I want to be able to take payments
       - I want to be able to view sales information
-
 
   - #### First Time Visitor Goals
       As a first time user...
@@ -59,7 +63,7 @@ The company's customers receive the benefit of easy access to a suite of industl
       - I want to be able to quickly purchase additional support or consultancy hours
 
 ### Agile Development Process: Epics & User stories
-- To deliver MVP the following features were implemented in work sprint iterations.  Prioritization of each item changed as certain iteration milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features,  the Projects board as a Kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
+- To deliver MVP the following features were implemented in work sprint iterations.  Prioritization of each item changed as certain iteration milestones were reached, at which time the item's priority for that stage was adjusted. The workflow was actively monitored and adjusted using GitHub's repo Issues & Milestones features,  the Projects board as a kanban board to provide an overview of progress.  Each Epic feature was broken down into smaller User Story work units.
 
 - ### **Epic: Viewing & Navigation of Site**
 | As A/An       | I want to be able to        |  So that I can   |
@@ -76,6 +80,7 @@ The company's customers receive the benefit of easy access to a suite of industl
 | Customer      | Easily login/logout             | Access my account information
 | Customer      | Easily reset my password | Recover access to my account
 | Customer      | Have an account profile         | Manage my details & view purchased products
+| Customer      | Signup for a newsletter         | Keep informed of the latest IT security info
 | Customer      | Access full account history     | View all transaction history
 - ### **Epic: Shopping Cart & Payment Processing**
 | As A/An       | I want to be able to        |  So that I can   |
@@ -95,16 +100,19 @@ The company's customers receive the benefit of easy access to a suite of industl
 | As A/An       | I want to be able to        |  So that I can   |
 |---|---|---|
 | Site Admin    | Apply SEO settings             | Ensure my site is ranked optimally
+| Site Admin    | Creat email subscription newsletter| Market my business better
+| Site Admin    | Create a site blog             | Encourage more traffic to my site
 
-Initial Kanban board setup:
-<!-- <h2 align="center"><img src="readme-docs/initial-kanban-view.png"></h2> -->
+Agile methodology was used to provide an iterative approach to the project's development. Image below shows an example of the kanban board setup as created using GitHub:
+<!-- <h2 align="center"><img src="readme-docs/initial-kanban-view1.png"></h2> -->
+<h2 align="center"><img src="readme-docs/kanban-view2.png"></h2>
 
 - ### Design
     -   #### Layout
         Logo and site navigation is visible along the top bar and a simple footer on the bottom of the viewport.  Content is displayed in Boostrap 'card' styled sections on the main page. 
          
     -   #### Content
-        Content is generated based on the available products for sale in the database. The products are rendered as floating cards with brief description and a CTA button.  Once clicked, the vistor is shown detailed product information. 
+        Content is generated based on the available products for sale in the database. The products are rendered as floating cards with brief description and a CTA button.  Once clicked, the vistor is shown detailed product information and given the option to add a qty of the product to the shopping cart. 
 
     -   #### User Input
         Data is input or updated using Bootstrap forms. All user interaction controls are either standard Bootstrap buttons or intuitive Fontawesome icons. 
@@ -114,7 +122,7 @@ Initial Kanban board setup:
 
     -   #### Colour Scheme ?? Do I really  need this ??????????????????
     -   #### Imagery
-         Backgound or hero image on main landing page.  Product logo images.  
+        Minimal. Backgound or hero image on main landing page. Product logo images.  
            
     
     -   #### Wireframes
@@ -124,7 +132,7 @@ Initial Kanban board setup:
         <h2 align="center"><img src="readme-docs/wf-booklist-wide.jpg"></h2>
 
     -   #### Database Entity Relationship Diagram
-        <h2 align="center"><img src="readme-docs/db-erd-1.png"></h2>
+        <h2 align="center"><img src="readme-docs/db-erd-3.png"></h2>
 
 
 
@@ -162,7 +170,7 @@ To fulfil the needs of the site's users, the following features were implemented
 1.  [GitHub](https://github.com/) was used to store the project's code after being pushed from Git
 1.  [Flake8](https://flake8.pycqa.org/en/latest/) linter extension for VScode 
 1.  [Heroku](https://www.heroku.com) was used to deploy the app
-1.  [LucidChart](https://lucidchart.com) was used to create the logic flowchart
+1.  [LucidChart](https://lucidchart.com) was used to create the ERD
 1.  [Bootstrap 4]() front-end CSS toolkit
 1.  [Font Awesome 6]() font and icon toolkit
 1.  [pgAdmin]() Postgres database GUI Tool used to generate the ERD 
@@ -178,6 +186,8 @@ All testing and code validation is documented [in this linked TESTING.md documen
 
 ## Bugs  
 
+1. the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
+    - Fix: detail how the issue was fixed here
 1. **FIXED** the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
     - Fix: detail how the issue was fixed here
 <!---  --->
@@ -187,29 +197,42 @@ All testing and code validation is documented [in this linked TESTING.md documen
 ## Deployment
 
 ### Requirements
-- Python >=3.7, Django 3.2
-- The following third party packages were installed using `pip install <package_name>` (listed below in order of installation)..   
-```
-python-dotenv
-Django==3.2.13  (to include latest security patches)
-gunicorn
-dj_database_url
-psycopg2
-django-allauth
-django-crispy-forms
-```
-...However, the `requirements.txt` file contains the full list of required dependencies, with version numbers, and they can all be installed using the following command: `pip install -r requirements.txt`
+- Python >=3.7, Django 3.2 (install the latest security patch version, 3.2.13 in this case)
+-   The `requirements.txt` file contains the full list of required dependencies, with version numbers, which should be installed using the following command: `pip install -r requirements.txt`
 ```
 asgiref==3.5.2
+certifi==2022.5.18.1
+cffi==1.15.0
+charset-normalizer==2.0.12
+cryptography==37.0.2
+defusedxml==0.7.1
 dj-database-url==0.5.0
 Django==3.2.13
+django-allauth==0.51.0
+django-crispy-forms==1.14.0
 gunicorn==20.1.0
+idna==3.3
+oauthlib==3.2.0
 psycopg2==2.9.3
+pycparser==2.21
+PyJWT==2.4.0
 python-dotenv==0.20.0
+python3-openid==3.2.0
 pytz==2022.1
+requests==2.28.0
+requests-oauthlib==1.3.1
 sqlparse==0.4.2
+urllib3==1.26.9
+whitenoise==6.2.0
 ```
-
+- Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_template` for commonly used vars.  In production, see below for how to set the config vars in the Heroku deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
+```
+openssl rand -base64 32
+```
+- Database migations must be applied to create the tables
+```
+python3 -m manage.py migrate
+```  
 - Initial deployment on any platform requires the creation of an admin 'superuser' to allow the site owner access to the backend admin control panel. At the Zsh/Bash shell (aka terminal/cli/console/command prompt) run the following command:  
 ```
 python3 manage.py createsuperuser
@@ -239,9 +262,22 @@ Deployment of the site to Heroku was done as follows:
 1.  For the Deplyoment Method select GitHub
 1.  Connect to GitHub repo by entering YOUR-REPO-NAME, then Connect
 1.  A message will confirm that your app was successfuly deployed
+1.  (Important!) The first time the app is deployed you must drop into the Heroku shell and apply the database migrations with the command `./manage.py migrate`. This must also be done any time a new deployment contains database changes.
+1.  (Optional) If the database is being prepopulated with seed or demo data supplied in json fixture files, then while still in the shell run `./manage.py loaddata <your_fixture_file.json>`
 1.  Test that the site has successfully gone live by clicking on the 'View' button
 1.  Your app can now be accessed via any browser at: `https://YOUR-APP-NAME.herokuapp.com`
 
+
+## - Marketing & SEO - 
+
+### Facebook Page
+<details>
+  <summary>Click to view a mockup of company's Facebook profile [Please note, this mock company would not use Facebook]</summary>
+
+<h2 align="center"><img src="readme-docs/fb-mockup.png"></h2>
+</details>
+
+<br>
 
 ## - Credits - 
 

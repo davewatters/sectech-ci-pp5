@@ -186,6 +186,8 @@ All testing and code validation is documented [in this linked TESTING.md documen
 
 ## Bugs  
 
+1. the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
+    - Fix: detail how the issue was fixed here
 1. **FIXED** the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
     - Fix: detail how the issue was fixed here
 <!---  --->

@@ -17,7 +17,7 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 * [Technologies](#technologies)
 * [Testing](#testing)
 * [Deployment](#deployment)
-* [Marketing & SEO](#deployment)
+* [Marketing & SEO](#marketing-&-seo)
 * [Credits](#credits)
 
 ## - Purpose -
@@ -201,6 +201,8 @@ All testing and code validation is documented [in this linked TESTING.md documen
 -   The `requirements.txt` file contains the full list of required dependencies, with version numbers, which should be installed using the following command: `pip install -r requirements.txt`
 ```
 asgiref==3.5.2
+boto3==1.24.21
+botocore==1.27.21
 certifi==2022.5.18.1
 cffi==1.15.0
 charset-normalizer==2.0.12
@@ -209,21 +211,29 @@ defusedxml==0.7.1
 dj-database-url==0.5.0
 Django==3.2.13
 django-allauth==0.51.0
+django-countries==7.3.2
 django-crispy-forms==1.14.0
+django-storages==1.12.3
 gunicorn==20.1.0
 idna==3.3
+jmespath==1.0.1
 oauthlib==3.2.0
+Pillow==9.1.1
 psycopg2==2.9.3
 pycparser==2.21
 PyJWT==2.4.0
+python-dateutil==2.8.2
 python-dotenv==0.20.0
 python3-openid==3.2.0
 pytz==2022.1
 requests==2.28.0
 requests-oauthlib==1.3.1
+s3transfer==0.6.0
+six==1.16.0
 sqlparse==0.4.2
+stripe==3.5.0
+typing_extensions==4.2.0
 urllib3==1.26.9
-whitenoise==6.2.0
 ```
 - Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_template` for commonly used vars.  In production, see below for how to set the config vars in the Heroku deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
 ```
@@ -277,6 +287,11 @@ Deployment of the site to Heroku was done as follows:
 <h2 align="center"><img src="readme-docs/fb-mockup.png"></h2>
 </details>
 
+### SEO
+- As part of a successful SEO strategy I ensured that the site has the following:
+    - Title & Meta description 
+    - A `sitemap.xml` file and a `robots.txt` file placed in the root directory.
+    - 
 <br>
 
 ## - Credits - 

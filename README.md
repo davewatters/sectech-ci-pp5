@@ -17,7 +17,7 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 * [Technologies](#technologies)
 * [Testing](#testing)
 * [Deployment](#deployment)
-* [Marketing & SEO](#marketing-&-seo)
+* [SEO and Marketing](#seo-and-marketing)
 * [Credits](#credits)
 
 ## - Purpose -
@@ -237,7 +237,7 @@ stripe==3.5.0
 typing_extensions==4.2.0
 urllib3==1.26.9
 ```
-- Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_template` for commonly used vars.  In production, see below for how to set the config vars in the Heroku deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
+- Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_example` for commonly used vars.  In production, see below for how to set the config vars in the Heroku deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
 ```
 openssl rand -base64 32
 ```
@@ -269,7 +269,7 @@ Deployment of the site to Heroku was done as follows:
 1.  Add the database in the 'Resources' tab > Add-ons, select Heroku Postgres
 1.  In 'Settings' click on 'Reveal Config Vars'
 1.  Add any relevant config vars by entering the KEY/VALUE pair data, e.g. PORT & 8000. 
-    The required vars are shown in the `.env_template` file in the project repo
+    The required vars are shown in the `.env_example` file in the project repo
 1.  Select the 'Deploy' tab
 1.  For the Deplyoment Method select GitHub
 1.  Connect to GitHub repo by entering YOUR-REPO-NAME, then Connect
@@ -280,7 +280,24 @@ Deployment of the site to Heroku was done as follows:
 1.  Your app can now be accessed via any browser at: `https://YOUR-APP-NAME.herokuapp.com`
 
 
-## - Marketing & SEO - 
+## - SEO and Marketing - 
+
+This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as recurring billing subscriptions with some single payment products. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. It is expected that the financial controller, operations manager or small business owner are the most likely visitors, as these roles usually drive the IT strategy for small businesses. Content and the language used must be presented in a way that speaks to these decision makers - relatively short and to the point, in a non-tehnical manner.
+
+### SEO
+- As part of a successful SEO strategy I ensured that the site has the following:
+    - Meta description, keywords & title in the `<head>` section of the page
+    - semantic web markup sectionsused throughout: `<nav>`, `<main>`, headings and key phrases emphasised with either `<strong>` or `<em>` tags
+    - A `sitemap.xml` file and a `robots.txt` file placed in the root directory
+    - content is king: all content presents relevant information to the target audience and is prefessionally displayed with correct spelling and grammar. Plain language is used to describe the products and services
+    - The company plans to introduce a blog applicataion to the site in the next development iteration to drive repeat vistits via relevant newsworthy industry content
+    
+
+### Marketing
+- The company is most likekly to use content marketing strategy with some paid web marketing
+- the company wishes to be seen as informed, up-to-date and current: a dynamic, as opposed to a 'static' web site will build trust with customers that they are dealing with a company on the cutting edge of cyber security
+- site visitors can sign up for a newsletter about the latest small busniness cyber security, compliance & regulatory trends
+- A blog is planned to promote a sense of relevance with customers
 
 ### Facebook Page
 <details>
@@ -288,12 +305,6 @@ Deployment of the site to Heroku was done as follows:
 
 <h2 align="center"><img src="readme-docs/fb-mockup.png"></h2>
 </details>
-
-### SEO
-- As part of a successful SEO strategy I ensured that the site has the following:
-    - Title & Meta description 
-    - A `sitemap.xml` file and a `robots.txt` file placed in the root directory.
-    - 
 <br>
 
 ## - Credits - 

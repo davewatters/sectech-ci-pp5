@@ -186,8 +186,10 @@ All testing and code validation is documented [in this linked TESTING.md documen
 
 ## Bugs  
 
-1. the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
-    - Fix: detail how the issue was fixed here
+1. [issue #40](https://github.com/davewatters/sectech-ci-pp5/issues/40) Payment amt going to Stripe sometimes wrong. When more than one item in cart at checkout, stripe amount wrong in payment intent.
+    - Fix: 
+1. **FIXED** [issue #36](https://github.com/davewatters/sectech-ci-pp5/issues/36) Clicking on a navbar link does not highlight the menu item [ `templates/includes/main_nav.html` ]. Original code worked only when nav bar code was in `base.html`, when it was implemented as an include, it broke.
+    - Fix: Use Django template filter `{% with request.resolver_match.url_name as url_name %}` to get the url name, then apply `active` to the `<a>` tag class.
 1. **FIXED** the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
     - Fix: detail how the issue was fixed here
 <!---  --->

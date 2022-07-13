@@ -15,32 +15,43 @@
 - #### As a Site Admin..
     - I want to to be able to setup and manage the product list
         - I tested that I could log into the admin panel and have ability to create, read, update or delete (CRUD) a product.  I tested that I could also do this via the main menu login.
-    - I want to be able to setup and manage the orders page
-        - I tested that I could log into the admin panel and have full CRUD ability for an order.  I tested that I could also do this via the main menu option.
+
 
 - #### As a first time user...  
     -  I want to be able to intuitively navigate the site
-        - All menu options were tested to ensure that they opened the correct functionality.  The navigation bar remains at the top of the screen so that the user can easily move between options.
+        - All menu options were tested to ensure that they opened the correct functionality.  The navigation bar remains at the top of the screen so that the user can easily move between options. The current page selection remains highlighted.
 
-    - I want to easily find information about the comany and its products
+    -  I want to be able to see clear messages about my actions
+        - I tested that system messages are displayed during all customer processes (login, checkout etc.)  Messages are coloured according to severity (alerts - yellow, warnings - red, etc.) and are clrealy seen on teh top centre of screen.
+
+    - I want to easily find information about the company and its products
         - I tested that I could click through the product cards on the main screen to reveal full details about the products.  I tested that the About page displays the company information.
 
     -  I want to be able to Register as a customer of the site
        - I tested that I could create a new registered user from the login screen.
 
-- #### As a returning visitor...
-    -   I want to be able to easily see details of the previous & next meetup
-        - I tested that all of the meetups are clearly visible on the main screen and scrolling down reveals older dates. 
+    -  I want to be able receive a registrtion confirmation email
+       - I tested that I could verify a user account via a registration email by clicking on the secure link in the email.
 
-    -   I want to be able to post comments about the meetup & books
-        - I tested that when I was logged in as a member I had the option to post comments on a meetup page. 
+- #### As a returning visitor...
+    - I want to be able to log into my registered account
+        - I tested that I can log in as a user and view my account
+
+      - I want to be able to easily see details of active software licences
+        - I tested that when logged in as a user I can see my active software liences on my account page
+
+      - I want to be able to easily see details of the previous purchases
+        - I tested that when logged in as a user I can see my previous purchases on my account page
+
+      - I want to be able to quickly purchase additional support or consultancy hours
+        - I tested that when logged in as a user I can purchase additional products
 
 ### Further Testing
 
 - #### As a Site Admin
     - I want to ensure that site visitors who are unauthenticated cannot access any admin functionality other then viewing site content
-        - I tested that unauthenticated visitors get redirected to the sign in page if attempting to access `/<whatsit>/new`, for example
-    - I want to ensure site visitors can't access member pages or functionality
+        - I tested that unauthenticated visitors get redirected to the sign in page if attempting to access `/customers/account/new`, for example
+    - I want to ensure site visitors can't access customer pages or functionality
         - I tested to options to add/edit/delete etc. were not visible to users when not logged in
         - I tested that attempting to access `/<whatsit>/new` or `/<thisotherthing>/new` redirects to a '403 - Forbidden' error message and allows the user to link back to the main page.
     - I want to ensure that site members can not delete posts created by other members

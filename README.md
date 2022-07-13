@@ -51,6 +51,7 @@ This eCommerce application is for a business-to-business (B2B) sales model, sell
       As a first time user...
       - I want to be able to intuitively navigate the site
       - I want to easily find information about relevant products
+      - I want to be able to register for a customer account
       - I want to be able to buy software service products
       - I want to be able to buy technical support hours
       - I want to be able to buy consultancy hours
@@ -146,9 +147,9 @@ To fulfil the needs of the site's users, the following features were implemented
 - **Detailed product info** is diplayed when products are selected 
 
 ## - Future Features -
+- Add a Blog app the the site
 - Integrate posting payment receipts to the BigRedCould accounting package using their API
 - App to manage recurring invoicing integrated with the BigRedCould accounting package API
-- Add a Blog app the the site
 
 <!--  -->
 <!-- End Features -->
@@ -282,22 +283,22 @@ Deployment of the site to Heroku was done as follows:
 
 ## - SEO and Marketing - 
 
-This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as recurring billing subscriptions with some single payment products. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. It is expected that the financial controller, operations manager or small business owner are the most likely visitors, as these roles usually drive the IT strategy for small businesses. Content and the language used must be presented in a way that speaks to these decision makers - relatively short and to the point, in a non-tehnical manner.
+This eCommerce application is for a business-to-business (B2B) sales model, selling digital products & services as recurring billing subscriptions with some single payment products. The target customer is any small business needing software to fulfill cybersecurity and compliance requirements. It is expected that the financial controller, operations manager or small business owner are the most likely visitors, as these roles usually drive the IT strategy for small businesses. Content and the language used must be presented in a way that speaks to these decision makers - relatively short and to the point, in a non-technical manner.
 
 ### SEO
 - As part of a successful SEO strategy I ensured that the site has the following:
     - Meta description, keywords & title in the `<head>` section of the page
-    - semantic web markup sectionsused throughout: `<nav>`, `<main>`, headings and key phrases emphasised with either `<strong>` or `<em>` tags
+    - semantic web markup sections used throughout: `<nav>`, `<main>`, headings and key phrases emphasised with either `<strong>` or `<em>` tags
     - A `sitemap.xml` file and a `robots.txt` file placed in the root directory
-    - content is king: all content presents relevant information to the target audience and is prefessionally displayed with correct spelling and grammar. Plain language is used to describe the products and services
-    - The company plans to introduce a blog applicataion to the site in the next development iteration to drive repeat vistits via relevant newsworthy industry content
+    - content is king: all content presents relevant information to the target audience and is professionally displayed with correct spelling and grammar. Plain language is used to describe the products and services
+    - The company plans to introduce a blog applicataion to the site in the next development iteration to drive repeat visits via relevant newsworthy industry content
     
 
 ### Marketing
 - The company is most likekly to use content marketing strategy with some paid web marketing
 - the company wishes to be seen as informed, up-to-date and current: a dynamic, as opposed to a 'static' web site will build trust with customers that they are dealing with a company on the cutting edge of cyber security
-- site visitors can sign up for a newsletter about the latest small busniness cyber security, compliance & regulatory trends
-- A blog is planned to promote a sense of relevance with customers
+- site visitors can sign up for a newsletter about the latest small business cyber security, compliance & regulatory trends
+- A blog is planned to promote a sense of relevance an d build trust with customers
 
 ### Facebook Page
 <details>

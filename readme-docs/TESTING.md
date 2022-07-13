@@ -73,10 +73,25 @@ The [W3C Markup Validator](https://validator.w3.org/#validate_by_uri), [W3C CSS 
 
 ### HTML
 - **`Main home page: home.html`**
-<h2 align="center"><img src="w3c-validator-html_main-home-page.html.png"></h2>
+    - Document checking completed. No errors or warnings to show.
+- **`Services page: products/products/product_list.html`**
+    - Document checking completed. No errors or warnings to show.
+- **`Product detail page: products/product_detail.html`**
+    - Document checking completed. No errors or warnings to show.
+- **`Manage Account page: customers/customer_detail.html`**
+    - Document checking completed. No errors or warnings to show.
+- **`Shopping cart page: shopping_cart/cart.html`**
+    - _TODO
+- **`Checkout page: checkout/checkout.html`**
+    - _TODO
+- **`Checkout page: checkout/checkout_success.html`**
+    - _TODO
+
 
 
 ### CSS
+- **`base.css`**
+
 <h2 align="center"><img src="w3c-validator-css_style.css.png"></h2>
 
 ### JavaScript

@@ -3,12 +3,6 @@
 {% block title %}Home{% endblock title %}
 
 {% block banner %}
-<div class="row">
-	<div class="col">
-    <div class="">
-    </div>
-	</div>
-</div>
 {% endblock banner %}
 
 {% block content %}
@@ -17,25 +11,21 @@
     <div class="col-lg-8">
       <div class="">
         <h1>Affordable CyberSecurity for SMBs</h1>
-        <p>
-          <h3>Secure your business today with our industry leading software & fully managed services</h3>
-        </p>
-        <p>  
-          <ul>
-            <li>On Demand Technical Support - Order now and connect with one of our engineers within minutes</li>
+          <h2>Secure your business today with our industry leading software & fully managed services</h2>
+          <ul class="hero-list">
+            <li><strong>On-Demand Technical Support</strong> - Order now and connect with one of our engineers within minutes</li>
             <li>PCI Compliance Scanning</li>
             <li>Web Site Security Scanning</li>
             <li>Fully Automated Off-Site Backup Solutions - servers, M365 Mailboxes, Sharepoint</li>
-            <li>Eliminate Email Spam & Malware with HornetSecurity Email Scanning</li>
+            <li><strong>Eliminate Email Spam & Malware</strong> with HornetSecurity Email Scanning</li>
             <li>Cyber Security Awareness Training</li>
           </ul>
-        </p>
       </div>
     </div> <!-- /lhs col -->
 
     <!-- show promoted products -->
     <div class="col-lg-4 d-flex flex-column justify-content-lg-center">
-      <div class="py-4 text-center"><h3>Popular Services</h4></div>
+      <div class="py-4 text-center"><h3>Popular Services</h3></div>
       {% for product in promoted_products %}
       <div class="pt-2 row py-2 align-items-center justify-content-center">
         <div class="col-8">

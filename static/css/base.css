@@ -22,7 +22,7 @@
   /*  */
   --btn-buynow-colour: #15d19b;
 
-  /**********************************************  DON'T FORGET TO REMOVE ME! ******* */
+  /************************************ _TODO *  DON'T FORGET TO REMOVE ME! ******* */
   --tester1: palegreen;
   --tester2: lightblue;
   --tester3: lightpink;
@@ -41,7 +41,7 @@
 }
 .showme9 {
   background-color: var(--tester9);
-}/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  DON'T FORGET TO REMOVE ME! ******* */
+}/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ _TODO ^^^^^^^  DON'T FORGET TO REMOVE ME! ******* */
 
 html {
   position: relative;
@@ -152,7 +152,7 @@ footer {
 /*- allauth content styling -------------------------------------------------*/
 .auth-content {
   /* will use this later to apply styling to  */
-  /* all of the allauth template pages */
+  /* all of the allauth template pages _TODO */
 }
 
 

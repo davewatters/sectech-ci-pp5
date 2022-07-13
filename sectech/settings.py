@@ -32,11 +32,7 @@ DEBUG = DEVELOPMENT
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# if DEVELOPMENT:
-#     ALLOWED_HOSTS = [ 'localhost' ]
-# else:
-#     ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS'), ]
-ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS', 'localhost') ]
+ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS', 'localhost')]
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -52,17 +48,6 @@ else:
         }
     }
 
-# if DEVELOPMENT:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-# else:
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-#     }
 
 # CORS
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -109,7 +94,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            TEMPLATES_DIR, 
+            TEMPLATES_DIR,
             TEMPLATES_DIR/'allauth',
         ],
         'APP_DIRS': True,
@@ -122,7 +107,7 @@ TEMPLATES = [
                 # Custom
                 'shopping_cart.contexts.cart_contents',
             ],
-            # allow global use of template tags without need for {% load %} 
+            # allow global use of template tags without need for {% load %}
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
@@ -149,16 +134,16 @@ WSGI_APPLICATION = 'sectech.wsgi.application'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa
     },
 ]
 
@@ -191,11 +176,11 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = BASE_DIR.joinpath('staticfiles')
 MEDIA_ROOT = BASE_DIR.joinpath('media')
-STATICFILES_DIRS = [BASE_DIR.joinpath('static'),]
+STATICFILES_DIRS = [BASE_DIR.joinpath('static'), ]
 
 # AWS S3
 if os.getenv('USE_AWS', False):
-    # Bucket Config
+    # S3 Bucket Config
     # allow bucket & region option to be set in env
     AWS_STORAGE_BUCKET_NAME = os.getenv(
         'AWS_STORAGE_BUCKET_NAME', 'sectech-ci-pp5'
@@ -226,19 +211,19 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 # user registraion email confirmation
-# if DEVELOPMENT:
-#     # Log emails to the console during development
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-#     EMAIL_HOST_USER = 'sectech.app@example.com'
-# else:
-# send mail using SMTP AUTH client
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-# default to SMTP with STARTTLS
-EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+if DEVELOPMENT:
+    # Log emails to the console during development
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_HOST_USER = 'sectech.app@example.com'
+else:
+    # send mail using SMTP AUTH client
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.getenv('EMAIL_HOST')
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+    # default to SMTP with STARTTLS
+    EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

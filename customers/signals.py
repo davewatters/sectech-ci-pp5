@@ -4,6 +4,7 @@ from django.dispatch import receiver
 
 from .models import Customer
 
+
 @receiver(post_save, sender=User)
 def create_customer_account(sender, instance, created, **kwargs):
     """

@@ -6,6 +6,7 @@ from django_countries.fields import CountryField
 
 from products.models import Product
 
+
 class Customer(models.Model):
     '''
     Customer account model.
@@ -24,7 +25,7 @@ class Customer(models.Model):
     country_code = CountryField(blank_label='Country *')
     postcode = models.CharField(max_length=16, null=True,
                                 blank=True, default='')
-    vat_no = models.CharField(max_length=16,null=True,
+    vat_no = models.CharField(max_length=16, null=True,
                               blank=True, default='')
     out_of_use = models.BooleanField(default=False)
 
@@ -66,8 +67,8 @@ class Customer_product(models.Model):
                                  on_delete=models.CASCADE,
                                  related_name='products')
     product = models.ForeignKey(Product,
-                                 on_delete=models.PROTECT,
-                                 related_name='customers')
+                                on_delete=models.PROTECT,
+                                related_name='customers')
     qty = models.IntegerField(default=0)
     bill_freq = models.CharField(max_length=1,
                                  choices=RECURRING_BILL,
@@ -97,6 +98,6 @@ class Customer_product(models.Model):
         return None
 
     def __str__(self):
-        return f'''{self.product.desc}: 
-                   {self.RECURRING_BILL}, 
+        return f'''{self.product.desc}:
+                   {self.RECURRING_BILL},
                    {self.next_bill_date}'''

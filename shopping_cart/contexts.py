@@ -1,10 +1,13 @@
-from decimal import Decimal
-from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product, Vat_rate
 
-def cart_contents(request):
 
+def cart_contents(request):
+    '''
+    Define a context processor function to make shopping cart items
+    available in multiple templates.
+    Related: sectech.settings.TEMLPATES
+    '''
     cart_items = []
     line_total = 0
     line_vat = 0
@@ -24,12 +27,12 @@ def cart_contents(request):
             'product': product,
         })
 
-    # will be adding vat to this 
+    # will be adding vat to this
     grand_total = line_total + line_vat
     # this is buggy - incorrect totals going to stripe
-    # when multiple items in cart 
+    # when multiple items in cart
     # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_TODO_ ^^^^^^^^^^^^^^^^^^^^^^^^
-    
+
     context = {
         'cart_items': cart_items,
         'net_total': line_total,

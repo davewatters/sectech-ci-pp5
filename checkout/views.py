@@ -7,7 +7,7 @@ from django.views.decorators.http import require_POST
 from checkout.models import Invoice, Inv_lineitem
 from customers.models import Customer, Customer_product
 from products.models import Product, Vat_rate
-from sectech import settings 
+from sectech import settings
 from shopping_cart.contexts import cart_contents
 
 from .forms import InvoiceForm

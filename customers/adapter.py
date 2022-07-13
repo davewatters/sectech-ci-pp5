@@ -8,6 +8,7 @@ from allauth.account.adapter import DefaultAccountAdapter
 
 from .models import Customer
 
+
 class CustomAccountAdapter(DefaultAccountAdapter):
     """
     Custom mod to override default allauth redirect behaviour at login.
@@ -26,10 +27,10 @@ class CustomAccountAdapter(DefaultAccountAdapter):
         # present customer account details form.
         if not request.user.is_staff:
             if Customer.objects.filter(user=request.user, name='').exists():
-                messages.warning(request,
-                    f'Welcome {request.user.email}! Plesae provide \
-                    full customer account details to complete your \
-                    registration.')
+                messages.warning(
+                    request, f'Welcome {request.user.email}! Plesae provide \
+                               full customer account details to complete \
+                               your registration.')
                 url = resolve_url('customer-create')
 
         return url

@@ -1,9 +1,9 @@
 from django.db import models
 from django.db.models import Sum
-from django.contrib.auth.models import User
 
 from customers.models import Customer
 from products.models import Product, Vat_rate
+
 
 class Invoice(models.Model):
     '''
@@ -21,7 +21,7 @@ class Invoice(models.Model):
     vat_amt = models.DecimalField(max_digits=8, decimal_places=2,
                                   default=0.0)
     grand_total = models.DecimalField(max_digits=8, decimal_places=2,
-                                     default=0.0)
+                                      default=0.0)
     payment_id = models.CharField(max_length=255, default='')
 
     def _generate_invoice_number(self):
@@ -56,8 +56,8 @@ class Invoice(models.Model):
 
 class Inv_lineitem(models.Model):
     '''
-    Defines the invoice line itmes. Each item must store VAT rate, 
-    VAT amount, product price at time of sale. 
+    Defines the invoice line itmes. Each item must store VAT rate,
+    VAT amount, product price at time of sale.
     '''
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE,
                                 related_name='lineitems')
@@ -78,7 +78,7 @@ class Inv_lineitem(models.Model):
     def save(self, *args, **kwargs):
         """
         Override the original save method to set the lineitem totals.
-        Calculate the line net total and vat based on the product's default 
+        Calculate the line net total and vat based on the product's default
         """
         prod_vat = Vat_rate.objects.filter(id=self.product.def_vat_rate.id)
         self.vat_code = prod_vat[0].code

@@ -45,9 +45,10 @@ class StripeWH_Handler:
         """Handle the payment_intent.succeeded webhook from Stripe"""
 
         intent = event.data.object
-        print('+-'*30) # ---------------------- _TODO_ DELETE ME --------------------------- #
+        print('+-' * 30)
+        # ---------------------- _TODO_ DELETE ME --------------------------
         print(intent)
-        print('+-'*30)
+        print('+-' * 30)
         customer = intent.metadata.username
         cart = intent.metadata.cart
         cust_ref = intent.metadata.cust_ref
@@ -61,10 +62,10 @@ class StripeWH_Handler:
                 invoice = Invoice.objects.get(payment_id=stripe_pid)
                 invoice_exists = True
                 break
-            except Invoice.DoesNotExist:    
+            except Invoice.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
-        
+
         if invoice_exists:
             self._send_confirmation_email(invoice)
             return HttpResponse(
@@ -84,9 +85,9 @@ class StripeWH_Handler:
                     try:
                         product = get_object_or_404(Product, pk=item_id)
                         vat_rate = Vat_rate.objects.get(
-                                                    id=product.def_vat_rate.id)
+                            id=product.def_vat_rate.id)
                         line_amt = qty * product.sell_price
-                        line_vat = line_amt * (vat_rate.rate/100)
+                        line_vat = line_amt * (vat_rate.rate / 100)
                         total_line = line_amt + line_vat
                         inv_line_item = Inv_lineitem(
                             invoice=invoice,
@@ -108,9 +109,8 @@ class StripeWH_Handler:
                                 qty=qty,
                                 bill_freq=product.recurring_bill,
                                 next_bill_date=(
-                                    Customer_product
-                                    ._calc_next_bill_date(
-                                    product.recurring_bill)
+                                    Customer_product._calc_next_bill_date(
+                                        product.recurring_bill)
                                 )
                             )
                             cust_prod.save()
@@ -132,7 +132,7 @@ class StripeWH_Handler:
             self._send_confirmation_email(invoice)
             return HttpResponse(
                 content=(f'Webhook received: {event["type"]} | SUCCESS: '
-                          'Created invoice in webhook'), status=200)
+                         'Created invoice in webhook'), status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """

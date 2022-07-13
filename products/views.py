@@ -15,7 +15,7 @@ def product_list(request):
     '''
     product_list = Product.objects.all()
 
-    context = { 'product_list': product_list, }
+    context = {'product_list': product_list, }
     template = 'products/product_list.html'
 
     return render(request, template, context)
@@ -26,6 +26,6 @@ def product_detail(request, product_id):
     View shows detail of selected product.
     '''
     product = get_object_or_404(Product, pk=product_id)
-    context = { 'product': product, }
+    context = {'product': product, }
 
     return render(request, 'products/product_detail.html', context)

@@ -11,7 +11,7 @@ class Prod_categoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Vat_rate)
-class Prod_categoryAdmin(admin.ModelAdmin):
+class Vat_rateAdmin(admin.ModelAdmin):
     '''
     Define the VAT Rate fields shown in the admin panel.
     '''

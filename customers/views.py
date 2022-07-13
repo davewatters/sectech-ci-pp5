@@ -1,9 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, reverse, get_object_or_404
-
-from products.models import Product
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import CustomerForm
 from .models import Customer, Customer_product
@@ -11,9 +9,7 @@ from .models import Customer, Customer_product
 
 @login_required
 def customer_create(request):
-    '''
-    View shows new customer form.
-    '''
+    '''View shows new customer form'''
     customer = get_object_or_404(Customer, user=request.user.id)
 
     if request.method == 'POST':
@@ -22,11 +18,10 @@ def customer_create(request):
         if form.is_valid():
             customer = form.save()
             messages.success(request, 'Successfully added customer')
-            # return redirect(reverse('customer-detail', args=[customer.id]))
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = CustomerForm(request.GET)
-        
+
     template = 'customers/customer_form.html'
     context = {
         'form': form,

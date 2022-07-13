@@ -1,22 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
 from products.models import Product
 
 
 def view_cart(request):
-    '''
-    View that renders the contents of the shopping cart.
-    '''
-    return render(request, 'shopping_cart/cart.html' )
+    '''View that renders the contents of the shopping cart'''
+    return render(request, 'shopping_cart/cart.html')
+
 
 def add_to_cart(request, item_id):
     '''
-    Adds a product to the shopping cart or 
+    Adds a product to the shopping cart or
     increase its qty count if product already in cart.
     '''
-
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})

@@ -74,19 +74,23 @@ In the end, JavaScript use was minimal. JSHint returned no errors.
 <!-- <h2 align="center"><img src="jshint-1_script.js.png"></h2> -->
 
 ### Python PEP8
-The [PEP8 Online](http://pep8online.com) linter was used to ensure the code adhered to the Python Style Guidelines. However, as this is a Django project an exception to PEP8 was made for line lengths greater than 79.  Where lines were in or around 88 characters long, and no better readability could be achieved by shortening them, they were left as is. See the following doc about coding style: [Django Coding Style](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/#python-style)
+The [Flake8](https://pypi.org/project/flake8/) linter was used to ensure the code adhered to the Python Style Guidelines. Additionally, [autopep8](https://pypi.org/project/autopep8/) was used to correct code layout in some files to break long lines in a compliant way.
 
-- **`admin.py`**
-<h2 align="center"><img src="admin_py-pep8.png"></h2>
+Example usage in the terminal (taking just `home` app in this example):
+```
+(.venv) ~/dev/code-institute/sectech-pp5%[docs] flake8 --exclude .venv,migrations,tests.py |grep home
+./home/models.py:1:1: F401 'django.db.models' imported but unused
+./home/admin.py:1:1: F401 'django.contrib.admin' imported but unused
+./home/urls.py:16:1: F401 'django.contrib.admin' imported but unused
+./home/views.py:9:45: W291 trailing whitespace
+./home/views.py:13:80: E501 line too long (92 > 79 characters)
+./home/views.py:19:1: W293 blank line contains whitespace
+(.venv) ~/dev/code-institute/sectech-pp5%[docs] autopep8 --in-place --aggressive --aggressive home/views.py
+```
+Just to confirm compliance, here's the result of checking the above `home/views.py` file with [PEP8 Online](http://pep8online.com/checkresult):
 
-- **`forms.py`**
-<h2 align="center"><img src="forms_py-pep8.png"></h2>
+<h2 align="center"><img src="pep8-home_views.py.png"></h2>
 
-- **`models.py`** - showing an example of lines which exceed the PEP8 recommended 79. Django Project recommends 88.  
-<h2 align="center"><img src="models_py-pep8.png"></h2>
-
-- **`views.py`** - showing an example of lines which exceed the PEP8 recommended 79. Django Project recommends 88.  
-<h2 align="center"><img src="views_py-pep8.png"></h2>
 
 
 <hr>

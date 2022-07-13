@@ -17,8 +17,8 @@ class Prod_category(models.Model):
 
 class Vat_rate(models.Model):
     '''
-    Defines the VAT (sales tax) rates. 
-    Products must have a default VAT rate. VAT code & rate must 
+    Defines the VAT (sales tax) rates.
+    Products must have a default VAT rate. VAT code & rate must
     be saved against each invoice line item.
     '''
 
@@ -40,17 +40,17 @@ class Vat_rate(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.code +" - " +str(self.rate)
+        return self.code + " - " + str(self.rate)
 
 
 class Product(models.Model):
     '''
     Define the Product model.
-    Products are largely digital services with a recurring 
+    Products are largely digital services with a recurring
     licence revenue model.
     Products can be assigned a ranking to assist the site admin
     with displaying promoted products in a prominent position,
-    e.g. an overlay on the home screen or top of the products list. 
+    e.g. an overlay on the home screen or top of the products list.
     Products must have a default VAT code.
     '''
 

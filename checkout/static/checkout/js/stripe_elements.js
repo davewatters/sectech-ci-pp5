@@ -67,22 +67,24 @@ form.addEventListener('submit', function(ev) {
 
     // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var cust_ref = $('input[name="cust_ref"]').val();
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
         'client_secret': clientSecret,
+        'cust_ref': cust_ref,
     };
-
     // cache our checkout info so we can access in stripe webhook
     var url = '/checkout/cache_checkout_data/';
-
-    var cust_name = JSON.parse(document.getElementById('id_cust_name').textContent).slice(1, -1).trim;
-    var cust_country = JSON.parse(document.getElementById('id_cust_country').textContent).slice(1, -1).trim;
     $.post(url, postData).done(function () {
+        var cust_name = JSON.parse(document.getElementById('id_cust_name').textContent).slice(1, -1).trim;
+        var cust_email = JSON.parse(document.getElementById('id_cust_email').textContent).slice(1, -1).trim;
+        var cust_country = JSON.parse(document.getElementById('id_cust_country').textContent).slice(1, -1).trim;
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
               card: elCard,
               billing_details: {
                   name: cust_name,
+                  email: cust_email,
                   address:{
                     country: cust_country,
                   }

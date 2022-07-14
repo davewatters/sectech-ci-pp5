@@ -20,7 +20,7 @@ def webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
     # Get the webhook data and verify its signature
-    payload = request.data
+    payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
 
@@ -30,14 +30,14 @@ def webhook(request):
         )
     except ValueError as e:
         # Invalid payload
-        print('+-'*30)  # ---------------------- _TODO_ DELETE ME --------------------------- #
-        print(type(payload))
-        print(payload)
+        print(e)
         return HttpResponse(content=e, status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
+        print(e)
         return HttpResponse(content=e, status=400)
     except Exception as e:
+        print(e)
         return HttpResponse(content=e, status=400)
 
     # Set up a webhook handler
@@ -55,12 +55,6 @@ def webhook(request):
     # If there's a handler for it, get it from the event map
     # Use the generic one by default
     event_handler = event_map.get(event_type, handler.handle_event)
-
-    print('+-'*30)  # ---------------------- _TODO_ DELETE ME --------------------------- #
-    print(event)
-    print(event_type)
-    print(event_handler)
-    print('+-'*30)
 
     # Call the event handler with the event
     response = event_handler(event)

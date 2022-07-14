@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.conf import settings
+from django.contrib.auth.models import User
+
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404
@@ -20,7 +22,8 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, invoice):
         """Send the user a confirmation email"""
-        cust_email = invoice.customer.email
+        user = get_object_or_404(User, id=invoice.customer_id)
+        cust_email = user.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
             {'invoice': invoice})
@@ -45,10 +48,6 @@ class StripeWH_Handler:
         """Handle the payment_intent.succeeded webhook from Stripe"""
 
         intent = event.data.object
-        print('+-' * 30)
-        # ---------------------- _TODO_ DELETE ME --------------------------
-        print(intent)
-        print('+-' * 30)
         customer = intent.metadata.username
         cart = intent.metadata.cart
         cust_ref = intent.metadata.cust_ref
@@ -119,7 +118,7 @@ class StripeWH_Handler:
                             invoice.delete()
                         return HttpResponse(
                             content=f'Webhook received: \
-                                      {event["type"]} | ERROR: {e}',
+                                    {event["type"]} | ERROR: {e}',
                                     status=500)
 
             except Exception as e:

@@ -12,7 +12,7 @@ Total Amount Charged to your Card: €{{ invoice.grand_total }}
 
 Stripe Payment Confirmation ID: {{ invoice.payment_id }}
 
-Software licences will be active within 24hrs (where elevant).
+Software licences will be activated within 24hrs (where relevant).
 
 If you have any questions, feel free to contact us at {{ contact_email }}.
 

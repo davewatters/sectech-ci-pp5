@@ -24,8 +24,7 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(pid, metadata={
             'cart': json.dumps(request.session.get('cart', {})),
             'username': request.user,
-            # 'cust_ref': request.cust_ref,
-            # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^_TODO_ ^^^^^^^^^^^^^^^^^^^^^^^^
+            'cust_ref': request.POST.get('cust_ref'),
         })
         return HttpResponse(status=200)
     except Exception as e:

@@ -146,6 +146,7 @@
     {{ client_secret|json_script:"id_client_secret" }}
     <!-- pass customer vars to stripe element -->
     {{ customer.name|json_script:"id_cust_name" }}
+    {{ user.email|json_script:"id_cust_email" }}
     {{ customer.country_code.code|json_script:"id_cust_country" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock postload_js %}

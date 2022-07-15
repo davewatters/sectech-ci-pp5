@@ -3,12 +3,12 @@ from django.conf import settings
 from django.contrib.auth.models import User
 
 from django.core.mail import send_mail
-from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404
+from django.template.loader import render_to_string
 
 from .models import Invoice, Inv_lineitem
-from products.models import Product, Vat_rate
 from customers.models import Customer_product
+from products.models import Product, Vat_rate
 
 import json
 import time

@@ -44,7 +44,6 @@ def product_detail(request, product_id):
     View to display the selected product.
     '''
     product = get_object_or_404(Product, pk=product_id)
-    context = {'product': product, }
 
     if request.method == 'POST':
         form = ProductForm(request.POST)
@@ -52,10 +51,15 @@ def product_detail(request, product_id):
         if form.is_valid():
             product = form.save()
             messages.success(request,
-                             f'Successfully added product {product.desc}')
+                             f'Successfully updated product {product.desc}')
             return redirect('product-list')
     else:
         form = ProductForm(request.GET)
+
+    context = {
+        'product': product,
+        'form': form,
+    }
 
     return render(request, 'products/product_detail.html', context)
 

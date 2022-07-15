@@ -2,7 +2,29 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render, get_object_or_404
 
+from .forms import ProductForm
 from .models import Product
+
+
+@login_required
+def product_create(request):
+    '''View to create a new product.'''
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+
+        if form.is_valid():
+            product = form.save()
+            messages.success(request,
+                             f'Successfully added product {product.desc}')
+            return redirect('product-list')
+    else:
+        form = ProductForm(request.GET)
+
+    context = {'form': form, }
+    template = 'products/product_form.html'
+
+    return render(request, template, context)
 
 
 def product_list(request):
@@ -24,6 +46,17 @@ def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     context = {'product': product, }
 
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+
+        if form.is_valid():
+            product = form.save()
+            messages.success(request,
+                             f'Successfully added product {product.desc}')
+            return redirect('product-list')
+    else:
+        form = ProductForm(request.GET)
+
     return render(request, 'products/product_detail.html', context)
 
 
@@ -33,7 +66,7 @@ def product_delete(request, product_id):
     View to allow only site admin to delete a product record.
     '''
     if not (request.user.is_staff or request.user.is_superuser):
-        messages.error(request, 'Unauthorized to view that customer page.')
+        messages.error(request, 'Unauthorized to view that product page.')
         return redirect('product-list')
 
     if request.method == 'POST':

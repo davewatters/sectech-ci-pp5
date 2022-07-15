@@ -38,7 +38,7 @@
       <div class="dropdown-menu acc-dropdown-menu-align" aria-labelledby="account-menu">
         {% if user.is_authenticated %}
           {% if user.is_superuser %}
-          <a href="#" class="dropdown-item">Add Product</a>
+          <a href="{% url 'product-create' %}" class="dropdown-item">Add Product</a>
           <a href="{% url 'product-list' %}" class="dropdown-item">Manage Products</a>
           {% else %}
           <a class="dropdown-item" href="{% url 'customer-detail' user.customer.id %}">Manage Account</a>

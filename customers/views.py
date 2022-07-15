@@ -9,7 +9,8 @@ from .models import Customer, Customer_product
 
 @login_required
 def customer_create(request):
-    '''View shows new customer form'''
+    ''' View shows new customer form'''
+
     customer = get_object_or_404(Customer, user=request.user.id)
 
     # stop user accessing page by typing url

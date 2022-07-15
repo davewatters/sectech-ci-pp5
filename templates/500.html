@@ -4,20 +4,22 @@
 {% block title %}{% translate 'Server Error' %}{% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container pt-4">
   <div class="row justify-content-center align-items-center">
     <div class="card shadow text-center">
-      <div class="card-body">
-
+      <div class="card-header">
         <h1>500 Error</h1>
+        <hr>
+      </div>
+      <div class="card-body">
         <h2>Internal Server Error</h2>
-        <hr>
         <p>We’re sorry, something went wrong and the server can't display the page.</p>
+      </div>
+      <div class="card-footer">
         <hr>
-        <p><a class="btn-lg btn-info" href="{% url 'home' %}">Go to the Home Page</a></p>
+          <p><a class="btn-lg btn-info" href="{% url 'home' %}">Go to the Home Page</a></p>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock content %}

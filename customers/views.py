@@ -17,7 +17,8 @@ def customer_create(request):
 
         if form.is_valid():
             customer = form.save()
-            messages.success(request, f'Successfully added customer {customer.name}')
+            messages.success(request,
+                             f'Successfully added customer {customer.name}')
             return redirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = CustomerForm(request.GET)

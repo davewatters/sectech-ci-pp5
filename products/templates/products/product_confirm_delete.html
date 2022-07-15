@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Product{% endblock %}
+
+{% block content %}
+<div class="row image-container">
+
+	<div class="col-md-6 col-lg-4 mt-4">
+		<div class="card-delete text-center h-100 shadow">
+			<div class="card-header">
+				<h2>Delete Product</h2>
+			</div>
+			<div class="card-body">
+				<h3>{{ product.desc }}</h3>
+				{{ product.long_desc }}
+			</div>
+			<div>
+				<span class="currency-symbol">
+					&euro;</span><span class="display-4">{{ product.sell_price |floatformat:"0g" }}</span>
+			</div>
+			<div>{{ product.unit }}</div>
+			<hr>
+			<p><strong>Are you sure you want to delete?</strong></p>
+			<div class="card-footer">
+				<form method="post" action="{% url 'product-delete' product.id %}">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">
+						<i class="fa-solid fa-trash-can"></i>&nbsp;&nbsp;&nbsp;Delete</button>
+          <a class="btn btn-secondary" href="{% url 'product-list' %}">&nbsp;&nbsp;&nbsp;I'm not sure..&nbsp;&nbsp;&nbsp;</a>
+        </form>
+			</div>
+		</div>  <!-- /card -->
+	</div>
+
+{% endblock %}

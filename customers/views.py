@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import CustomerForm
 from .models import Customer, Customer_product
@@ -12,7 +12,7 @@ def customer_create(request):
     '''View shows new customer form'''
     customer = get_object_or_404(Customer, user=request.user.id)
 
-    # stop user access by typing url
+    # stop user accessing page by typing url
     if customer.name:
         messages.error(request, 'Customer already setup.')
         return redirect('customer-detail', customer.id)
@@ -49,7 +49,6 @@ def customer_detail(request, customer_id):
     if request.user.id != customer.user_id:
         messages.error(request, 'Unauthorized to view that customer page.')
         return redirect(settings.LOGIN_REDIRECT_URL)
-        # return HttpResponse(status=403)
 
     cust_products = Customer_product.objects.filter(customer=customer_id)
 

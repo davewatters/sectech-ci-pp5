@@ -21,9 +21,20 @@
 				</div>
 				<div>{{ product.unit }}</div>
 				<div class="card-footer">
+					{% if request.user.is_staff %}
+					<!-- site admins can edit or delete products -->
+					<a href="{% url 'product-detail' product.id %}" 
+							class="btn btn-success btn-buynow">
+							<i class="fa-solid fa-edit"></i>&nbsp;&nbsp;&nbsp;Update</a>
+						<a href="{% url 'product-delete' product.id %}" 
+							class="btn btn-danger btn-buynow">
+							<i class="fa-solid fa-trash-can"></i>&nbsp;&nbsp;&nbsp;Delete</a>
+					{% else %}
+					<!-- customers link to buy products -->
 					<a href="{% url 'product-detail' product.id %}" 
 							class="btn btn-lg btn-success btn-buynow">
 							<i class="fa-solid fa-cart-shopping"></i>&nbsp;&nbsp;&nbsp;Buy Now</a>
+					{% endif %}
 				</div>
 			</div>  <!-- /card -->
 		</div>

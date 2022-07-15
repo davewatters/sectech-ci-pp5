@@ -39,13 +39,11 @@ def checkout(request):
     '''
     View to render the checkout page. Processes Stripe card payments.
     '''
-
-    # Admins or Staff can test site fuctionality
-    # but only customers can complete the purchase
+    # only customers can checkout to complete a purchase
     if request.user.is_staff or request.user.is_superuser:
         messages.warning(request,
                          f'You are a site admin, {request.user}. \
-                         <br>Only registered customers can \
+                         Only registered customers can \
                          complete a purchase.')
         return redirect(reverse('view-cart'))
 

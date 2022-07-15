@@ -140,7 +140,6 @@ footer {
 }  
 
 .qty-btn-adj {
-  /* background-color: var(--tester2); */
   font-size: larger;
 }  
 
@@ -163,6 +162,10 @@ footer {
 .card {
   border-radius: var(--card-border-radius);
   transition: transform 0.5s ease;
+}
+
+.card-delete {
+  border-radius: var(--card-border-radius);
 }
 
 .card-body {

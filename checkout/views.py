@@ -39,6 +39,16 @@ def checkout(request):
     '''
     View to render the checkout page. Processes Stripe card payments.
     '''
+
+    # Admins or Staff can test site fuctionality
+    # but only customers can complete the purchase
+    if request.user.is_staff or request.user.is_superuser:
+        messages.warning(request,
+                         f'You are a site admin, {request.user}. \
+                         <br>Only registered customers can \
+                         complete a purchase.')
+        return redirect(reverse('view-cart'))
+
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -86,8 +96,8 @@ def checkout(request):
                             product=product,
                             qty=qty,
                             bill_freq=product.recurring_bill,
-                            next_bill_date=Customer_product._calc_next_bill_date(   # noqa
-                                                            product.recurring_bill) # noqa
+                            next_bill_date=Customer_product._calc_next_bill_date(  # noqa
+                                                                product.recurring_bill)  # noqa
                         )
                         cust_prod.save()
                 except Product.DoesNotExist:
@@ -97,7 +107,7 @@ def checkout(request):
                         "Please call us for assistance!")
                     )
                     invoice.delete()
-                    return redirect(reverse('view_cart'))
+                    return redirect(reverse('view-cart'))
 
             #  Success! Clear the cart
             del request.session['cart']

@@ -53,11 +53,9 @@
         - I tested that unauthenticated visitors get redirected to the sign in page if attempting to access `/customers/account/new`, for example
     - I want to ensure site visitors can't access customer pages or functionality
         - I tested to options to add/edit/delete etc. were not visible to users when not logged in
-        - I tested that attempting to access `/<whatsit>/new` or `/<thisotherthing>/new` redirects to a '403 - Forbidden' error message and allows the user to link back to the main page.
-    - I want to ensure that site members can not delete posts created by other members
-        - I tested that attempting to access (for example) `/comments/8/delete`, which was created by a different user, redirects to a '403 - Forbidden' error message and allows the user to link back to the main page.
-    - I want to ensure that site visitors or members can not delete meetups
-        - I tested that attempting to access (for example) `/<somethingelse>/4/delete`, which is only allowed by admins, redirects to a '403 - Forbidden' error message and allows the user to link back to the main page.
+        - I tested that attempting to access `/products/new/` redirects to a '403 - Forbidden' error message and allows the user to link back to the main page.
+    - I want to ensure that site user can not access accounts created by other customers
+        - I tested that attempting to access (for example) `/customers/account/3/`, which was owned by a differnt customer, displays an error message and redirects the user back to the home page.
     - I want the site to be fully responsive on different screen sizes
         - I tested that content resized properly and that the information was clearly readable and accesible on all screen sizes.
 <hr>
@@ -81,21 +79,28 @@ The [W3C Markup Validator](https://validator.w3.org/#validate_by_uri), [W3C CSS 
 - **`Manage Account page: customers/customer_detail.html`**
     - Document checking completed. No errors or warnings to show.
 - **`Shopping cart page: shopping_cart/cart.html`**
-    - _TODO
+    - Stray end span tag, line 65. Fixed.
+    - Fixed - Document checking completed. No errors or warnings to show.
 - **`Checkout page: checkout/checkout.html`**
-    - _TODO
+    - No errors, one warning: Empty heading (shown below) Code is taken from CI Boutique Ado. Replaced with h1 a div. Fixed.
+    <h2 align="center"><img src="w3c-validator-checkout_html.png"></h2>
 - **`Checkout page: checkout/checkout_success.html`**
-    - _TODO
+    - Three warnings: A table row was 5 columns wide, which is less than the column count established by the first row (9). This is intended - make column display uncluttered as the last three items are totals only.
+    - One error: Table column 2 established y element `th` has no cells beginning in it
 
 
 
 ### CSS
 - **`base.css`**
-
+    - _TODO
 <h2 align="center"><img src="w3c-validator-css_style.css.png"></h2>
 
 ### JavaScript
-In the end, JavaScript use was minimal. JSHint returned no errors.
+- **`base: base.js`**
+    - no issues ot fix
+- **`checkout: stripe_elements.js`**
+    - one warning: missing semicolon, line 115 - Fixed.
+
 
 <!-- <h2 align="center"><img src="jshint-1_script.js.png"></h2> -->
 

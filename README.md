@@ -191,8 +191,8 @@ All testing and code validation is documented [in this linked TESTING.md documen
     - Fix: amend loop to build cart items, in cart_contents() context, so that cart_vat_amt is calculated correctly [ `shopping_cart/contexts.py` ]
 1. **FIXED** [issue #36](https://github.com/davewatters/sectech-ci-pp5/issues/36) Clicking on a navbar link does not highlight the menu item [ `templates/includes/main_nav.html` ]. Original code worked only when nav bar code was in `base.html`, when it was implemented as an include, it broke.
     - Fix: Use Django template filter `{% with request.resolver_match.url_name as url_name %}` to get the url name, then apply `active` to the `<a>` tag class.
-1. **FIXED** the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
-    - Fix: detail how the issue was fixed here
+<!-- 1. **FIXED** the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
+    - Fix: detail how the issue was fixed here -->
 <!---  --->
 <!--- end of testing section --->
 <!---  --->
@@ -217,13 +217,17 @@ django-allauth==0.51.0
 django-countries==7.3.2
 django-crispy-forms==1.14.0
 django-storages==1.12.3
+flake8==4.0.1
 gunicorn==20.1.0
 idna==3.3
 jmespath==1.0.1
+mccabe==0.6.1
 oauthlib==3.2.0
 Pillow==9.1.1
 psycopg2==2.9.3
+pycodestyle==2.8.0
 pycparser==2.21
+pyflakes==2.4.0
 PyJWT==2.4.0
 python-dateutil==2.8.2
 python-dotenv==0.20.0
@@ -269,8 +273,39 @@ Deployment of the site to Heroku was done as follows:
 1.  Select 'Add Buildpack' and select Python
 1.  Add the database in the 'Resources' tab > Add-ons, select Heroku Postgres
 1.  In 'Settings' click on 'Reveal Config Vars'
-1.  Add any relevant config vars by entering the KEY/VALUE pair data, e.g. PORT & 8000. 
+1.  Add any relevant config vars by entering the KEY/VALUE pair data 
     The required vars are shown in the `.env_example` file in the project repo
+    ```
+    ALLOWED_HOSTS = ['<your_app_name>.herokuapp.com']
+    DATABASE_URL = ['postgres://<db_connect_string>']
+
+    # quick cmd options to generate a key: 'openssl rand -base64 32'
+    SECRET_KEY = ''
+
+    # Static file storage - AWS S3
+    USE_AWS = True
+    AWS_ACCESS_KEY_ID = '<aws_user_access_id>'
+    AWS_SECRET_ACCESS_KEY = '<aws_bucket_access_key>'
+    AWS_STORAGE_BUCKET_NAME = '<your_app_bucket_name>'
+    # optional: if not present default to this value set in <PROJECT_NAME>/settings.py
+    AWS_S3_REGION_NAME = 'eu-west-1'
+
+    # Sending Emails
+    EMAIL_HOST = '<mail_server>' # e.g. 'smtp.office365.com' or 'smtp.gmail.com'
+    EMAIL_HOST_USER = '<sender_email_addr>'
+    EMAIL_HOST_PASSWORD = ''
+    # optional: if not present default to values shown
+    # EMAIL_PORT = 587
+    # EMAIL_USE_TLS = True
+
+    # Stripe Payments
+    STRIPE_PUBLIC_KEY = '<pk_test_goes_here>'
+    STRIPE_SECRET_KEY = '<sk_test_goes_here>'
+    STRIPE_ENDPOINT_SECRET = '<whsec_test_goes_here>'
+    # optional: default to 'eur'
+    # STRIPE_CURRENCY = 'eur'
+
+    ```
 1.  Select the 'Deploy' tab
 1.  For the Deplyoment Method select GitHub
 1.  Connect to GitHub repo by entering YOUR-REPO-NAME, then Connect

@@ -59,16 +59,29 @@
             <td colspan="2">Invoice total (excl. VAT)</td>
             <td colspan="2" class="text-right">&euro;</td>
             <td class="text-right">{{ invoice.total_cost |floatformat:"2g" }}</td>
+            <!-- added empty columns to satisfy W3C validator warning -->
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
             <td colspan="2">Total VAT</td>
             <td colspan="2" class="text-right">&euro;</td>
             <td class="text-right">{{ invoice.vat_amt |floatformat:"2g" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
             <td colspan="2">Invoice total (incl. VAT)</td>
             <td colspan="2" class="text-right">&euro;</td>
             <td class="text-right">{{ invoice.grand_total |floatformat:"2g" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

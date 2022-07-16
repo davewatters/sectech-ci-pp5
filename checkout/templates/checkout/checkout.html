@@ -52,9 +52,9 @@
           <div class="col d-flex justify-content-center">
             <button id="submit-btn" class="btn btn-warning" type="submit" form="checkout-form">
               <span class="icon pr-2"><i class="fa-solid fa-lock"></i></span>
-                Confirm Details & Pay Now
-              <span class="icon pl-2"></span><i class="fa-brands fa-cc-stripe"></i></span>
-            </a>
+              Confirm Details & Pay Now
+              <span class="icon pl-2"><i class="fa-brands fa-cc-stripe"></i></span>
+            </button>
           </div>
         </div>
 			</form>
@@ -131,11 +131,11 @@
 
  <!-- display screen overlay while procesing payment -->
 <div id="loading-overlay">
-  <h1 class="text-light logo-font loading-spinner">
+  <div class="text-light logo-font loading-spinner">
       <span class="icon">
           <i class="fas fa-3x fa-sync-alt fa-spin"></i>
       </span>
-  </h1>
+    </div>
 </div>
 
 {% endblock content %}

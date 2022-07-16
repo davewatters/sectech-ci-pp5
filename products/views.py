@@ -10,6 +10,10 @@ from .models import Product
 def product_create(request):
     '''View to create a new product.'''
 
+    if not (request.user.is_staff or request.user.is_superuser):
+        messages.error(request, 'Unauthorized to view that page.')
+        return redirect('product-list')
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -78,6 +82,10 @@ def product_delete(request, product_id):
 @login_required
 def product_update(request, product_id):
     '''View to update a product.'''
+
+    if not (request.user.is_staff or request.user.is_superuser):
+        messages.error(request, 'Unauthorized to view that page.')
+        return redirect('product-list')
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':

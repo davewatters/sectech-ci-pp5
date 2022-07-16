@@ -25,9 +25,11 @@
 
     <!-- show promoted products -->
     <div class="col-lg-4 d-flex flex-column justify-content-lg-center">
-      <div class="py-4 text-center"><h3>Popular Services</h3></div>
+      <div class="py-4 text-center">
+        <h3>Popular Services</h3>
+      </div>
       {% for product in promoted_products %}
-      <div class="pt-2 row py-2 align-items-center justify-content-center">
+      <div class="row py-3 align-items-center justify-content-center">
         <div class="col-8">
           <strong>{{ product }}</strong>
         </div>

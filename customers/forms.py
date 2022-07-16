@@ -3,6 +3,7 @@ from .models import Customer
 
 
 class CustomerForm(forms.ModelForm):
+    '''Define the customer form'''
     class Meta:
         model = Customer
         exclude = ['user', 'out_of_use']

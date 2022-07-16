@@ -173,6 +173,12 @@ footer {
   white-space: pre-line;
 }
 
+.card-body-delete {
+  line-height: 1.5;
+  padding: 0;
+  white-space: pre-line;
+}
+
 .card-header, .card-footer {
   background-color: white;
   padding-top: 1.2rem;

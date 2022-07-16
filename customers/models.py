@@ -86,14 +86,14 @@ class Customer_product(models.Model):
         if bill_freq != 'Z':
             today = datetime.today()
             if bill_freq == 'B':
-                next_due = today + timedelta(days=730)
+                next_due = today + timedelta(days=729)
             elif bill_freq == 'A':
-                next_due = today + timedelta(days=365)
+                next_due = today + timedelta(days=364)
             elif bill_freq == 'Q':
-                next_due = today + timedelta(days=91)
+                next_due = today + timedelta(days=90)
             else:
                 # self.freq must be == 'M':
-                next_due = today + timedelta(days=30)
+                next_due = today + timedelta(days=29)
             return next_due
         return None
 

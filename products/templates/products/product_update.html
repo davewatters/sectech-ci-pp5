@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}New Product{% endblock %}
+{% block title %}Update Product{% endblock %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
 	<div class="row d-flex justify-content-center">
 	
 		<div class="col-md-8">
-			<h2>Add Product</h2>
+			<h2>Update Product</h2>
 			<!-- contains image upload, set enctype -->
 			<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}

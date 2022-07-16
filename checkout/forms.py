@@ -4,6 +4,7 @@ from .models import Invoice
 
 
 class InvoiceForm(forms.ModelForm):
+    '''Define the checkout invioce form'''
     class Meta:
         model = Invoice
         fields = ['cust_ref', ]

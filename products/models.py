@@ -90,7 +90,7 @@ class Product(models.Model):
     unit = models.CharField(max_length=20, null=True, blank=True)
     def_vat_rate = models.ForeignKey('Vat_rate',
                                      on_delete=models.PROTECT,
-                                     related_name='products')
+                                     related_name='products',)
     out_of_use = models.BooleanField(default=False)
 
     def __str__(self):

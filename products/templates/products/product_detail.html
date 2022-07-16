@@ -3,33 +3,17 @@
 {% block title %}Services{% endblock %}
 
 {% block content %}
-{% if request.user.is_staff %}
-
-<div class="container">
-	<div class="row d-flex justify-content-center">
-		<div class="col col-md-8 col-4-lg">
-			<h2>Update Product</h2>
-			<form method="POST">
-				{% csrf_token %}
-				{{ form|crispy }}
-				<button class="btn btn-info btn-block mb-2" type="submit">Save Details</button>
-			</form>
-		</div>
-	</div>
-</div>
-
-{% else %}
 <!-- Product detail, two rows -->
 <div class="row image-container">
 	<div>
 		{% if product.image %}
 		<img class="product-img"
-		src="{{ product.image.url }}"
-		alt="product logo image">
+			src="{{ product.image.url }}"
+			alt="product logo image">
 		{% endif %}
 	</div>
-	
 </div>
+
 <div class="row pt-2">
 	
 	<div class="col text-center">
@@ -44,7 +28,7 @@
 </div> <!-- /product detail, row 2 -->
 
 <!-- Add to cart -->
-<form class="form" action="{% url 'add-to-cart' product.id %}" method="POST">
+<form id="fid-add-to-cart" class="form" action="{% url 'add-to-cart' product.id %}" method="POST">
 	{% csrf_token %}
 	<div class="form-row justify-content-center">
 		<div class="col-6">
@@ -107,6 +91,4 @@
 		</a>
 	</div>
 </div>
-
-{% endif %}
 {% endblock %}

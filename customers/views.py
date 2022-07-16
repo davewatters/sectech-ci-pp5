@@ -44,7 +44,6 @@ def customer_detail(request, customer_id):
     Allows user to update details.
     Includes views of customer's products and past invoices.
     '''
-
     customer = get_object_or_404(Customer, id=customer_id)
     # Customer record can only be opened by correct user
     if request.user.id != customer.user_id:

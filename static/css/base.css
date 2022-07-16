@@ -57,12 +57,12 @@ body {
 }
 
 footer {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
+  padding-top: 1rem;
   width: 100%;
-  height: var(--footer-height) !important;
+  /* height: var(--footer-height) !important; */
 }
-
 
 /*** Navbar ********************************************************/
 .acc-cart-btns {
@@ -109,9 +109,14 @@ footer {
 
 
 /*** Footer ********************************************************/
+#socials {
+  padding-top: 1rem;
+}
+
 .social-link {
   color: black;
 }
+
 
 
 /*** Main home screen ********************************************/
@@ -224,4 +229,12 @@ footer {
     padding: 0.5rem 1rem 0 0;
     width: auto;
   }
+}
+
+
+/*- Mailchimp styling -------------------------------------------------*/
+#mc_embed_signup {
+  background: #fff;
+  clear: left;
+  font: 14px Helvetica, Arial, sans-serif;
 }

@@ -1,35 +1,39 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {% block meta %}
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Industry leading Cybersecurity for SMBs. Simple, affordable cybersecurity software services. Ransomware Prevention. Protect Your Business.">
-  <meta name="keywords" content="IT consultancy, IT security consultancy, technical support, PCI compliance, security awareness training, web site scanning, SSL certificate, email scanning, stop spam, data backups, off site backups">
+  <meta name="description"
+    content="Industry leading Cybersecurity for SMBs. Simple, affordable cybersecurity software services. Ransomware Prevention. Protect Your Business.">
+  <meta name="keywords"
+    content="IT consultancy, IT security consultancy, technical support, PCI compliance, security awareness training, web site scanning, SSL certificate, email scanning, stop spam, data backups, off site backups">
   {% endblock meta %}
-  
+
   {% block extra_meta %}
   {% endblock extra_meta %}
 
   {% block core_css %}
   <!-- Fontawesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-      crossorigin="anonymous">
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <!-- Mailchimp CSS -->
+  <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7_dtp.css" rel="stylesheet" type="text/css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
   <!-- Stripe JS -->
   {% endblock core_css %}
-  
+
   {% block extra_css %}
   {% endblock extra_css %}
-  
+
   {% block core_js %}
   <script src="https://js.stripe.com/v3/"></script>
   {% endblock core_js %}
@@ -39,12 +43,13 @@
 
   <title>{% block title %}{% endblock %} | SecTech - CyberSecurity for SMBs</title>
 </head>
+
 <body>
   <header>
     <!-- Navbar -->
     {% block main_nav %}
     {% include "includes/main_nav.html" %}
-    {% endblock %} 
+    {% endblock %}
 
     <!-- Banner content container -->
     <div class="container-fluid">
@@ -58,11 +63,11 @@
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
         {% for message in messages %}
-        <div  id="msg" class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
-            {{ message | safe }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <div id="msg" class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message | safe }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         {% endfor %}
       </div>
@@ -74,7 +79,7 @@
     {% block hero %}
     {% endblock hero %}
   </div>
-  
+
   <!-- Base page content container -->
   <main class="container-fluid">
     {% block content %}
@@ -89,16 +94,16 @@
   {% block postload_js %}
   <!-- Bootstrap JS plugin -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"></script> -->
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-      crossorigin="anonymous"></script>
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
   <!-- Custom JS -->
   <script src="{% static 'js/base.js' %}"></script>
+  <!-- Mailchimp JS scripts -->
+  <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+  <script type='text/javascript'>(function ($) { window.fnames = new Array(); window.ftypes = new Array(); fnames[0] = 'EMAIL'; ftypes[0] = 'email'; fnames[1] = 'FNAME'; ftypes[1] = 'text'; fnames[2] = 'LNAME'; ftypes[2] = 'text'; fnames[3] = 'ADDRESS'; ftypes[3] = 'address'; fnames[4] = 'PHONE'; ftypes[4] = 'phone'; fnames[5] = 'BIRTHDAY'; ftypes[5] = 'birthday'; }(jQuery)); var $mcj = jQuery.noConflict(true);</script>
   {% endblock postload_js %}
 </body>
+
 </html>

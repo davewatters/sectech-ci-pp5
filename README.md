@@ -119,18 +119,24 @@ Agile methodology was used to provide an iterative approach to the project's dev
         Data is input or updated using Bootstrap forms. All user interaction controls are either standard Bootstrap buttons or intuitive Fontawesome icons. 
 
     -   #### Typography
-        The Google font UPDATE ME.
+        The Google font 'Montserrat' was chosen for it's clean modern look and scalability.
 
-    -   #### Colour Scheme ?? Do I really  need this ??????????????????
+    -   #### Colour Scheme
+        - A deep blue colour was chosen for the Logo. Research showed that blues are the most commonly used in cyber security & IT space - which is not that suprising since the colour blue inspires loyalty, confidence, security & reliable authority.  The call-to-action buttons were given a brighter green colour to encourage engagement.
+        `logo colour: #235594`,
+        `cta colour: #15d19b`
+
     -   #### Imagery
-        Minimal. Backgound or hero image on main landing page. Product logo images.  
+        Minimal. Plain background. Product logo images only.  
            
     
     -   #### Wireframes
         I did not create wireframes with software like Balsamiq, but I have decided to include pictures of my pencil sketches of my layout design process.  These do not necessarily represent the final look of the site pages.
-        <h2 align="center"><img src="readme-docs/wf-main-mobile.jpg"></h2>
-        <h2 align="center"><img src="readme-docs/wf-main-wide.jpg"></h2>
-        <h2 align="center"><img src="readme-docs/wf-booklist-wide.jpg"></h2>
+        <h2 align="center"><img src="readme-docs/wf-home-mobile.jpg"></h2>
+        <h2 align="center"><img src="readme-docs/wf-home-wide.jpg"></h2>
+        <h2 align="center"><img src="readme-docs/wf-products-wide.jpg"></h2>
+        <h2 align="center"><img src="readme-docs/wf-product-detail.jpg"></h2>
+        <h2 align="center"><img src="readme-docs/wf-shopping-cart.jpg"></h2>
 
     -   #### Database Entity Relationship Diagram
         <h2 align="center"><img src="readme-docs/db-erd-3.png"></h2>
@@ -147,6 +153,8 @@ To fulfil the needs of the site's users, the following features were implemented
 - **Detailed product info** is diplayed when products are selected 
 
 ## - Future Features -
+- Add content with detail about each of the various products for sale
+- Update the about page with links to professional business organisations
 - Add a Blog app the the site
 - Integrate posting payment receipts to the BigRedCould accounting package using their API
 - App to manage recurring invoicing integrated with the BigRedCould accounting package API
@@ -174,7 +182,7 @@ To fulfil the needs of the site's users, the following features were implemented
 1.  [LucidChart](https://lucidchart.com) was used to create the ERD
 1.  [Bootstrap 4]() front-end CSS toolkit
 1.  [Font Awesome 6]() font and icon toolkit
-1.  [pgAdmin]() Postgres database GUI Tool used to generate the ERD 
+
 
 
 <!---  --->
@@ -293,7 +301,7 @@ Deployment of the site to Heroku was done as follows:
     # Sending Emails
     EMAIL_HOST = '<mail_server>' # e.g. 'smtp.office365.com' or 'smtp.gmail.com'
     EMAIL_HOST_USER = '<sender_email_addr>'
-    EMAIL_HOST_PASSWORD = ''
+    EMAIL_HOST_PASSWORD = '<sender_email_password>'
     # optional: if not present default to values shown
     # EMAIL_PORT = 587
     # EMAIL_USE_TLS = True
@@ -350,6 +358,8 @@ This eCommerce application is for a business-to-business (B2B) sales model, sell
 - Numerous resources helped me understand what I needed and how best to code it. These include: [Mozilla MDN Web Docs](https://developer.mozilla.org/en-US/), the official [Python Docs](https://docs.python.org), official [Django Documentation](https://docs.djangoproject.com/en/3.2/), the [Bootstrap](https://developer.mozilla.org/en-US/) docs and code templates
 - The usual suspects: StackOverflow.com, RealPython.com, etc.
 
+### Images
+- Product logos used are tradmarks of the respective company. Images used are the official marketing images for agents & resellers, specifically with permission for use in their website and sales materials.
 
 ### Acknowledgements
 

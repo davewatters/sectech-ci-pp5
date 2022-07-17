@@ -3,6 +3,8 @@ This is a receipt for your purchase from SecTech.com Your invoice details are be
 
 Invoice Number: {{ invoice.number }}
 Invoice Date: {{ invoice.date }}
+
+Customer: {{ invoice.customer.name }}
 A/C Code: {{ invoice.customer.cust_ac_ref }}
 Your Order Ref: {{ invoice.cust_ref|default:"" }}
 

@@ -12,36 +12,15 @@
   --text-colour: #000; /* sitewide text colour */
   --logo-colour: #235594;
   --text-font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-  /* --text-font-family: 'Lato', Arial, Helvetica, sans-serif; */
   --logo-font-family: "Lato", serif;
   --text-font-size: 1rem;
   --header-height: 64px;
   --footer-height: 50px;
+  
+  /* key sitewide elements */
   --card-border-radius: 15px;
-
-  /*  */
   --btn-buynow-colour: #15d19b;
-
-  /************************************ _TODO *  DON'T FORGET TO REMOVE ME! ******* */
-  --tester1: palegreen;
-  --tester2: lightblue;
-  --tester3: lightpink;
-  --tester9: darkgrey;
 }
-
-.showme1 {
-  background-color: var(--tester1) ;
-}
-
-.showme2 {
-  background-color: var(--tester2);
-}
-.showme3 {
-  background-color: var(--tester3);
-}
-.showme9 {
-  background-color: var(--tester9);
-}/**^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ _TODO ^^^^^^^  DON'T FORGET TO REMOVE ME! ******* */
 
 html {
   position: relative;
@@ -103,62 +82,69 @@ footer {
 
 #nav-wrapper {
   flex-wrap: wrap;
-}
-
-
-/*** Footer ********************************************************/
-#socials {
-  padding-top: 1rem;
-}
-
-.social-link {
-  color: black;
-}
-
-
+}  
 
 /*** Main home screen ********************************************/
 .hero-list {
   padding-top: 2rem;
   padding-right: 2rem;
-}
+}  
+
+/*** Footer ********************************************************/
+#socials {
+  padding-top: 1rem;
+}  
+
+.social-link {
+  color: black;
+}  
 
 /*** Products & Shopping Cart ***************************************/
 .btn-buynow {
   background-color: var(--btn-buynow-colour);
   color: black;
+}  
+
+.card-delete {
+  border-radius: var(--card-border-radius);
+}
+
+.card-body-delete {
+  line-height: 1.5;
+  padding: 0;
+  white-space: pre-line;
 }
 
 .currency-symbol {
   font-size: smaller;
-}  
+}    
 
 /* style the product.long_desc text */
 .desc-lines {
   line-height: 2;
   white-space: pre-line;
-}  
+}    
 
 .image-container {
   align-items: center;
   display: flex;
   justify-content: center;
-}  
+}    
 
 .qty-btn-adj {
   font-size: larger;
-}  
+}    
 
 .qty-widget {
   align-items: center;
   width: auto !important;
-}  
+}    
 
 /*- allauth content styling -------------------------------------------------*/
 .auth-content {
   /* will use this later to apply styling to  */
   /* all of the allauth template pages _TODO */
-}
+}  
 
 
 /*** Overrides for Bootstrap classes ********************
@@ -168,20 +154,10 @@ footer {
 .card {
   border-radius: var(--card-border-radius);
   transition: transform 0.5s ease;
-}
-
-.card-delete {
-  border-radius: var(--card-border-radius);
-}
+}  
 
 .card-body {
   line-height: 2;
-  white-space: pre-line;
-}
-
-.card-body-delete {
-  line-height: 1.5;
-  padding: 0;
   white-space: pre-line;
 }
 
@@ -192,6 +168,7 @@ footer {
 
 .card-header {
   border-bottom: none;
+  font-size: larger;
 }
 
 .card-header:first-child {
@@ -238,4 +215,13 @@ footer {
   background: #fff;
   clear: left;
   font: 14px Helvetica, Arial, sans-serif;
+}
+
+/* mc overrides to ensure Wave Accessibility compliance */
+.asterisk {
+  color: black !important;
+}
+
+#mc-embedded-subscribe {
+  color: black !important;
 }

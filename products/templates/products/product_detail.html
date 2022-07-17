@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Services{% endblock %}
 
@@ -43,8 +44,9 @@
 					<div class="input-group qty-widget">
 
 						<div class="input-group-prepend">
-							<button type="button" class="qty-btn-adj"
-								data-item_id="{{ product.id }}" id="dec-qty-{{product.id}}"
+							<button type="button" class="dec-qty-btn"
+								data-item_id="{{ product.id }}"
+								id="dec-qty-{{product.id}}"
 								aria-label="decrease quantity button">
 								<span class="icon">
 									<i class="fas fa-minus"></i>
@@ -52,14 +54,16 @@
 							</button>
 						</div>
 
-						<input type="number" class="form-control qty-input"
+						<input type="number" class="form-control qty_input"
 							name="quantity" value="1" min="1" max="99"
-							data-item_id="{{ product.id }}" id="id-qty-{{product.id}}"
+							data-item_id="{{ product.id }}"
+							id="id-qty-{{product.id}}"
 							aria-labelledby="fid-add-to-cart">
 					
 						<div class="input-group-append">
-							<button type="button" class="qty-btn-adj"
-								data-item_id="{{ product.id }}" id="inc-qty-{{product.id}}"
+							<button type="button" class="inc-qty-btn"
+								data-item_id="{{ product.id }}"
+								id="inc-qty-{{product.id}}"
 								aria-label="increase quantity button">
 								<span class="icon">
 									<i class="fas fa-plus"></i>
@@ -93,3 +97,8 @@
 	</div>
 </div>
 {% endblock %}
+
+{% block postload_js %}
+	{{ block.super }}
+	{% include 'products/includes/qty_input_script.html' %}
+{% endblock postload_js %}

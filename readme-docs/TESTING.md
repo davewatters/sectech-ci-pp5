@@ -14,25 +14,27 @@
 
 - #### As a Site Admin..
     - I want to to be able to setup and manage the product list
-        - I tested that I could log into the admin panel and have ability to create, read, update or delete (CRUD) a product.  I tested that I could also do this via the main menu login.
-
+        - I tested that I could log into the admin panel and have ability to create, read, update or delete (CRUD) a product.  I tested that I could also do this via the main menu login. Note: All models are fully editable from the admin panel, and products specifically from the site home menu.
 
 - #### As a first time user...  
     -  I want to be able to intuitively navigate the site
         - All menu options were tested to ensure that they opened the correct functionality.  The navigation bar remains at the top of the screen so that the user can easily move between options. The current page selection remains highlighted.
 
     -  I want to be able to see clear messages about my actions
-        - I tested that system messages are displayed during all customer processes (login, checkout etc.)  Messages are coloured according to severity (alerts - yellow, warnings - red, etc.) and are clrealy seen on teh top centre of screen.
+        - I tested that system messages are displayed during all customer processes (login, checkout etc.)  Messages are coloured according to severity (alerts - yellow, warnings - red, etc.) and are clrealy seen on the top centre of screen.
 
     - I want to easily find information about the company and its products
-        - I tested that I could click through the product cards on the main screen to reveal full details about the products.  I tested that the About page displays the company information.
+        - I tested that I could click through the product cards on the main screen to allow purchasing the product. I tested that the About page displays the company information.
 
     -  I want to be able to Register as a customer of the site
        - I tested that I could create a new registered user from the login screen.
 
     -  I want to be able receive a registrtion confirmation email
        - I tested that I could verify a user account via a registration email by clicking on the secure link in the email.
-
+    
+    -  I want to be able to sign up for a newsletter
+        - I tested that the Mailchimp embedded mailing list manager works by successfully capturing the user's email address
+    
 - #### As a returning visitor...
     - I want to be able to log into my registered account
         - I tested that I can log in as a user and view my account
@@ -45,6 +47,9 @@
 
       - I want to be able to quickly purchase additional support or consultancy hours
         - I tested that when logged in as a user I can purchase additional products
+
+    - I want to be able to reset my password
+        - I tested that I could click on Forgot my password' and that I received I password reset link.  I was subsequently abe to login with the new password.
 
 ### Further Testing
 
@@ -67,7 +72,7 @@ Automated testing was not used for this project.
 
 ## Code Validation
 
-The [W3C Markup Validator](https://validator.w3.org/#validate_by_uri), [W3C CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/#validate_by_uri) and the [JSHint JavaScript Code Quality Tool](https://jshint.com) were used to validate every page of the project for syntax errors. **NOTE: All validation was re-run after fixing any errors shown below to ensure that no further errors or warnings existed.**
+The [W3C Markup Validator](https://validator.w3.org/#validate_by_uri), [W3C CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) and the [JSHint JavaScript Code Quality Tool](https://jshint.com) were used to validate every page of the project for syntax errors. **NOTE: All validation was re-run after fixing any errors shown below to ensure that no further errors or warnings existed.**
 
 ### HTML
 - **`Main home page: home.html`**
@@ -86,14 +91,15 @@ The [W3C Markup Validator](https://validator.w3.org/#validate_by_uri), [W3C CSS 
     <h2 align="center"><img src="w3c-validator-checkout_html.png"></h2>
 - **`Checkout page: checkout/checkout_success.html`**
     - Three warnings: A table row was 5 columns wide, which is less than the column count established by the first row (9). This is intended - make column display uncluttered as the last three items are totals only.
-    - One error: Table column 2 established y element `th` has no cells beginning in it
+    - One error: Table column 2 established by element `th` has no cells beginning in it (shown below).
+    I can not see anythihng wrong in the layout and have not been able to find a fix for this yet.  I have logged it to bugs section of readme.
+    <h2 align="center"><img src="w3c-validator-checkout-success_html.png"></h2>
 
 
 
 ### CSS
 - **`base.css`**
-    - _TODO
-<h2 align="center"><img src="w3c-validator-css_style.css.png"></h2>
+<h2 align="center"><img src="w3c-css-validator-base_css.png"></h2>
 
 ### JavaScript
 - **`base: base.js`**
@@ -101,11 +107,15 @@ The [W3C Markup Validator](https://validator.w3.org/#validate_by_uri), [W3C CSS 
 - **`checkout: stripe_elements.js`**
     - one warning: missing semicolon, line 115 - Fixed.
 
+### Google Lighthouse
+<h2 align="center"><img src="google-lighthouse.png"></h2>
+
+
 
 <!-- <h2 align="center"><img src="jshint-1_script.js.png"></h2> -->
 
 ### Python PEP8
-The [Flake8](https://pypi.org/project/flake8/) linter was used to ensure the code adhered to the Python Style Guidelines. Additionally, [autopep8](https://pypi.org/project/autopep8/) was used to correct code layout in some files to break long lines in a compliant way.
+The [Flake8](https://pypi.org/project/flake8/) linter was used to ensure the code adhered to the Python Style Guidelines. Additionally, [autopep8](https://pypi.org/project/autopep8/) was used to correct code layout in some files to break long lines in a compliant way.  Exceptions were made in a couple of notable places: code that was generated by the Django setup or a third party library was not altered. In these instances the linter directive `# noqa` was added to the end of the line so that Flake8 would not flag it as an issue. Apart from system generated lines `settings.py`, there were lines in `checkout/webhooks.py` and `checkout/views.py` which could not be broken without significantly diminishing their readability.
 
 Example usage in the terminal (taking just `home` app in this example):
 ```

@@ -168,7 +168,7 @@ To fulfil the needs of the site's users, the following features were implemented
 
 ### Languages Used
 
--   [Python 3.7+](https://en.wikipedia.org/wiki/Python_(programming_language)) with the [Django 3.2](https://en.wikipedia.org/wiki/Django_(web_framework)) web framework
+- [Python 3.7+](https://en.wikipedia.org/wiki/Python_(programming_language)) with the [Django 3.2](https://en.wikipedia.org/wiki/Django_(web_framework)) web framework
 ### Databases Used
 - [SQLite3](https://en.wikipedia.org/wiki/SQLite) in development, [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL) in production
 - [JSON](https://en.wikipedia.org/wiki/JSON) format files used in development for fixtures data
@@ -199,6 +199,12 @@ All testing and code validation is documented [in this linked TESTING.md documen
     - Fix: amend loop to build cart items, in cart_contents() context, so that cart_vat_amt is calculated correctly [ `shopping_cart/contexts.py` ]
 1. **FIXED** [issue #36](https://github.com/davewatters/sectech-ci-pp5/issues/36) Clicking on a navbar link does not highlight the menu item [ `templates/includes/main_nav.html` ]. Original code worked only when nav bar code was in `base.html`, when it was implemented as an include, it broke.
     - Fix: Use Django template filter `{% with request.resolver_match.url_name as url_name %}` to get the url name, then apply `active` to the `<a>` tag class.
+1. W3C Validator error in `checkout/checkout_success.html`:  Table column 2 established by element `th` has no cells beginning in it. Table definition and rendered page all look correct.
+    - Fix: 
+1. Wave accessibiilty error in footer on all pages: 1 x Missing form label: Error was introduced after embedding the Mailchimp plugin but I can't actually see it's corresponding icon on the page.
+    <h2 align="center"><img src="wave-a11y-unidentified_footer_error.png"></h2>
+
+    - Fix: 
 <!-- 1. **FIXED** the frobble wouldn't work when clicking the bejiggle button [ `templates/<bug_in_this_file>.html` ]
     - Fix: detail how the issue was fixed here -->
 <!---  --->

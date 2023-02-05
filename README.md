@@ -4,7 +4,7 @@
 
 <br />
 
-You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/)
+You can view the live deployed app [HERE.](https://sectech-ci-pp5.onrender.com/)
 <br />
 
 <!-- Responsive desgin sample image from http://ami.responsivedesign.is/ -->
@@ -21,7 +21,7 @@ You can view the live deployed app [HERE.](https://sectech-ci-pp5.herokuapp.com/
 * [Credits](#credits)
 
 ## - Purpose -
-[This app was created as the fifth Portfolio Project (PP5) for the Code Institute's Full Stack Web Development course. The app is to showcase skills to design an eCommerce web application using an MVC framework and related contemporary technologies.  As a requirement the app is deployed to Heroku and payments are processed by Stripe.]    
+[This app was created as the fifth Portfolio Project (PP5) for the Code Institute's Full Stack Web Development course. The app is to showcase skills to design an eCommerce web application using an MVC framework and related contemporary technologies.  As a requirement the app is deployed to Heroku and payments are processed by Stripe. The site was later migrated to Render.com & ElephantSQL.com for free hosting.]    
 
 A mock site for an IT Services company plannning to streamline their recurring revenue from Software-as-a-Service (SaaS) products using an online eCommerce site. The company plans to take payment up front for certain services - particularly SaaS cyber security products which are sold as a recurring annual licence. Monthly Managed IT Service contracts, daily Consultancy Services and even Remote Technical Support by the hour, and all can be bought in advance.  This should streamline the business, reduce time spent each month on the invoice/payment collection cylce and bolster the company's cash flow.
 The company's customers receive the benefit of easy access to a suite of industlry leading cyber security products which are essential to the smooth running of their business systems. The products are bundled as a managed service at a fixed monthly cost. They can buy addtional support or consultancy on an as needed basis - only paying for what they use.
@@ -178,10 +178,12 @@ To fulfil the needs of the site's users, the following features were implemented
 1.  [Git](https://git-scm.com/) was used for version control and managed via the VSCode terminal to commit to Git and push to GitHub.
 1.  [GitHub](https://github.com/) was used to store the project's code after being pushed from Git
 1.  [Flake8](https://flake8.pycqa.org/en/latest/) linter extension for VScode 
-1.  [Heroku](https://www.heroku.com) was used to deploy the app
 1.  [LucidChart](https://lucidchart.com) was used to create the ERD
 1.  [Bootstrap 4]() front-end CSS toolkit
 1.  [Font Awesome 6]() font and icon toolkit
+1.  [Heroku](https://www.heroku.com) was used to deploy the app initially
+1.  [Render](https://render.com) was later used to host the app
+1.  [ElephantSQL](https://elephantsql.com) was later used to host the PostgresSQL database
 
 
 
@@ -256,7 +258,7 @@ stripe==3.5.0
 typing_extensions==4.2.0
 urllib3==1.26.9
 ```
-- Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_example` for commonly used vars.  In production, see below for how to set the config vars in the Heroku deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
+- Create a Django `SECRET_KEY` environment variable (any randomly generated string of 40+ characters should do). In development create a `.env` or `env.py` file for environment variables - see the provided `.env_example` for commonly used vars.  In production see below for how to set the config vars in the Heroku or Render deployment settings tab.  There are a number of free web sites where you can generate a random secret key. In my development environment I used the following
 ```
 openssl rand -base64 32
 ```
@@ -268,16 +270,19 @@ python3 -m manage.py migrate
 ```
 python3 manage.py createsuperuser
 ```
-- Deployment to Heroku requires a `Procfile` with the following content
+- Deployment to Heroku requires a `Procfile` with the following content (Note: Procfile not required for Render)
 ```
 web: gunicorn sectech.wsgi:application
 ```
 
 
-### Heroku  
-The live deployed site can be viewed on Heroku [HERE](https://sectech-ci-pp5.herokuapp.com)
+### Deployment to Heroku  
+The project repository (repo) is at [https://github.com/davewatters/](https://github.com/davewatters/sectech-ci-pp5)
 
-The Project repository (repo) is at [https://github.com/davewatters/](https://github.com/davewatters/sectech-ci-pp5)
+~~The live deployed site can be viewed on Heroku [HERE](https://sectech-ci-pp5.herokuapp.com)~~
+
+Note: The live deployed site was later migrated to Render and can be viewed [HERE](https://sectech-ci-pp5.onrender.com).  Just note that the following instructions are being left in this readme for now, but are specific to the methods used for the then Heroku deployment.
+
 
 Deployment of the site to Heroku was done as follows:
  
@@ -316,8 +321,8 @@ Deployment of the site to Heroku was done as follows:
     STRIPE_PUBLIC_KEY = '<pk_test_goes_here>'
     STRIPE_SECRET_KEY = '<sk_test_goes_here>'
     STRIPE_ENDPOINT_SECRET = '<whsec_test_goes_here>'
-    # optional: default to 'eur'
-    # STRIPE_CURRENCY = 'eur'
+    # optional: defaults to 'eur'
+    # STRIPE_CURRENCY = '<preferred_currency_code>'
 
     ```
 1.  Select the 'Deploy' tab

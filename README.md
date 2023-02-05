@@ -374,5 +374,7 @@ This eCommerce application is for a business-to-business (B2B) sales model, sell
 
 ### Acknowledgements
 
+- For migration to Render & ElephantSQL, The Code Institute provided step-by-step instructions [HERE](https://code-institute-students.github.io/deployment-docs/40-ms4-pp5/)
+
 -   My mentor [Daisy McGirr](https://github.com/Daisy-McG) for all her helpful feedback and knowledge.
 -   The Code Institute community on Slack and the CI staff and students for their feedback and support.
